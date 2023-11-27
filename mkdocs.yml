@@ -1,1 +1,10 @@
 site_name: Cloud v2
+site_url: https://cloud.incendo.org/
+nav:
+  - Home: index.md
+theme: 
+  name: readthedocs
+  highlightjs: true
+plugins:
+  - search
+
