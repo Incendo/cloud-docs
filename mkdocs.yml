@@ -5,22 +5,22 @@ repo_url: https://github.com/incendo/cloud-docs
 repo_name: cloud-docs
 nav:
   - Cloud:
-      - Home: index.md
+      - Cloud: index.md
   - cloud-core:
-      - Information: core/index.md
+      - cloud-core: core/index.md
   - cloud-annotations:
-      - Information: annotations/index.md
+      - cloud-annotations: annotations/index.md
   - cloud-kotlin:
-      - Information: kotlin/index.md
+      - cloud-kotlin: kotlin/index.md
       - Annotations: kotlin/annotations.md
       - Coroutines: kotlin/coroutines.md
       - Extensions: kotlin/extensions.md
   - cloud-discord:
-      - Information: discord/index.md
+      - cloud-discord: discord/index.md
       - cloud-javacord: discord/javacord.md
       - cloud-jda: discord/jda.md
   - cloud-minecraft:
-      - Information: minecraft/index.md
+      - cloud-minecraft: minecraft/index.md
       - cloud-brigadier: minecraft/brigadier.md
       - cloud-minecraft-extras: minecraft/minecraft-extras.md
       - cloud-bukkit: minecraft/bukkit.md
@@ -42,6 +42,7 @@ theme:
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    - navigation.footer
     - toc.follow
     - search.suggest
     - search.highlight
