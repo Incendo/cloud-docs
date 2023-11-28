@@ -1,10 +1,39 @@
 site_name: Cloud v2
 site_url: https://cloud.incendo.org/
+repo_url: https://github.com/incendo/cloud-docs
 nav:
   - Home: index.md
-theme: 
+  - cloud-core:
+      - Information: core/index.md
+  - cloud-annotations:
+      - Information: annotations/index.md
+  - cloud-kotlin:
+      - Information: kotlin/index.md
+  - cloud-discord:
+      - Information: discord/index.md
+      - cloud-javacord: discord/javacord.md
+      - cloud-jda: discord/jda.md
+  - cloud-minecraft:
+      - Information: minecraft/index.md
+      - cloud-brigadier: minecraft/brigadier.md
+      - cloud-minecraft-extras: minecraft/minecraft-extras.md
+      - cloud-bukkit: minecraft/bukkit.md
+      - cloud-paper: minecraft/paper.md
+      - cloud-velocity: minecraft/velocity.md
+      - cloud-bungee: minecraft/bungee.md
+      - cloud-cloudburst: minecraft/cloudburst.md
+      - cloud-sponge: minecraft/sponge.md
+      - cloud-fabric: minecraft/fabric.md
+      - cloud-neoforge: minecraft/neoforge.md
+  - Other:
+      - cloud-irc: other/irc.md
+theme:
   name: readthedocs
   highlightjs: true
 plugins:
-  - search
-
+  - search:
+      prebuild_index: true
+markdown_extensions:
+  - toc:
+      permalink: "#"
+  - smarty
