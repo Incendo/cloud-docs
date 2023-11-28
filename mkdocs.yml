@@ -1,6 +1,8 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 site_name: Cloud v2
 site_url: https://cloud.incendo.org/
 repo_url: https://github.com/incendo/cloud-docs
+repo_name: cloud-docs
 nav:
   - Home: index.md
   - cloud-core:
@@ -28,12 +30,48 @@ nav:
   - Other:
       - cloud-irc: other/irc.md
 theme:
-  name: readthedocs
-  highlightjs: true
-plugins:
-  - search:
-      prebuild_index: true
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: pink
+      accent: pink
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  favicon: assets/images/favicon.png
+  logo: assets/images/favicon.png
 markdown_extensions:
   - toc:
       permalink: "#"
   - smarty
+  - admonition
+  - tables
+plugins:
+  - search
+extra:
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
