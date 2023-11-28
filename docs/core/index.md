@@ -1,21 +1,59 @@
 # cloud-core
 
-Version: xCLOUD_BASE_VERSIONx
+`cloud-core` contains the main cloud API.
+Generally you'll want to depend on a platform module which implements Cloud for your specific platform, as
+`cloud-core` does not have any platform-specific code.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris. Sollicitudin ac orci phasellus egestas tellus. Habitasse platea dictumst quisque sagittis purus. Gravida neque convallis a cras semper auctor. Sed libero enim sed faucibus. Consequat id porta nibh venenatis cras sed felis eget velit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Eu turpis egestas pretium aenean pharetra magna ac placerat. Leo duis ut diam quam nulla porttitor massa. Faucibus et molestie ac feugiat sed lectus vestibulum mattis. Non nisi est sit amet facilisis magna etiam tempor orci.
+## Installation
 
-## Aliquam
+Cloud is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
 
-Aliquam nulla facilisi cras fermentum odio eu. Auctor urna nunc id cursus metus aliquam eleifend. Scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis. Commodo nulla facilisi nullam vehicula ipsum a. Ultricies lacus sed turpis tincidunt. Montes nascetur ridiculus mus mauris vitae. Ultrices mi tempus imperdiet nulla malesuada. Lacus sed viverra tellus in hac habitasse. Consectetur a erat nam at. Blandit cursus risus at ultrices mi tempus. Gravida in fermentum et sollicitudin ac. Diam maecenas ultricies mi eget mauris pharetra et ultrices neque. Proin libero nunc consequat interdum varius. Montes nascetur ridiculus mus mauris vitae ultricies leo integer. Tellus id interdum velit laoreet id donec ultrices. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Eget nullam non nisi est sit amet facilisis magna. Nunc sed velit dignissim sodales. Sapien faucibus et molestie ac. Diam in arcu cursus euismod quis viverra nibh cras.
+<!-- prettier-ignore -->
+=== "Maven"
+    ```xml
+    <dependency>
+      <groupId>cloud.commandframework</groupId>
+      <artifactId>cloud-core</artifactId>
+      <version>dCLOUD_BASE_VERSIONd</version>
+    </dependency>
+    ```
+=== "Gradle (Kotlin)"
+    ```kotlin
+    implementation("cloud.commandframework:cloud-core:dCLOUD_BASE_VERSIONd")
+    ```
+=== "Gradle (Groovy)"
+    ```groovy
+    implementation 'cloud.commandframework:cloud-core:dCLOUD_BASE_VERSIONd'
+    ```
 
-## Fermentum
+## Command
 
-Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Nulla aliquet enim tortor at auctor urna. Dui id ornare arcu odio ut sem nulla pharetra. Nibh praesent tristique magna sit amet purus gravida quis. Curabitur vitae nunc sed velit dignissim sodales ut eu. Interdum velit laoreet id donec ultrices tincidunt. Id nibh tortor id aliquet lectus proin nibh nisl condimentum. Mi eget mauris pharetra et ultrices neque. Cursus risus at ultrices mi tempus imperdiet nulla malesuada. Tellus orci ac auctor augue mauris augue neque. Velit scelerisque in dictum non consectetur a erat nam at. Montes nascetur ridiculus mus mauris vitae ultricies. Consequat id porta nibh venenatis cras sed felis eget. Amet nulla facilisi morbi tempus iaculis urna id volutpat. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Malesuada fames ac turpis egestas. Eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis. Sit amet nulla facilisi morbi tempus iaculis urna. Pharetra pharetra massa massa ultricies mi.
-
-## Pharetra
-
-Pharetra magna ac placerat vestibulum. Enim praesent elementum facilisis leo vel fringilla. Sapien et ligula ullamcorper malesuada proin. Id aliquet risus feugiat in ante metus dictum at. Mattis pellentesque id nibh tortor. Cras ornare arcu dui vivamus arcu felis bibendum ut tristique. Cras fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Mus mauris vitae ultricies leo integer. Leo vel fringilla est ullamcorper eget. Mattis enim ut tellus elementum sagittis vitae et. Leo urna molestie at elementum eu facilisis sed odio morbi. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Aliquam etiam erat velit scelerisque in dictum non. Risus in hendrerit gravida rutrum.
+A command is a chain of components. Each unique chain makes up a unique command.
 
 <!-- prettier-ignore -->
 !!! example
-    Sit amet volutpat consequat mauris nunc congue nisi vitae. Volutpat sed cras ornare arcu dui vivamus arcu felis bibendum. At consectetur lorem donec massa sapien faucibus. Ut faucibus pulvinar elementum integer enim neque volutpat. Nunc congue nisi vitae suscipit tellus. Viverra aliquet eget sit amet tellus cras adipiscing enim. Praesent tristique magna sit amet purus gravida quis. Sed blandit libero volutpat sed cras ornare. Lectus quam id leo in vitae turpis massa sed elementum. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Molestie ac feugiat sed lectus vestibulum. Proin fermentum leo vel orci porta. Vitae elementum curabitur vitae nunc sed velit. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Ac tortor dignissim convallis aenean et tortor. Nunc sed velit dignissim sodales ut eu sem integer. Euismod nisi porta lorem mollis aliquam.
+    All of these are examples of unique commands:
+    ```
+    /foo bar one
+    /foo bar two <arg1> -- Command with a required variable
+    /bar [arg] -- Command with an optional variable
+    ```
+
+### Components
+
+There are four different types of components:
+
+1. Literals: A string literal with optional aliases.
+2. Required variables: A variable component which gets parsed by a parser, that must be present.
+3. Optional variables: A variable component which gets parsed by a parser, that must not necessarily be present.
+   An optional component may have a default value.
+4. Flags: Named components that are always optional. They may have an associated variable component.
+   Examples: `--flag value`, `-abc`.
+
+Cloud requires that the command chains are unambiguous.
+This means that you may not have a required component following an optional component.
+You may also not have two conflicting variable components on the same level, as it would not be clear
+which of them gets to parse the input.
+You may have _one_ variable component alongside literals, where the literals always get priority.
+
+## Command Manager
