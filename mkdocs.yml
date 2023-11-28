@@ -4,13 +4,17 @@ site_url: https://cloud.incendo.org/
 repo_url: https://github.com/incendo/cloud-docs
 repo_name: cloud-docs
 nav:
-  - Home: index.md
+  - Cloud:
+      - Home: index.md
   - cloud-core:
       - Information: core/index.md
   - cloud-annotations:
       - Information: annotations/index.md
   - cloud-kotlin:
       - Information: kotlin/index.md
+      - Annotations: kotlin/annotations.md
+      - Coroutines: kotlin/coroutines.md
+      - Extensions: kotlin/extensions.md
   - cloud-discord:
       - Information: discord/index.md
       - cloud-javacord: discord/javacord.md
