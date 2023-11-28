@@ -223,7 +223,7 @@ that you create by calling `AggregateCommandParser.builder()`.
 <!-- prettier-ignore -->
 !!! example
     ```java
-    final AggregateCommandParser<CommandSender, Location> locationParser = AggregateCommandParser<CommandSender>builder()
+    final AggregateCommandParser<CommandSender, Location> locationParser = AggregateCommandParser.<CommandSender>builder()
         .withComponent("world", worldParser())
         .withComponent("x", integerParser())
         .withComponent("y", integerParser())
