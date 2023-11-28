@@ -104,29 +104,112 @@ You may provide your own suggestions using a suggestion provider.
 
 #### Exception handling
 
-## Extra
-
-### Configurations
-
-### Help generation
-
 ## Parsers
 
 ### Parser Registry
 
 ### Standard Parsers
 
+Cloud ships with parsers for all Java primitives as well as strings, enums, UUIDs and durations.
+
 #### String
+
+Cloud has four different string "modes":
+
+- **Single**: A single space-delimited string.
+- **Quoted**: Either a single space-delimited string, or multiple space-delimited
+  strings surrounded by a pair of single or double quotes.
+- **Greedy**: All remaining input.
+- **Greedy flag yielding**: All remaining input until a [flag](#flags) is encountered.
+
+The string parsers do not produce suggestions by default.
+
+The string parsers can be created using the static factory methods found in [StringParser](TODO).
+
+#### String Array
+
+Cloud can parse string arrays, in which case it captures all remaining input.
+A string array parser may also be flag yielding, in which case it will only capture input until
+it encounters a [flag](#flags).
+
+The string array parser does not produce suggestions by default.
+
+The string array parser can be created using the static factory methods found in [StringArrayParser](TODO).
 
 #### Character
 
+This parses a single space-delimited character.
+The character parser does not produce suggestions by default.
+
+The character parser can be created using the static factory methods found in [CharacterParser](TODO).
+
 #### Numbers
+
+Cloud has parsers for bytes, shorts, integers, longs, doubles and floats.
+The numerical values may have min- and max-values set.
+
+All numerical parsers except for `FloatParser` and `DoubleParser` will produce suggestions.
+
+The numerical parsers can be created using the static factory methods found in:
+
+- [ByteParser](TODO)
+- [ShortParser](TODO)
+- [IntegerParser](TODO)
+- [LongParser](TODO)
+- [DoubleParser](TODO)
+- [FloatParser](TODO)
 
 #### Boolean
 
+The boolean parser can either be strict or liberal.
+A strict boolean parser only accepts (independent of the case) `true` and `false`.
+A liberal boolean parser also accepts `yes`, `no`, `on` and `off`.
+
+The boolean parser can be created using the static factory methods found in [BooleanParser](TODO).
+
 #### Enum
 
+The enum parser matches the input (independent of the case) to the names of an enum. The parser will return
+the enum values as suggestions.
+
+The enum parser can be created using the static factory methods found in [EnumParser](TODO).
+
+#### Duration
+
+Durations can be parsed.
+
+#### UUID
+
+The UUID parser parses dash-separated UUIDs.
+
+The UUID parser can be created using the static factory methods found in [UUIDParser](TODO).
+
 ### Flags
+
+Flags are named optional values that can either have an associated value (value flags),
+or have their value be determined by whether the flag is present (presence flags).
+
+Flags are always optional.
+You cannot have required flags.
+If you want required values, then they should be part of a deterministic command chain.
+Flags are parsed at the tail of a command chain.
+
+Flags can have aliases alongside their full names.
+When referring to the full name of a flag, you use `--name` whereas an alias uses the syntax `-a`.
+You can chain the aliases of multiple presence flags together, such that `-a -b -c` is equivalent to `-abc`.
+
+The flag values are contained in `FlagContext` which can be retrieved using `CommandContext.flags()`.
+
+<!-- prettier-ignore -->
+!!! example
+    Example of a command with a presence flag.
+    ```java
+    manager.commandBuilder("command")
+        .flag(manager.flagBuilder("flag").withAliases("f"))
+        .handler(context -> {
+            boolean present = context.flags().isPresent("flag");
+        ));
+    ```
 
 ### Aggregate Parsers
 
@@ -153,3 +236,11 @@ that you create by calling `AggregateCommandParser.builder()`.
             return CompletableFuture.completedFuture(new Location(world, x, y, z));
     }).build();
     ```
+
+### Custom Parsers
+
+## Extra
+
+### Configurations
+
+### Help generation
