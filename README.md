@@ -27,3 +27,16 @@ The built site will auto-refresh when the files are updated.
 We use prettier to validate the files when building the project.
 It is recommended that you install prettier and run it when you make changes.
 You can find instructions [here](https://prettier.io/docs/en/install).
+
+You may also install prettier &amp; husky using npm, which will also add a pre-commit hook
+which formats the files for you:
+
+```shell
+$ npm install
+```
+
+then you may run prettier using:
+
+```shell
+$ npx prettier . --write
+```
