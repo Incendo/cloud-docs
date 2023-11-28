@@ -30,9 +30,30 @@ move over to [cloud-annotations](./annotations/index.md).
 
 Development builds of Cloud are available on the Sonatype Snapshots Repository:
 
-```xml
-<repository>
-  <id>sonatype-snapshots</id>
-  <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-</repository>
-```
+<!-- prettier-ignore -->
+=== "Maven"
+    ```xml
+    <repository>
+      <id>sonatype-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+    ```
+=== "Gradle (Kotlin)"
+    ```kotlin
+    maven("https://oss.sonatype.org/content/repositories/snapshots/") {
+      name = "sonatype-snapshots"
+      mavenContent {
+        snapshotsOnly()
+      }
+    }
+    ```
+=== "Gradle (Groovy)"
+    ```groovy
+    maven {
+      url "https://oss.sonatype.org/content/repositories/snapshots/"
+      name "sonatype-snapshots"
+      mavenContent {
+        snapshotsOnly()
+      }
+    }
+    ```
