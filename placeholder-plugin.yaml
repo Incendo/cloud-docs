@@ -1,0 +1,4 @@
+placeholders:
+  CLOUD_BASE_VERSION: 2.0.0-dev
+settings:
+  auto_placeholder_tables: false

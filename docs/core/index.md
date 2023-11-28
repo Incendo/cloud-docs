@@ -1,5 +1,8 @@
 # cloud-core
 
+Version: xCLOUD_BASE_VERSIONx
+
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris. Sollicitudin ac orci phasellus egestas tellus. Habitasse platea dictumst quisque sagittis purus. Gravida neque convallis a cras semper auctor. Sed libero enim sed faucibus. Consequat id porta nibh venenatis cras sed felis eget velit. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Eu turpis egestas pretium aenean pharetra magna ac placerat. Leo duis ut diam quam nulla porttitor massa. Faucibus et molestie ac feugiat sed lectus vestibulum mattis. Non nisi est sit amet facilisis magna etiam tempor orci.
 
 ## Aliquam 
