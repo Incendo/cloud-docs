@@ -36,8 +36,8 @@ nav:
 theme:
   name: material
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
+    # - navigation.instant
+    # - navigation.instant.prefetch
     - navigation.tracking
     - navigation.sections
     - navigation.indexes
