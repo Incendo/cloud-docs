@@ -298,7 +298,7 @@ Returning a future is useful when the parsing needs to take place on a specific 
                 CommandContext<C> context,
                 CommandInput input
         ) {
-            final String input = input.peekString(); // Does not the remove the string!
+            final String input = input.peekString(); // Does not remove the string from the input!
             try {
                 final UUID uuid = UUID.fromString(input);
                 input.readString(); // Removes the string from the input.
