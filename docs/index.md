@@ -32,13 +32,16 @@ Development builds of Cloud are available on the Sonatype Snapshots Repository:
 
 <!-- prettier-ignore -->
 === "Maven"
+
     ```xml
     <repository>
       <id>sonatype-snapshots</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
     ```
+
 === "Gradle (Kotlin)"
+
     ```kotlin
     maven("https://oss.sonatype.org/content/repositories/snapshots/") {
       name = "sonatype-snapshots"
@@ -47,7 +50,9 @@ Development builds of Cloud are available on the Sonatype Snapshots Repository:
       }
     }
     ```
+
 === "Gradle (Groovy)"
+
     ```groovy
     maven {
       url "https://oss.sonatype.org/content/repositories/snapshots/"

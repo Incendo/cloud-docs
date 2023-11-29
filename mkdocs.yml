@@ -3,6 +3,7 @@ site_name: Cloud v2
 site_url: https://cloud.incendo.org/
 repo_url: https://github.com/incendo/cloud-docs
 repo_name: cloud-docs
+edit_uri: edit/main/docs/
 nav:
   - Cloud:
       - Cloud: index.md
@@ -47,6 +48,11 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -73,14 +79,19 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - attr_list
+  - md_in_html
 plugins:
   - search
   - placeholder
-extra:
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
+  - git-revision-date-localized:
+      enable_creation_date: false
+      fallback_to_build_date: true
+#extra:
+#  consent:
+#    title: Cookie consent
+#    description: >-
+#      We use cookies to recognize your repeated visits and preferences, as well
+#      as to measure the effectiveness of our documentation and whether users
+#      find what they're searching for. With your consent, you're helping us to
+#      make our documentation better.

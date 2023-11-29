@@ -10,6 +10,7 @@ Cloud is available through [Maven Central](https://search.maven.org/search?q=clo
 
 <!-- prettier-ignore -->
 === "Maven"
+
     ```xml
     <dependency>
       <groupId>cloud.commandframework</groupId>
@@ -17,11 +18,15 @@ Cloud is available through [Maven Central](https://search.maven.org/search?q=clo
       <version>dCLOUD_BASE_VERSIONd</version>
     </dependency>
     ```
+
 === "Gradle (Kotlin)"
+
     ```kotlin
     implementation("cloud.commandframework:cloud-core:dCLOUD_BASE_VERSIONd")
     ```
+
 === "Gradle (Groovy)"
+
     ```groovy
     implementation 'cloud.commandframework:cloud-core:dCLOUD_BASE_VERSIONd'
     ```
@@ -80,6 +85,8 @@ Cloud ships with two different command execution coordinators:
 - **SimpleCommandExecutionCoordinator**: Performs all actions on the calling thread.
 - **AsynchronousCommandExecutionCoordinator**: Uses an executor to dispatch the parsing and execution tasks.
   You can change the default executor, and also force command parsing to take place on the calling thread.
+
+You may also create your own execution coordinator by implementing `CommandExecutionCoordinator`.
 
 ### Building a command
 
@@ -152,19 +159,20 @@ The message registered for the caption will have those variables replaced with v
 to be thrown.
 
 <!-- prettier-ignore -->
-!!! example
-    Example caption registry usage
+!!! example annotate "Example caption registry usage"
     ```java
     final CaptionRegistry<SenderType> registry = manager.captionRegistry();
-    if (registry instanceof FactoryDelegatingCaptionRegistry) {
-        final FactoryDelegatingCaptionRegistry<SenderType> factoryRegistry = (FactoryDelegatingCaptionRegistry<SenderType>)
-                manager.captionRegistry();
+    if (registry instanceof FactoryDelegatingCaptionRegistry) /* (1)! */ {
+        final FactoryDelegatingCaptionRegistry<SenderType> factoryRegistry =
+            (FactoryDelegatingCaptionRegistry<SenderType>) manager.captionRegistry();
         factoryRegistry.registerMessageFactroy(
             StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_BOOLEAN,
             (context, key) -> "'{input}' ain't a boolean >:("
         );
     }
     ```
+
+1. Some platforms may opt to use a different caption registry implementation that does not delegate to factories.
 
 ## Parsers
 
@@ -263,8 +271,7 @@ You can chain the aliases of multiple presence flags together, such that `-a -b 
 The flag values are contained in `FlagContext` which can be retrieved using `CommandContext.flags()`.
 
 <!-- prettier-ignore -->
-!!! example
-    Example of a command with a presence flag.
+!!! example "Example of a command with a presence flag"
     ```java
     manager.commandBuilder("command")
         .flag(manager.flagBuilder("flag").withAliases("f"))
@@ -283,7 +290,7 @@ You may either implement the `AggregateCommandParser` interface, or using constr
 that you create by calling `AggregateCommandParser.builder()`.
 
 <!-- prettier-ignore -->
-!!! example
+!!! example "Example Aggregate Parser"
     ```java
     final AggregateCommandParser<CommandSender, Location> locationParser = AggregateCommandParser.<CommandSender>builder()
         .withComponent("world", worldParser())
@@ -351,9 +358,9 @@ exceptionally completed future.
 Returning a future is useful when the parsing needs to take place on a specific thread.
 
 <!-- prettier-ignore -->
-!!! example
+!!! example annotate "Example Parser"
     ```java
-    public class UUIDParser<C> implements ArgumentParser<C, UUID> {
+    public class UUIDParser<C /* (1)! */> implements ArgumentParser<C, UUID> {
 
         @Override
         public ArgumentParseResult<UUID> parse(
@@ -371,6 +378,8 @@ Returning a future is useful when the parsing needs to take place on a specific 
         }
     }
     ```
+
+1. The command sender type.
 
 #### Exceptions
 
