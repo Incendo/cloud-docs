@@ -239,8 +239,90 @@ that you create by calling `AggregateCommandParser.builder()`.
 
 ### Custom Parsers
 
+Cloud allows you to create your own parsers.
+A parser accepts a command context and a command input,
+and produces a result (or a future that completes with a result).
+
+The context allows the parser to accept parsed results from other command components, which can be useful when
+the result of the parser depends on other parsed components.
+The command input is a structure that allows you to consume the input supplied by the command sender by peeking &
+then reading primitive values and strings.
+
+A parser can fail when the input does not match the expectations.
+The command manager will turn the failure into a command syntax exception which can then be displayed to the
+sender, informing them about what went wrong.
+
+The recommended way of parsing an argument is to:
+
+1. Peek the command input.
+2. Attempt to parse the object.
+   - If the object cannot be parsed, a failure is returned.
+3. Pop from the command input.
+4. Return the parsed value.
+5. <!-- prettier-ignore -->
+   !!! warning
+    If the read values are not popped from the command input the command engine will assume that the syntax is wrong
+    and an error message is sent to the command sender.
+
+The parser has two different choices when it comes to which method to implement.
+If the parser implements `ArgumentParser` then the signature looks like
+
+```java
+public ArgumentParseResult<OutputType> parse(
+        CommandContext<SenderType> context,
+        CommandInput input) { ... }
+```
+
+where the `ArgumentParseResult` can either be a `ArgumentParseResult.success(OutputType)` or
+`ArgumentParseResult.failure(Exception)`.
+
+The parser may also implement `ArgumentParser.FutureParser` in which case the signature looks like
+
+```java
+public CompletableFuture<OutputType> parseFuture(
+        CommandContext<SenderType> context,
+        CommandInput input) { ... }
+```
+
+in which case, a successful result is returned as a completed future, and a failure is instead returned as an
+exceptionally completed future.
+Returning a future is useful when the parsing needs to take place on a specific thread.
+
+<!-- prettier-ignore -->
+!!! example
+    ```java
+    public class UUIDParser<C> implements ArgumentParser<C, UUID> {
+
+        @Override
+        public ArgumentParseResult<UUID> parse(
+                CommandContext<C> context,
+                CommandInput input
+        ) {
+            final String input = input.peekString(); // Does not the remove the string!
+            try {
+                final UUID uuid = UUID.fromString(input);
+                input.readString(); // Removes the string from the input.
+                return ArgumentParseResult.success(uuid);
+            } catch(final IllegalArgumentException e) {
+                return ArgumentParseResult.failure(new UUIDParseException(input, commandContext));
+            }
+        }
+    }
+    ```
+
+#### Exceptions
+
+It is recommended to make use of `ParserException` when returning a failed result.
+This allows for integration with the caption system, see [exception handling](#exception-handling) for more information.
+
+#### Suggestions
+
+The parser may implement the `suggestions` method to produce suggestions.
+These suggestions will be used to provide suggestions for the component using the parser,
+unless the component is created using a custom suggestion provider.
+
 ## Extra
 
-### Configurations
+### Confirmations
 
 ### Help generation
