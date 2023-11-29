@@ -72,9 +72,14 @@ You may provide your own suggestions using a suggestion provider.
 
 ## Command Manager
 
-### Creating a command manager
+### Execution coordinators
 
-#### Execution coordinators
+The execution coordinator is responsible for coordinating command parsing and execution.
+Cloud ships with two different command execution coordinators:
+
+- **SimpleCommandExecutionCoordinator**: Performs all actions on the calling thread.
+- **AsynchronousCommandExecutionCoordinator**: Uses an executor to dispatch the parsing and execution tasks.
+  You can change the default executor, and also force command parsing to take place on the calling thread.
 
 ### Building a command
 
@@ -94,8 +99,6 @@ You may provide your own suggestions using a suggestion provider.
 
 ##### Optional
 
-### Executing a command
-
 ### Customizing the command manager
 
 #### Pre-processing
@@ -103,6 +106,49 @@ You may provide your own suggestions using a suggestion provider.
 #### Post-processing
 
 #### Exception handling
+
+In general, it is up to each platform manager to handle command exceptions.
+Command exceptions are thrown whenever a command cannot be parsed, or executed normally.
+This can be for several reasons, such as:
+
+- The command sender does not have the required permission (NoPermissionException)
+- The command sender is of the wrong type (InvalidCommandSenderException)
+- The requested command does not exist (NoSuchCommandException)
+- The provided command input is invalid (InvalidSyntaxException)
+- The parser cannot parse the input provided (ArgumentParseException)
+
+The command managers are highly encouraged to make use of `CommandManager#handleException`, in which case the
+exception handling may be overridden using `CommandManager#registerExceptionHandler`.
+
+##### Parser Errors
+
+`ArgumentParseException` makes use of Cloud's caption system.
+(Nearly) all argument parsers in Cloud will throw `ParserException` on invalid input, in which case you're able
+to override the exception message by configuring the manager's [CaptionRegistry](TODO).
+By default, Cloud uses a [FactoryDelegatingCaptionRegistry](TODO), which allows you to override the exception handling
+per caption key.
+All standard caption keys can be found in [StandardCaptionKey](TODO).
+Some platform adapters have their own caption key classes as well.
+
+The JavaDoc for the caption keys list their replacement variables.
+The message registered for the caption will have those variables replaced with variables specific to the parser.
+`{input}` is accepted by all parser captions, and will be replaced with the input that caused the exception
+to be thrown.
+
+<!-- prettier-ignore -->
+!!! example
+    Example caption registry usage
+    ```java
+    final CaptionRegistry<SenderType> registry = manager.captionRegistry();
+    if (registry instanceof FactoryDelegatingCaptionRegistry) {
+        final FactoryDelegatingCaptionRegistry<SenderType> factoryRegistry = (FactoryDelegatingCaptionRegistry<SenderType>)
+                manager.captionRegistry();
+        factoryRegistry.registerMessageFactroy(
+            StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_BOOLEAN,
+            (context, key) -> "'{input}' ain't a boolean >:("
+        );
+    }
+    ```
 
 ## Parsers
 
