@@ -101,9 +101,25 @@ Cloud ships with two different command execution coordinators:
 
 ### Customizing the command manager
 
-#### Pre-processing
+#### Pre- & Postprocessing
 
-#### Post-processing
+When a command is entered by a command sender, it goes through the following stages:
+
+1. It is converted into a `CommandInput` instance.
+2. A command context is created for the input.
+3. The context is passed to the preprocessors, which may alter the command input or write to the context.
+   - If a command processor causes an interrupt using `ConsumerService.interrupt()` the context will be filtered out
+     and the command will not be parsed.
+4. The input is parsed into a command chain, and the parsed values are written to the context.
+   - If the input cannot be parsed into a command that the sender is allowed to execute, the sender is
+     notified and the parsing is canceled.
+5. The command postprocessors get to act on the command, and may alter the command context.
+   They may also postpone command execution, which can be used to require confirmations, etc.
+   - If a postprocessor causes an interrupt using `ConsumerService.interrupt()` the command will not be executed.
+6. The command is executed using the command executor.
+
+The pre- and post-processors can be registered to the command manager using `CommandManager#registerCommandPreProcessor`
+and `CommandManager#registerCommandPostProcessor`.
 
 #### Exception handling
 
