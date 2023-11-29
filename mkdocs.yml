@@ -87,7 +87,6 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: false
       fallback_to_build_date: true
-  - social
 #extra:
 #  consent:
 #    title: Cookie consent

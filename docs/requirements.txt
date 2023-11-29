@@ -2,4 +2,3 @@ mkdocs
 mkdocs-material
 mkdocs-placeholder-plugin
 mkdocs-git-revision-date-localized-plugin
-mkdocs-material[imaging]
