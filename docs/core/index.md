@@ -140,6 +140,19 @@ Though, cloud has support for some more complex permission types, such as:
 
 #### Sender types
 
+Most classes in Cloud take in a generic parameter type `<C>`, which is used for the "command sender type."
+The command sender is the entity executing the command, and this represents different things depending
+on the platform.
+
+You may use a sender type that is not native to the platform, and the platform command managers take in a function
+that maps between your custom type and the native command sender type.
+
+When you create a command you may override the sender type for that specific command, as long as the new
+sender type has `<C>` as its supertype.
+This is done by using the `Command.Builder.senderType(Class)` method.
+Cloud will make sure that the sender is of the right type when executing the command, and will fail exceptionally
+if it isn't.
+
 #### Components
 
 #### Literals
@@ -326,10 +339,6 @@ The enum parser matches the input (independent of the case) to the names of an e
 the enum values as suggestions.
 
 The enum parser can be created using the static factory methods found in [EnumParser](TODO).
-
-#### Duration
-
-Durations can be parsed.
 
 #### UUID
 
