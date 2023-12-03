@@ -194,6 +194,29 @@ to be thrown.
 
 ### Parser Registry
 
+The parser registry stores mappings between types and suppliers of parsers that produce those types.
+The parser registry is primarily used in two different places:
+
+- When only a value type has been supplied to a command component to look up the relevant parser.
+- When using annotated command methods.
+
+If you are creating a library or using `cloud-annotations`, it is recommended to register your parser
+in the parser registry.
+You can access the parser registry via `CommandManager#parserRegistry`.
+The parser suppliers get access to a structure containing parser parameters.
+These parameters are most often mapped to annotations, and allow for the customization of the parsers
+when using `cloud-annotations`.
+
+<!-- prettier-ignore -->
+!!! example "Example parser registration"
+    ```java
+    parserRegistry.registerParserSupplier(TypeToken.get(Integer.class), options ->
+        new IntegerParser<>(
+                (int) options.get(StandardParameters.RANGE_MIN, Integer.MIN_VALUE),
+                (int) options.get(StandardParameters.RANGE_MAX, Integer.MAX_VALUE)
+        ));
+    ```
+
 ### Standard Parsers
 
 Cloud ships with parsers for all Java primitives as well as strings, enums, UUIDs and durations.
