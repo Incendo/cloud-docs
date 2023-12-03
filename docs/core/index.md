@@ -90,7 +90,40 @@ You may also create your own execution coordinator by implementing `CommandExecu
 
 ### Building a command
 
+Commands are created using a command builder.
+You may either create a new builder by calling `Command.newBuilder` or through the command manager using
+`CommandManager.commandBuilder`.
+It is recommended to use the command manager to create a new command builder, as this ties the command builder
+to the [parser registry](#parser-registry).
+
+The command builders are immutable, and each method returns a new command builder instance.
+This allows you to store intermediate steps and reuse them to build multiple distinct commands.
+
+You must register your command to the command manager for it to be recognized.
+You do this by calling `CommandManager.command(Command)` or `CommandManager.command(Command.Builder)`.
+
 #### Descriptions
+
+Both commands (chains of components) and the individual components can have descriptions.
+These descriptions show up in the [help system](#help-generation) as well as in the platform-native help
+systems for platforms that support that.
+
+##### Component descriptions
+
+Component descriptions can be specified both through the component builder, or through the command builder methods.
+
+##### Command descriptions
+
+Command descriptions can be added through the command builder by calling
+`Command.Builder.commandDescription(CommandDescription)`.
+The `CommandDescription` instance contains two instances of `Description`, one short version
+and an optional verbose version.
+
+<!-- prettier-ignore -->
+!!! note
+    It is important to differentiate between the description for the root command literal,
+    and the command descriptions. The root literal may be used by multiple command chains, and
+    is therefore not bound to a specific command. The command description describes a unique command chain.
 
 #### Permissions
 
