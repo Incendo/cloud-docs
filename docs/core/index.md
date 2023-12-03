@@ -127,6 +127,17 @@ and an optional verbose version.
 
 #### Permissions
 
+A command may have a permission attached to it.
+This determines who is and isn't allowed to execute the command.
+Depending on the platform, it might also determine who is allowed to _see_ the command.
+
+The permission is ultimately evaluated by the platform integration.
+Though, cloud has support for some more complex permission types, such as:
+
+- `Permission.or(Permission...)`: Takes in multiple permissions and evaluates to `true` if any of the permissions evaluate to `true`.
+- `Permission.and(Permission...)`: Takes in multiple permissions and evaluates to `true` if all the permissions evaluate to `true`.
+- `PredicatePermission.of(Predicate)`: Evaluates to `true` if the predicate evaluates to `true`.
+
 #### Sender types
 
 #### Components
@@ -400,8 +411,9 @@ The recommended way of parsing an argument is to:
    - If the object cannot be parsed, a failure is returned.
 3. Pop from the command input.
 4. Return the parsed value.
-5. <!-- prettier-ignore -->
-   !!! warning
+
+<!-- prettier-ignore -->
+!!! warning
     If the read values are not popped from the command input the command engine will assume that the syntax is wrong
     and an error message is sent to the command sender.
 
