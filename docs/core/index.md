@@ -157,11 +157,30 @@ if it isn't.
 
 #### Literals
 
+Command literals are fixed strings, and represent what you might think of as a "subcommand."
+They may have secondary aliases, depending on the platform you're targeting.
+
+The literals are created by using the various different `Command.Builder.literal` methods, for example:
+
+```java title="Example of literals"
+builder
+  .literal("foo")
+  .literal(
+          "bar",
+          Description.of("A literal with a description and an alias"),
+          "b"
+  );
+```
+
+Literals are always required.
+
 #### Variable
 
 ##### Required
 
 ##### Optional
+
+#### Handler
 
 ### Customizing the command manager
 
