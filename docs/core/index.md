@@ -130,8 +130,27 @@ and `CommandManager#registerCommandPostProcessor`.
 
 #### Exception handling
 
-In general, it is up to each platform manager to handle command exceptions.
-Command exceptions are thrown whenever a command cannot be parsed, or executed normally.
+Cloud v2 introduced a new exception handling system.
+You may register exception handlers through the exception controller, which can be retrieved using
+`CommandManager#exceptionController`.
+
+Cloud will attempt to match a thrown exception to any of the registered exception handlers,
+giving preference to the most specific exception type and to the last registered handler.
+This means that it is possible to register a fallback handler for `Throwable`/`Exception` and more
+precise handlers for specific exception types.
+You may register multiple exception handlers for the same exception type.
+Cloud will iterate over the exception handlers (giving preference to the last registered handler) until a handler
+consumes the exception, which allows for the registration of default handlers.
+
+Some exception types, such as `ArgumentParseException` and `CommandExecutionException` wrap the actual exceptions
+thrown by the parser or command handler.
+By default, Cloud will forward the wrapper exceptions.
+If you instead want to be able to register exception handlers for the causes, then you may use the
+`ExceptionHandler.unwrappingHandler()` methods to unwrap these exceptions.
+You can choose to unwrap all instances of a given exception type, all instances with a given cause type or
+all instances that pass a given predicate.
+
+Command exceptions are thrown whenever a command cannot be parsed or executed normally.
 This can be for several reasons, such as:
 
 - The command sender does not have the required permission (NoPermissionException)
@@ -139,9 +158,6 @@ This can be for several reasons, such as:
 - The requested command does not exist (NoSuchCommandException)
 - The provided command input is invalid (InvalidSyntaxException)
 - The parser cannot parse the input provided (ArgumentParseException)
-
-The command managers are highly encouraged to make use of `CommandManager#handleException`, in which case the
-exception handling may be overridden using `CommandManager#registerExceptionHandler`.
 
 ##### Parser Errors
 
