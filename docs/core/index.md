@@ -153,6 +153,8 @@ This is done by using the `Command.Builder.senderType(Class)` method.
 Cloud will make sure that the sender is of the right type when executing the command, and will fail exceptionally
 if it isn't.
 
+#### Command meta
+
 #### Components
 
 #### Literals
@@ -176,9 +178,35 @@ Literals are always required.
 
 #### Variable
 
+Variable components are parsed using parsers.
+You can create a variable component either by using a `CommandComponent.Builder` that you create using
+`CommandComponent.builder`, or by using one of the many different `Command.Builder` overloads.
+
+The component wraps a [parser](#parsers), but in many cases you will want to work with a `ParserDescriptor` instead.
+A `ParserDescriptor` is a structure containing an `ArgumentParser` as well as a `TypeToken` that describes the object
+produced by the parser.
+If you do not provide a parser descriptor, then you will have to manually specify the value type.
+
+All variable components have a name.
+When you want to extract the parsed values in a [command handler](#handler) you do so using the component name.
+You may use a `CloudKey<T>` instead of the name, which then allows you to retrieve the parsed values
+in a type-safe manner.
+
 ##### Required
 
 ##### Optional
+
+##### Component pre-processing
+
+You may attach pre-processors to your command components, either when building the component or after it has been built.
+The pre-processor gets to filter out the input before it reaches the component parser.
+This allows you to easily add input validation to existing parsers.
+
+Cloud has a built-in processor that validates the input using a regular expression.
+You can find it here:
+[RegexPreprocessor](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/cloud-core/src/main/java/cloud/commandframework/arguments/preprocessor/RegexPreprocessor.java)
+
+#### Command context
 
 #### Handler
 
@@ -235,36 +263,38 @@ This can be for several reasons, such as:
 - The provided command input is invalid (InvalidSyntaxException)
 - The parser cannot parse the input provided (ArgumentParseException)
 
-##### Parser Errors
+##### Captions
 
-`ArgumentParseException` makes use of Cloud's caption system.
+`ParserException` makes use of Cloud's caption system.
 (Nearly) all argument parsers in Cloud will throw `ParserException` on invalid input, in which case you're able
 to override the exception message by configuring the manager's [CaptionRegistry](TODO).
-By default, Cloud uses a [FactoryDelegatingCaptionRegistry](TODO), which allows you to override the exception handling
-per caption key.
+
+The caption registry allows you to register caption providers that provide values for caption keys.
+You may register multiple caption providers and the registry will iterate over them until one responds
+with a non-`null` value.
+There are some static factory methods in `CaptionProvider` that help generating providers for constant values.
 All standard caption keys can be found in [StandardCaptionKey](TODO).
 Some platform adapters have their own caption key classes as well.
 
 The JavaDoc for the caption keys list their replacement variables.
 The message registered for the caption will have those variables replaced with variables specific to the parser.
-`{input}` is accepted by all parser captions, and will be replaced with the input that caused the exception
+`<input>` is accepted by all parser captions, and will be replaced with the input that caused the exception
 to be thrown.
 
 <!-- prettier-ignore -->
 !!! example annotate "Example caption registry usage"
     ```java
     final CaptionRegistry<SenderType> registry = manager.captionRegistry();
-    if (registry instanceof FactoryDelegatingCaptionRegistry) /* (1)! */ {
-        final FactoryDelegatingCaptionRegistry<SenderType> factoryRegistry =
-            (FactoryDelegatingCaptionRegistry<SenderType>) manager.captionRegistry();
-        factoryRegistry.registerMessageFactroy(
+    registry.registerProvider(CaptionProvider.constantProvider(
             StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_BOOLEAN,
-            (context, key) -> "'{input}' ain't a boolean >:("
-        );
-    }
+            "'<input>' ain't a boolean >:("
+    ));
     ```
 
-1. Some platforms may opt to use a different caption registry implementation that does not delegate to factories.
+You may create a custom caption formatter that generates more complex output types than strings.
+This is particularly useful if you want to route the captions through some external system to generate
+platform-native message types (i.e. `Component` for Minecraft). You may format captions using this custom
+type by invoking `ParserException.formatCaption` or `CommandContext.formatCaption`.
 
 ## Parsers
 
