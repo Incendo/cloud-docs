@@ -539,3 +539,21 @@ unless the component is created using a custom suggestion provider.
 ### Confirmations
 
 ### Help generation
+
+Cloud has a system that assists in querying for command information.
+This is accessible through the `HelpHandler` that can be accessed using `CommandManager.createHelpHandler`.
+This invokes a `HelpHandlerFactory`.
+You may replace the default `HelpHandlerFactory` using `CommandManager.helpHandlerFactory(HelpHandlerFactory)`
+to change how the information is generated.
+
+The help handler will try to output as much information as it can, depending on how precise the query is.
+There are three types of query results:
+
+- **Index**: Returns a list of commands.
+- **Multiple**: Returns a list of partial results.
+- **Verbose**: Returns verbose information about a specific command.
+
+You may query for results by using `HelpHandler.query(HelpQuery)`.
+The help handler does not display any information, this is instead done by a `HelpRenderer`.
+`cloud-core` does not contain any implementations of the help renderer as this is highly platform-specific,
+but `cloud-minecraft-extras` contains an opinionated implementation of the help system for Minecraft.
