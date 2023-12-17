@@ -534,6 +534,14 @@ The parser may implement the `suggestions` method to produce suggestions.
 These suggestions will be used to provide suggestions for the component using the parser,
 unless the component is created using a custom suggestion provider.
 
+Parsers implement `SuggestionProviderHolder` which means that they can return a suggestion provider by overriding
+the `suggestionProvider` method.
+However, the recommended way of providing suggestions is by implementing one of the suggestion provider
+interfaces (`SuggestionProvider`, `SuggestionProvider.Strings`,
+`BlockingSuggestionProvider` or `BlockingSuggestionProvider.Strings`).
+If the parser implements a suggestion provider interface it does not need to override the `suggestionProvider`
+method, as it'll return `this` by default.
+
 ## Extra
 
 ### Confirmations
