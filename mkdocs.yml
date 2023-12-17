@@ -32,6 +32,8 @@ nav:
       - cloud-sponge: minecraft/sponge.md
       - cloud-fabric: minecraft/fabric.md
       - cloud-neoforge: minecraft/neoforge.md
+  - cloud-spring:
+      - cloud-spring: https://github.com/incendo/cloud-spring
   - Other:
       - cloud-irc: other/irc.md
 theme:

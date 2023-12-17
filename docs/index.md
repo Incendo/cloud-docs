@@ -3,8 +3,8 @@
 Cloud is a JVM framework for creating user commands.
 A command is a chain of parsed arguments and a handler that gets invoked with the parsed values.
 Cloud is not made to be used in any specific software, but it has modules with support for Minecraft
-(Bukkit/Paper, BungeeCord, Velocity, Fabric, CloudBurst, Sponge & NeoForge), Discord (JavaCord & JDA)
-and IRC (PIrcBotX).
+(Bukkit/Paper, BungeeCord, Velocity, Fabric, CloudBurst, Sponge & NeoForge), Discord (JavaCord & JDA), IRC (PIrcBotX)
+and Spring Shell.
 
 Cloud allows you to write commands either using builders or annotated methods, and has special support for Kotlin.
 Cloud allows you to customize the command execution pipeline by injecting custom behavior along the entire
