@@ -240,7 +240,46 @@ You can find it here:
 
 #### Command context
 
+The command context is used to store values throughout the parsing process, such as parsed component values,
+values from preprocessors, parsed flags, etc.
+
+You can fetch values from the command context using both strings and `CloudKey`s. It is recommended to use
+keys to access values from the context as they are type-safe.
+
+```java title="Example context usage"
+// Access a parsed value.
+final CloudKey<String> nameKey = CloudKey.of("name", String.class);
+final String parsedName = commandContext.getOrDefault(nameKey, "Default Name");
+
+// Check for the presence of a flag.
+final boolean overrideFlag = commandContext.flags().hasFlag("override");
+
+// Get the sender.
+final CommandSender sender = commandContext.sender();
+
+// Inject a value from the injection services.
+final List<Cat> cats = commandContext.inject(new TypeToken<List<Cat>>() {});
+```
+
 #### Handler
+
+The command handler is an instance of `CommandExecutionHandler` and is invoked when a command has been parsed
+successfully.
+Depending on the command execution coordinator the handler might be invoked asynchronously.
+The handler is passed an instance of the [command context](#command-context).
+
+```java
+builder.handler(ctx -> {
+  // your command handling...
+});
+```
+
+You may implement `CommandExecutionHandler.FutureCommandExecutionHandler` to have the handler be a future-returning
+function. Cloud will wait for the future to complete and will handle any completion exceptions gracefully.
+
+You may delegate to other handlers using `CommandExecutionHandler.delegatingHandler`.
+The command builder also has some utility functions for creating handlers that delegate to the existing handler, like
+`Command.Builder.prependHandler` and `Command.Builder.appendHandler`.
 
 ### Customizing the command manager
 
@@ -578,6 +617,13 @@ method, as it'll return `this` by default.
 
 ### Confirmations
 
+Cloud has a [preprocessor](#pre---postprocessing) that allows you to create commands that require
+an extra confirmation.
+
+You can find examples of how make use of this system on GitHub, for either
+[Builders](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/ConfirmationExample.java) or
+[Annotations](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/ConfirmationExample.java).
+
 ### Help generation
 
 Cloud has a system that assists in querying for command information.
@@ -597,3 +643,7 @@ You may query for results by using `HelpHandler.query(HelpQuery)`.
 The help handler does not display any information, this is instead done by a `HelpRenderer`.
 `cloud-core` does not contain any implementations of the help renderer as this is highly platform-specific,
 but `cloud-minecraft-extras` contains an opinionated implementation of the help system for Minecraft.
+
+You can find examples on GitHub for either
+[Builders](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/HelpExample.java) or
+[Annotations](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/HelpExample.java).
