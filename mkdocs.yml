@@ -3,20 +3,25 @@ site_name: Cloud v2
 site_url: https://cloud.incendo.org/
 repo_url: https://github.com/incendo/cloud-docs
 repo_name: cloud-docs
+edit_uri: edit/main/docs/
 nav:
-  - Home: index.md
+  - Cloud:
+      - Cloud: index.md
   - cloud-core:
-      - Information: core/index.md
+      - cloud-core: core/index.md
   - cloud-annotations:
-      - Information: annotations/index.md
+      - cloud-annotations: annotations/index.md
   - cloud-kotlin:
-      - Information: kotlin/index.md
+      - cloud-kotlin: kotlin/index.md
+      - Annotations: kotlin/annotations.md
+      - Coroutines: kotlin/coroutines.md
+      - Extensions: kotlin/extensions.md
   - cloud-discord:
-      - Information: discord/index.md
+      - cloud-discord: discord/index.md
       - cloud-javacord: discord/javacord.md
       - cloud-jda: discord/jda.md
   - cloud-minecraft:
-      - Information: minecraft/index.md
+      - cloud-minecraft: minecraft/index.md
       - cloud-brigadier: minecraft/brigadier.md
       - cloud-minecraft-extras: minecraft/minecraft-extras.md
       - cloud-bukkit: minecraft/bukkit.md
@@ -27,21 +32,29 @@ nav:
       - cloud-sponge: minecraft/sponge.md
       - cloud-fabric: minecraft/fabric.md
       - cloud-neoforge: minecraft/neoforge.md
+  - cloud-spring:
+      - cloud-spring: https://github.com/incendo/cloud-spring
   - Other:
       - cloud-irc: other/irc.md
 theme:
   name: material
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
+    # - navigation.instant
+    # - navigation.instant.prefetch
     - navigation.tracking
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    # - navigation.footer
     - toc.follow
     - search.suggest
     - search.highlight
     - search.share
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -65,9 +78,17 @@ markdown_extensions:
   - smarty
   - admonition
   - tables
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
 plugins:
   - search
   - placeholder
+  - git-revision-date-localized:
+      enable_creation_date: false
+      fallback_to_build_date: true
 extra:
   consent:
     title: Cookie consent

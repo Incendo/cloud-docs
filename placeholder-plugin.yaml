@@ -1,4 +1,8 @@
 placeholders:
-  CLOUD_BASE_VERSION: 2.0.0-dev
+  CLOUD_BASE_VERSION:
+    default: 2.0.0-dev
+  CLOUD_BASE_BRANCH:
+    default: 2.0.0-dev
+    replace_everywhere: true
 settings:
   auto_placeholder_tables: false
