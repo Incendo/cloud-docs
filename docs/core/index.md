@@ -134,8 +134,8 @@ Depending on the platform, it might also determine who is allowed to _see_ the c
 The permission is ultimately evaluated by the platform integration.
 Though, cloud has support for some more complex permission types, such as:
 
-- `Permission.or(Permission...)`: Takes in multiple permissions and evaluates to `true` if any of the permissions evaluate to `true`.
-- `Permission.and(Permission...)`: Takes in multiple permissions and evaluates to `true` if all the permissions evaluate to `true`.
+- `Permission.anyOf(Permission...)`: Takes in multiple permissions and evaluates to `true` if any of the permissions evaluate to `true`.
+- `Permission.allOf(Permission...)`: Takes in multiple permissions and evaluates to `true` if all the permissions evaluate to `true`.
 - `PredicatePermission.of(Predicate)`: Evaluates to `true` if the predicate evaluates to `true`.
 
 #### Sender types
@@ -155,12 +155,31 @@ if it isn't.
 
 #### Command meta
 
+Command meta-data is used to attach key-value pairs to the commands, which may then be used by different components
+throughout the command execution chain.
+Examples of systems that make use of command meta-data are [confirmations](#confirmations) and the Bukkit help menu.
+
+The meta-data can be configured in the command builder:
+
+```java
+final CloudKey<String> metaKey = CloudKey.of("your-key", String.class);
+commandBuilder.meta(metaKey, "your value");
+```
+
+or when creating the command builder:
+
+```java
+final CloudKey<String> metaKey = CloudKey.of("your-key", String.class);
+commandManager.commandBuilder("command", CommandMeta.builder().with(metaKey, "your value").build());
+```
+
 #### Components
 
 #### Literals
 
 Command literals are fixed strings, and represent what you might think of as a "subcommand."
 They may have secondary aliases, depending on the platform you're targeting.
+Literals may be placed after required variable components, but never after optional variable components.
 
 The literals are created by using the various different `Command.Builder.literal` methods, for example:
 
