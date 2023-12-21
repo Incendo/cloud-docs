@@ -213,7 +213,20 @@ in a type-safe manner.
 
 ##### Required
 
+You can create a required variable component either by using `CommandComponent.Builder.required()` or any
+of the many different overloaded `required` factory methods in `Command.Builder`.
+
 ##### Optional
+
+You can create a required variable component either by using `CommandComponent.Builder.optional()` or any
+of the many different overloaded `optional` factory methods in `Command.Builder`.
+
+When creating an optional variable component you may supply a default value. The default value will be used in the case
+that the user has not supplied any input for the component. There are three different types of default values:
+
+- **DefaultValue.constant(Value)**: A constant default value.
+- **DefaultValue.dynamic(Function)**: A dynamic value that is evaluated when the command is parsed.
+- **DynamicValue.parsed(String)**: A string that is parsed by the component parser when the command is parsed.
 
 ##### Component pre-processing
 
