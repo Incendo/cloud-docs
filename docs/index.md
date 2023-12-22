@@ -16,7 +16,7 @@ For technical details, we ask you to look at the [JavaDoc](https://javadocs.dev/
 
 We have a set of examples that introduce some useful Cloud concepts.
 They are written for the Bukkit Minecraft API but the examples are not specific to Minecraft:
-[example-bukkit](https://github.com/Incendo/cloud/tree/iCLOUD_BASE_BRANCHi/examples/example-bukkit).
+[example-bukkit](https://github.com/Incendo/cloud/tree/2.0.0-dev/examples/example-bukkit).
 
 ## Structure
 

@@ -8,7 +8,7 @@ The module can also function as an [annotation processor](#annotation-processing
 There are extensions to `cloud-annotations` for Kotlin, more information [here](../kotlin/annotations.md).
 
 Examples can be found on
-[GitHub](https://github.com/Incendo/cloud/tree/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations)
+[GitHub](https://github.com/Incendo/cloud/tree/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations)
 
 ## Installation
 
@@ -22,7 +22,7 @@ Cloud Annotations is available through [Maven Central](https://search.maven.org/
         <dependency>
             <groupId>cloud.commandframework</groupId>
             <artifactId>cloud-annotations</artifactId>
-            <version>dCLOUD_BASE_VERSIONd</version>
+            <version>2.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -37,7 +37,7 @@ Cloud Annotations is available through [Maven Central](https://search.maven.org/
                         <path>
                             <groupId>cloud.commandframework</groupId>
                             <artifactId>cloud-annotations</artifactId>
-                            <version>dCLOUD_BASE_VERSIONd</version>
+                            <version>2.0.0-SNAPSHOT</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -49,17 +49,17 @@ Cloud Annotations is available through [Maven Central](https://search.maven.org/
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-annotations:dCLOUD_BASE_VERSIONd")
+    implementation("cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT")
     // Optional:
-    annotationProcessor("cloud.commandframework:cloud-annotations:dCLOUD_BASE_VERSIONd")
+    annotationProcessor("cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-annotations:dCLOUD_BASE_VERSIONd'
+    implementation 'cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT'
     // Optional:
-    annotationProcessor 'cloud.commandframework:cloud-annotations:dCLOUD_BASE_VERSIONd'
+    annotationProcessor 'cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT'
     ```
 
 You then need to create an `AnnotationParser` instance.
@@ -250,7 +250,7 @@ manager.parameterInjectorRegistry().registerInjector(
 ```
 
 Cloud has an injection service implementation for Guice:
-[GuiceInjectionService](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/cloud-core/src/main/java/cloud/commandframework/annotations/injection/GuiceInjectionService.java).
+[GuiceInjectionService](https://github.com/Incendo/cloud/blob/2.0.0-dev/cloud-core/src/main/java/cloud/commandframework/annotations/injection/GuiceInjectionService.java).
 You may register injection services to the parameter registry using
 
 ```java
