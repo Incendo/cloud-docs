@@ -56,3 +56,6 @@ PIrcBotX
 Sonatype
 Gradle
 kotlin
+iterable
+Guice
+GuiceInjectionService
