@@ -39,17 +39,11 @@ nav:
 theme:
   name: material
   features:
-    # - navigation.instant
-    # - navigation.instant.prefetch
     - navigation.tracking
     - navigation.sections
     - navigation.indexes
     - navigation.top
-    # - navigation.footer
     - toc.follow
-    - search.suggest
-    - search.highlight
-    - search.share
     - content.action.edit
     - content.action.view
     - content.code.copy
@@ -81,19 +75,5 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
-  - attr_list
-  - md_in_html
 plugins:
-  - search
   - placeholder
-  - git-revision-date-localized:
-      enable_creation_date: false
-      fallback_to_build_date: true
-extra:
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
