@@ -15,20 +15,20 @@ Cloud is available through [Maven Central](https://search.maven.org/search?q=clo
     <dependency>
       <groupId>cloud.commandframework</groupId>
       <artifactId>cloud-core</artifactId>
-      <version>dCLOUD_BASE_VERSIONd</version>
+      <version>2.0.0-SNAPSHOT</version>
     </dependency>
     ```
 
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-core:dCLOUD_BASE_VERSIONd")
+    implementation("cloud.commandframework:cloud-core:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-core:dCLOUD_BASE_VERSIONd'
+    implementation 'cloud.commandframework:cloud-core:2.0.0-SNAPSHOT'
     ```
 
 ## Command
@@ -236,7 +236,7 @@ This allows you to easily add input validation to existing parsers.
 
 Cloud has a built-in processor that validates the input using a regular expression.
 You can find it here:
-[RegexPreprocessor](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/cloud-core/src/main/java/cloud/commandframework/arguments/preprocessor/RegexPreprocessor.java)
+[RegexPreprocessor](https://github.com/Incendo/cloud/blob/2.0.0-dev/cloud-core/src/main/java/cloud/commandframework/arguments/preprocessor/RegexPreprocessor.java)
 
 #### Command context
 
@@ -621,8 +621,8 @@ Cloud has a [preprocessor](#pre---postprocessing) that allows you to create comm
 an extra confirmation.
 
 You can find examples of how make use of this system on GitHub, for either
-[Builders](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/ConfirmationExample.java) or
-[Annotations](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/ConfirmationExample.java).
+[Builders](https://github.com/Incendo/cloud/blob/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/ConfirmationExample.java) or
+[Annotations](https://github.com/Incendo/cloud/blob/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/ConfirmationExample.java).
 
 ### Help generation
 
@@ -645,5 +645,5 @@ The help handler does not display any information, this is instead done by a `He
 but `cloud-minecraft-extras` contains an opinionated implementation of the help system for Minecraft.
 
 You can find examples on GitHub for either
-[Builders](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/HelpExample.java) or
-[Annotations](https://github.com/Incendo/cloud/blob/iCLOUD_BASE_BRANCHi/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/HelpExample.java).
+[Builders](https://github.com/Incendo/cloud/blob/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/HelpExample.java) or
+[Annotations](https://github.com/Incendo/cloud/blob/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/HelpExample.java).
