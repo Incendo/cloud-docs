@@ -3,6 +3,7 @@ SimpleCommandExecutionCoordinator
 AsynchronousCommandExecutionCoordinator
 supertype
 Bukkit
+bukkit
 subcommand
 DefaultValue
 DynamicValue
@@ -11,6 +12,7 @@ RegexPreprocessor
 Postprocessing
 preprocessors
 postprocessors
+preprocessor
 postprocessor
 NoPermissionException
 InvalidCommandSenderException
@@ -21,10 +23,13 @@ CaptionRegistry
 StandardCaptionKey
 JavaDoc
 Minecraft
+minecraft
 formatters
+formatter
 UUIDs
 durations
 enums
+enum
 StringParser
 StringArrayParser
 CharacterParser
@@ -36,6 +41,7 @@ DoubleParser
 FloatParser
 boolean
 BooleanParser
+EnumParser
 Enum
 UUID
 UUIDParser
