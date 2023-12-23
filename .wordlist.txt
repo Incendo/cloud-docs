@@ -59,3 +59,7 @@ kotlin
 iterable
 Guice
 GuiceInjectionService
+coroutine
+coroutines
+MutableCommandBuilder
+DSL
