@@ -43,7 +43,7 @@ Many deprecated methods and classes have been removed. Before migrating to Cloud
 Where you'd previously supply a command argument, you now supply a name and a parser (or a component). The standard parsers are no longer contained within arguments, but are instead standalone.
 
 **Type-safe required senders ([#518](https://github.com/Incendo/cloud/pull/518))**
-When specifying a command sender type in the command builder, a builder targetting the given command sender type will be returned.
+When specifying a command sender type in the command builder, a builder targeting the given command sender type will be returned.
 
 **Allow parsers and suggestion handlers to return futures ([#521](https://github.com/Incendo/cloud/pull/521))**
 The command tree has been rewritten to work with completable futures, and the argument parser and suggestion provider interfaces now have future-returning methods. This has been done to allow parsers to return futures with specific executors (for example, to parse on the main Minecraft thread).
