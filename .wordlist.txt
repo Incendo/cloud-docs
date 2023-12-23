@@ -59,3 +59,5 @@ kotlin
 iterable
 Guice
 GuiceInjectionService
+coroutine
+coroutines
