@@ -153,6 +153,15 @@ This is done by using the `Command.Builder.senderType(Class)` method.
 Cloud will make sure that the sender is of the right type when executing the command, and will fail exceptionally
 if it isn't.
 
+<!-- prettier-ignore -->
+!!! example annotate "Example sender type usage"
+    Assume that `SubSender` extends `Sender`.
+
+    ```java
+    Command.Builder<Sender> builder = manager.commandBuilder("command");
+    Command.Builder<SubSender> subBuilder = builder.senderType(SubSender.class);
+    ```
+
 #### Command meta
 
 Command meta-data is used to attach key-value pairs to the commands, which may then be used by different components
