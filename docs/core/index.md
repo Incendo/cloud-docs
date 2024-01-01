@@ -80,13 +80,14 @@ You may provide your own suggestions using a suggestion provider.
 ### Execution coordinators
 
 The execution coordinator is responsible for coordinating command parsing and execution.
-Cloud ships with two different command execution coordinators:
+You may create a simple execution coordinator by using `ExecutionCoordinator.simple()` which will not
+enforce any particular executor and both parsing and suggestion generation will take place on the calling
+thread unless the parser or suggestion provider redirects to another executor.
 
-- **SimpleCommandExecutionCoordinator**: Performs all actions on the calling thread.
-- **AsynchronousCommandExecutionCoordinator**: Uses an executor to dispatch the parsing and execution tasks.
-  You can change the default executor, and also force command parsing to take place on the calling thread.
-
-You may also create your own execution coordinator by implementing `CommandExecutionCoordinator`.
+You may also use `ExecutionCoordinator.asyncCoordinator()` to create an execution coordinator that will perform
+parsing and suggestion generation asynchronously. You may customize the asynchronous coordinator by using
+`ExecutionCoordinator.builder()` and supply different executors for different execution steps, or use
+`ExecutionCoordinator.coordinatorFor(Executor)` to supply an executor which is used at every execution step.
 
 ### Building a command
 
