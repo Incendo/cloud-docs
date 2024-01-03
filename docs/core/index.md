@@ -80,7 +80,7 @@ You may provide your own suggestions using a suggestion provider.
 ### Execution coordinators
 
 The execution coordinator is responsible for coordinating command parsing and execution.
-You may create a simple execution coordinator by using `ExecutionCoordinator.simple()` which will not
+You may create a simple execution coordinator by using `ExecutionCoordinator.simpleCoordinator()` which will not
 enforce any particular executor and both parsing and suggestion generation will take place on the calling
 thread unless the parser or suggestion provider redirects to another executor.
 
