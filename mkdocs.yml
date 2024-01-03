@@ -37,6 +37,7 @@ nav:
       - cloud-spring: https://github.com/incendo/cloud-spring
   - Other:
       - cloud-irc: other/irc.md
+      - cloud-requirements: https://github.com/incendo/cloud-requirements
 theme:
   name: material
   features:

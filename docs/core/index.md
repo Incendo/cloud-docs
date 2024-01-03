@@ -80,13 +80,14 @@ You may provide your own suggestions using a suggestion provider.
 ### Execution coordinators
 
 The execution coordinator is responsible for coordinating command parsing and execution.
-Cloud ships with two different command execution coordinators:
+You may create a simple execution coordinator by using `ExecutionCoordinator.simpleCoordinator()` which will not
+enforce any particular executor and both parsing and suggestion generation will take place on the calling
+thread unless the parser or suggestion provider redirects to another executor.
 
-- **SimpleCommandExecutionCoordinator**: Performs all actions on the calling thread.
-- **AsynchronousCommandExecutionCoordinator**: Uses an executor to dispatch the parsing and execution tasks.
-  You can change the default executor, and also force command parsing to take place on the calling thread.
-
-You may also create your own execution coordinator by implementing `CommandExecutionCoordinator`.
+You may also use `ExecutionCoordinator.asyncCoordinator()` to create an execution coordinator that will perform
+parsing and suggestion generation asynchronously. You may customize the asynchronous coordinator by using
+`ExecutionCoordinator.builder()` and supply different executors for different execution steps, or use
+`ExecutionCoordinator.coordinatorFor(Executor)` to supply an executor which is used at every execution step.
 
 ### Building a command
 
@@ -152,6 +153,15 @@ sender type has `<C>` as its supertype.
 This is done by using the `Command.Builder.senderType(Class)` method.
 Cloud will make sure that the sender is of the right type when executing the command, and will fail exceptionally
 if it isn't.
+
+<!-- prettier-ignore -->
+!!! example annotate "Example sender type usage"
+    Assume that `SubSender` extends `Sender`.
+
+    ```java
+    Command.Builder<Sender> builder = manager.commandBuilder("command");
+    Command.Builder<SubSender> subBuilder = builder.senderType(SubSender.class);
+    ```
 
 #### Command meta
 

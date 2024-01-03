@@ -196,18 +196,19 @@ Exceptions will be wrapped in `ArgumentParseResult.failure`.
 You may create [suggestion providers](../core/index.md#suggestions) from annotated methods by using the `@Suggestions`
 annotation.
 
-The parameters of the method must be `CommandContext<C> context, String input` but the return type can be an iterable
+The parameters of the method must be `CommandContext<C> context, String input`
+or `CommandContext<C> context, CommandInput input` but the return type can be an iterable
 (or stream) of suggestion objects, or strings.
 
 ```java title="Example signatures"
 @Suggestions("name")
-public List<String> suggestions(CommandContext<C> context, String input) { /* ... */ }
+public List<String> suggestions(CommandContext<C> context, CommandInput input) { /* ... */ }
 
 @Suggestions("name")
 public Stream<String> suggestions(CommandContext<C> context, String input) { /* ... */ }
 
 @Suggestions("name")
-public Set<Suggestion> suggestions(CommandContext<C> context, String input) { /* ... */ }
+public Set<Suggestion> suggestions(CommandContext<C> context, CommandInput input) { /* ... */ }
 
 @Suggestions("name")
 public Iterable<String> suggestions(CommandContext<C> context, String input) { /* ... */ }

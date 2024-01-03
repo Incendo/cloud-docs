@@ -16,7 +16,7 @@ $ python3 -m pip install -r docs/requirements.txt
 and then you may run MkDocs locally using
 
 ```shell
-$ mkdocs serve
+$ python3 -m mkdocs serve
 ```
 
 after which the docs will be available at `http://127.0.0.1:8000/`.
