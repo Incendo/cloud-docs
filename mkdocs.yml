@@ -14,9 +14,9 @@ nav:
       - cloud-annotations: annotations/index.md
   - cloud-kotlin:
       - cloud-kotlin: kotlin/index.md
-      - Annotations: kotlin/annotations.md
-      - Coroutines: kotlin/coroutines.md
-      - Extensions: kotlin/extensions.md
+      - annotations: kotlin/annotations.md
+      - coroutines: kotlin/coroutines.md
+      - extensions: kotlin/extensions.md
   - cloud-discord:
       - cloud-discord: discord/index.md
       - cloud-javacord: discord/javacord.md
@@ -35,9 +35,12 @@ nav:
       - cloud-neoforge: minecraft/neoforge.md
   - cloud-spring:
       - cloud-spring: https://github.com/incendo/cloud-spring
+  - cloud-processors:
+      - confirmation: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation
+      - cooldown: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown
+      - requirements: https://github.com/incendo/cloud-requirements
   - Other:
       - cloud-irc: other/irc.md
-      - cloud-requirements: https://github.com/incendo/cloud-requirements
 theme:
   name: material
   features:

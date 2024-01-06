@@ -83,10 +83,29 @@ Suggestion providers now return iterables rather than lists.
 **Permission refactoring ([#578](https://github.com/Incendo/cloud/pull/578))**
 `CommandPermission` was renamed to `Permission` and the old permission implementation is no longer exposed as API. The static factory methods were moved and renamed: `AndPermission.of` -> `Permission.allOf`, `OrPermission.of` -> `Permission.anyOf`.
 
+**Remove ArgumentParser#isContextFree ([#578](https://github.com/Incendo/cloud/pull/578))**
+No longer used.
+
+**Refactor injection services ([#580](https://github.com/Incendo/cloud/pull/580))**
+Use an immutable interface as context rather than a generic triplet. Allow for injections using type tokens. This
+also adds support for qualified Guice injection.
+
+**Extract command execution from CommandManager ([#581](https://github.com/Incendo/cloud/pull/581))**
+Command execution is now handled by a `CommandExecutor` which can be retrieved from the command manager.
+
+**Make suggestion providers accept CommandInput ([#594](https://github.com/Incendo/cloud/pull/594))**
+This allows suggestion providers to consume more than a single token at a time, and also gives them access to whitespace
+information. This allows for better multi-token suggestions.
+
+**Move confirmation system to external repository ([#620](https://github.com/Incendo/cloud/pull/620))**
+The confirmation system now lives in [cloud-processors](https://github.com/Incendo/cloud-processors).
+
 ### Annotations
 
-**Lenient `@Suggestions` methods ([#496](https://github.com/Incendo/cloud/pull/496))**
-Methods producing suggestions can now return iterable/stream rather than just a list of suggestions. The methods can either return suggestion objects, or strings that will be mapped to simple suggestions.
+**Lenient `@Suggestions` methods ([#496](https://github.com/Incendo/cloud/pull/496), [#617](https://github.com/Incendo/cloud/pull/617))**
+Methods producing suggestions can now return iterable/stream rather than just a list of suggestions.
+The methods can either return suggestion objects, or strings that will be mapped to simple suggestions.
+The suggestion methods may also accept injected parameters and omit both the sender and command input.
 
 **More flexible annotation parser ([#509](https://github.com/Incendo/cloud/pull/509)) - Proposal: [#510](https://github.com/Incendo/cloud/pull/510)**
 The annotation parser now allows you to swap out the components that make up the annotation parsing process. This means that we're no longer bound to the cloud annotations, and that users can swap out how command methods are detected, arguments are bound, flags are assembled, etc.
@@ -112,6 +131,9 @@ Decorators are like builder modifiers, but they're applied to _all_ builders con
 **CommandContainer priorities ([#583](https://github.com/Incendo/cloud/pull/583))**
 `@CommandContainer` may not have a priority specified which determines the order in which the containers are initialized.
 
+**Allow for a different class loader when parsing command containers**
+This fixes issues with platforms that use custom class loaders for plugins.
+
 ### Kotlin
 
 **Support default values ([#511](https://github.com/Incendo/cloud/pull/511))**
@@ -133,6 +155,16 @@ Tooltips are now supported in cloud-brigadier and the platforms that support Bri
 **Refactoring ([#525](https://github.com/Incendo/cloud/pull/525))**
 `cloud-brigadier` has been refactored to make it easier to maintain. The exposed API was updated (and documented) in the process.
 
+**Allow disabling forced executors ([#601](https://github.com/Incendo/cloud/pull/601))**
+Adds settings to the Brigadier manager. You may now disable forced executors.
+
+**Use cloud number suggestions by default ([#602](https://github.com/Incendo/cloud/pull/602))**
+Brigadier doesn't display suggestions for numbers.
+
+**Better inner node construction ([#610](https://github.com/Incendo/cloud/pull/610))**
+Issues with inner nodes in aggregate components have been resolved and these nodes are now constructed in the
+same way as other nodes.
+
 #### Bukkit
 
 **Description resolution ([#530](https://github.com/Incendo/cloud/pull/530))**
@@ -142,3 +174,6 @@ This also changes how Bukkit attempts to resolve descriptions for root commands.
 1. Check for the presence of a new `BUKKIT_DESCRIPTION` command meta key.
 2. Attempt to resolve the command description.
 3. Use the argument description of the root command node (the description you supply when you do `CommandManager.commandBuilder(...)`).
+
+**Parse selectors in correct thread context ([#590](https://github.com/Incendo/cloud/pull/590))**
+Selectors can only be parsed on the main server thread. The parser will now switch to the correct thread when parsing.

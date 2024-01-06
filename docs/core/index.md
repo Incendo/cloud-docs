@@ -313,6 +313,12 @@ When a command is entered by a command sender, it goes through the following sta
 The pre- and post-processors can be registered to the command manager using `CommandManager#registerCommandPreProcessor`
 and `CommandManager#registerCommandPostProcessor`.
 
+Incendo maintains some processors that you may depend on in your projects:
+
+- [cloud-processors-confirmation](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation)
+- [cloud-processors-cooldown](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown)
+- [cloud-requirements](https://github.com/incendo/cloud-requirements)
+
 #### Exception handling
 
 Cloud v2 introduced a new exception handling system.
@@ -624,15 +630,6 @@ If the parser implements a suggestion provider interface it does not need to ove
 method, as it'll return `this` by default.
 
 ## Extra
-
-### Confirmations
-
-Cloud has a [preprocessor](#pre---postprocessing) that allows you to create commands that require
-an extra confirmation.
-
-You can find examples of how make use of this system on GitHub, for either
-[Builders](https://github.com/Incendo/cloud/blob/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/ConfirmationExample.java) or
-[Annotations](https://github.com/Incendo/cloud/blob/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations/feature/ConfirmationExample.java).
 
 ### Help generation
 
