@@ -38,7 +38,7 @@ nav:
   - cloud-processors:
       - confirmation: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation
       - cooldown: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown
-      - requirements: https://github.com/incendo/cloud-requirements
+      - requirements: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-requirements
   - Other:
       - cloud-irc: other/irc.md
 theme:

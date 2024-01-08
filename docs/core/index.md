@@ -317,7 +317,7 @@ Incendo maintains some processors that you may depend on in your projects:
 
 - [cloud-processors-confirmation](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation)
 - [cloud-processors-cooldown](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown)
-- [cloud-requirements](https://github.com/incendo/cloud-requirements)
+- [cloud-processors-requirements](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-requirements)
 
 #### Exception handling
 
