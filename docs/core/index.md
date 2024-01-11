@@ -62,6 +62,22 @@ You may also not have two conflicting variable components on the same level, as 
 which of them gets to parse the input.
 You may have _one_ variable component alongside literals, where the literals always get priority.
 
+Not allowed:
+
+```
+/foo <arg1> one
+/foo <arg2> two
+/foo bar
+```
+
+Allowed:
+
+```
+/foo <arg1> one
+/foo bar two
+/foo bar baz
+```
+
 ### Variable Components
 
 A variable component is associated with an output type.
@@ -74,6 +90,12 @@ Cloud can generate suggestions for values which, depending on the platform, can 
 to the player to help them complete the command input.
 Most standard parsers generate suggestions, and by default Cloud will ask the parser for suggestions.
 You may provide your own suggestions using a suggestion provider.
+
+The standard parsers produce simple string suggestions. Cloud supports custom suggestion types
+which helps support platform-native suggestions, such rich suggestions in
+[cloud-spring](https://github.com/incendo/cloud-spring)
+and suggestions with tooltips in
+[cloud-brigadier](../minecraft/brigadier.md).
 
 ## Command Manager
 
@@ -90,6 +112,23 @@ parsing and suggestion generation asynchronously. You may customize the asynchro
 `ExecutionCoordinator.coordinatorFor(Executor)` to supply an executor which is used at every execution step.
 
 ### Building a command
+
+<!-- prettier-ignore -->
+!!! example
+    ```java
+    Command<YourSenderType> command = manager.commandBuilder("command")
+        .commandDescription(commandDescription("This is an example of a command"))
+        .literal("literal")
+        .required("string", stringParser(), description("A string"))
+        .literal("another-literal")
+        .optional("integer", integerParser(), description("An integer"))
+        .handler(context -> {
+            String string = context.get("string");
+            int integer = context.getOrDefault("integer", 0);
+            // ...
+        })
+        .build();
+    ```
 
 Commands are created using a command builder.
 You may either create a new builder by calling `Command.newBuilder` or through the command manager using
@@ -109,9 +148,22 @@ Both commands (chains of components) and the individual components can have desc
 These descriptions show up in the [help system](#help-generation) as well as in the platform-native help
 systems for platforms that support that.
 
+Certain modules may support more advanced description implementations.
+For example, [cloud-minecraft-extras](../minecraft/minecraft-extras.md) contains a `RichDescription` implementation
+that makes use of [adventure](https://docs.advntr.dev/) components.
+
 ##### Component descriptions
 
 Component descriptions can be specified both through the component builder, or through the command builder methods.
+
+```java
+// through Command.Builder:
+builder.required("name", someParser(), Description.of("The description"))
+
+// through CommandComponent.Builder:
+CommandComponent.Builder<?, ?> builder = // ...
+builder.description(Description.of("The description"))
+```
 
 ##### Command descriptions
 
@@ -119,6 +171,14 @@ Command descriptions can be added through the command builder by calling
 `Command.Builder.commandDescription(CommandDescription)`.
 The `CommandDescription` instance contains two instances of `Description`, one short version
 and an optional verbose version.
+
+```java
+// Using the CommandDescription.commandDescription static import with strings:
+builder.commandDescription(commandDescription("The description"));
+builder.commandDescription(commandDescription("The short description", "The verbose description"));
+// Using the CommandDescription.commandDescription static import with description objects:
+builder.commandDescription(commandDescription(Description.of("The description")));
+```
 
 <!-- prettier-ignore -->
 !!! note
@@ -290,6 +350,15 @@ function. Cloud will wait for the future to complete and will handle any complet
 You may delegate to other handlers using `CommandExecutionHandler.delegatingHandler`.
 The command builder also has some utility functions for creating handlers that delegate to the existing handler, like
 `Command.Builder.prependHandler` and `Command.Builder.appendHandler`.
+
+### Registering commands
+
+The command may be registered to the command manager by using `CommandManager.register(Command)`.
+You may also register a command builder using `CommandManager.register(Command.Builder)`
+in which case the command will be built by the manager.
+
+Commands may also be registered by passing a `CommandFactory` to the command manager.
+The command factory is an interface which outputs a list of commands.
 
 ### Customizing the command manager
 
