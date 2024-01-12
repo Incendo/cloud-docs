@@ -6,7 +6,7 @@ the annotated command methods and suggestion providers suspending.
 The module also adds the ability to use Kotlin default values in both suspending and non-suspending methods.
 
 ```kotlin title="Example of a suspending command method"
-@CommandMethod("command [argument]")
+@Command("command [argument]")
 suspend fun yourCommand(
     argument: String = "default value"
 ): Unit = withContext(Dispatchers.IO) {

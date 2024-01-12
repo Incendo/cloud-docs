@@ -113,8 +113,8 @@ The annotation parser now allows you to swap out the components that make up the
 **`@ExceptionHandler` methods ([#537](https://github.com/Incendo/cloud/pull/537))**
 You may now use annotated methods as exception handlers.
 
-**Repeatable `@CommandMethod` ([#541](https://github.com/Incendo/cloud/pull/541))**
-`@CommandMethod` is now repeatable which allows you to define multiple commands that target the same method.
+**Repeatable `@Command` ([#541](https://github.com/Incendo/cloud/pull/541))**
+`@Command` is now repeatable which allows you to define multiple commands that target the same method.
 
 **Arguments without `@Argument` ([#551](https://github.com/Incendo/cloud/pull/551))**
 Command methods can skip `@Argument` when the parameter name matches the name specified in the command syntax string. This requires that the code is compiled with type parameters preserved.
