@@ -85,7 +85,7 @@ instance of the class that you wish to parse.
 ## Command Methods
 
 Command methods are annotated methods that are used to construct and handle commands.
-The method has to be annotated with a `@CommandMethod` annotation that specifies the command
+The method has to be annotated with a `@Command` annotation that specifies the command
 syntax.
 The parsed command components are mapped to the method parameters.
 The parameters may also be mapped to [injected](#injections) values, such as the command sender instance,
@@ -103,8 +103,8 @@ There are three different parts that make up the command syntax:
 
 Examples:
 
-- `@CommandMethod("command <string> [int]")`
-- `@CommandMethod("command <string> literal|alias [int]")`
+- `@Command("command <string> [int]")`
+- `@Command("command <string> literal|alias [int]")`
 
 The ordering of the method parameters does not matter, the command structure is entirely determined from the
 syntax string.
@@ -123,7 +123,7 @@ The argument annotation also allows you to specify non-default parsers and sugge
 You may specify the argument description through the annotation as well.
 
 ```java
-@CommandMethod("command <required> [optional]")
+@Command("command <required> [optional]")
 public void yourCommand(
   @Argument(value = "required", description = "A string") String string, // Uses a name override!
   @Nullable String optional // Name is inferred, and so is @Argument!
@@ -149,11 +149,11 @@ Similarly to `@Argument`, this annotation can be used to specify suggestion prov
 If a boolean parameter is annotated with `@Flag` then it will generate a presence flag.
 Otherwise, it will become a value flag with the parameter type as the value type.
 
-Flags should _not_ be annotated with `@Argument` and should not present in the `@CommandMethod` syntax.
+Flags should _not_ be annotated with `@Argument` and should not present in the `@Command` syntax.
 
 ### Descriptions
 
-`@CommandMethod` can be added to an annotated command method to set the command description.
+`@Command` can be added to an annotated command method to set the command description.
 
 You can override how the descriptions are mapped by setting replacing the description mapper:
 
@@ -163,14 +163,14 @@ annotationParser.descriptionMapper(string -> Description.of("blablabla " + strin
 
 ### Permissions
 
-`@CommandPermission` can be added to a command method to set the command permission.
+`@Permission` can be added to a command method to set the command permission.
 Only simple string-permissions can be used.
 You may use a [builder modifier](#builder-modifiers) to do more complex mappings.
 
 ### Proxies
 
 `@ProxiedBy` can be used to generate a command proxy.
-In most cases it is recommended to use multiple `@CommandMethod` annotations instead as it allows for better control
+In most cases it is recommended to use multiple `@Command` annotations instead as it allows for better control
 over the generated command.
 
 ## Parsers
@@ -318,7 +318,7 @@ annotationParser.registerPreprocessorMapper(
 ## Annotation Processing
 
 If `cloud-annotations` is registered as an annotation processor then it will perform compile-time validation
-of `@CommandMethod`-annotated methods.
+of `@Command`-annotated methods.
 
 ### Command Containers
 
