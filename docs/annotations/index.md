@@ -8,7 +8,7 @@ The module can also function as an [annotation processor](#annotation-processing
 There are extensions to `cloud-annotations` for Kotlin, more information [here](../kotlin/annotations.md).
 
 Examples can be found on
-[GitHub](https://github.com/Incendo/cloud/tree/2.0.0-dev/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations)
+[GitHub](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations)
 
 ## Installation
 
@@ -251,7 +251,7 @@ manager.parameterInjectorRegistry().registerInjector(
 ```
 
 Cloud has an injection service implementation for Guice:
-[GuiceInjectionService](https://github.com/Incendo/cloud/blob/2.0.0-dev/cloud-core/src/main/java/cloud/commandframework/annotations/injection/GuiceInjectionService.java).
+[GuiceInjectionService](https://github.com/Incendo/cloud/blob/master/cloud-core/src/main/java/cloud/commandframework/annotations/injection/GuiceInjectionService.java).
 You may register injection services to the parameter registry using
 
 ```java
