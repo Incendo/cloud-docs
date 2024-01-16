@@ -85,3 +85,10 @@ CommandInput
 whitespace
 CommandManager
 Incendo
+jda
+Javacord
+javacord
+ExecutionCoordinator
+autocompletion
+MENTIONABLE
+Subcommands

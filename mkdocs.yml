@@ -21,6 +21,7 @@ nav:
       - cloud-discord: discord/index.md
       - cloud-javacord: discord/javacord.md
       - cloud-jda: discord/jda.md
+      - cloud-jda5: discord/jda5.md
   - cloud-minecraft:
       - cloud-minecraft: minecraft/index.md
       - cloud-brigadier: minecraft/brigadier.md
