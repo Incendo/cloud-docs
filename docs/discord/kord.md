@@ -156,13 +156,21 @@ public suspend void yourCommand() { /* ... */ }
 
 ### Permissions
 
-You may set the default permissions by using `DiscordPermission.of(Long)` as the command permission. Example:
+You may set the default permissions of the command using `Command.Builder.permissions(Permissions)` or
+`MutableCommandBuilder.permissions(Permissions)` using an instance of Kord's `Permissions` class:
 
 ```kotlin
-commandBuilder.permission(1337)
+commandManager.buildAndRegister("command") {
+  // Using a permissions builder
+  permissions(Permissions(Permission.Administrator))
+
+  // Using the vararg overload
+  permissions(Permission.Administrator)
+}
 ```
 
 You may use ordinary permissions by setting the permission function in `KordCommandManager`.
+This will not hide the commands from the users, so you must do that manually through the server settings.
 
 ### Settings
 
