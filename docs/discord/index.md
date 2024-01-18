@@ -7,5 +7,7 @@ The [cloud-discord](https://github.com/incendo/cloud-discord) repository houses 
   Notably, the module contains tooling for integrating with slash commands.
 - [cloud-jda](./jda.md): Integration for JDA4. No slash command support.
 - [cloud-jda5](./jda5.md): Integration for JDA5 slash commands.
+- [cloud-kord](./kord.md): Integration for Kord slash commands.
 - [cloud-javacord](./javacord.md): Integration for Javacord.
 - [example-jda5](https://github.com/Incendo/cloud-discord/tree/master/examples/example-jda5): Example bot using JDA5.
+- [example-kord](https://github.com/Incendo/cloud-discord/tree/master/examples/example-kord): Example bot using Kord.
