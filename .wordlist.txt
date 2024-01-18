@@ -92,3 +92,5 @@ ExecutionCoordinator
 autocompletion
 MENTIONABLE
 Subcommands
+kord
+Kord
