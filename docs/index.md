@@ -1,5 +1,10 @@
 # Cloud
 
+<!-- prettier-ignore -->
+!!! note
+    These are the docs for Cloud v2, which is a major rewrite of Cloud. Cloud v2 is currently only available
+    as snapshots. You may find the legacy documentation [here](https://github.com/Incendo/cloud/tree/1.9.0-dev/docs).
+
 Cloud is a JVM framework for creating user commands.
 A command is a chain of parsed arguments and a handler that gets invoked with the parsed values.
 Cloud is not made to be used in any specific software, but it has modules with support for Minecraft
