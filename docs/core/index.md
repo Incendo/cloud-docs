@@ -603,6 +603,25 @@ that you create by calling `AggregateCommandParser.builder()`.
     }).build();
     ```
 
+### Either
+
+You may use `ArgumentParser.firstOf(ParserDescriptor, ParserDescriptor)` to create a parser for the type `Either<A, B>`.
+The parser will first attempt to parse the primary type `A`, and if this fails it will fall back on the
+fallback type `B`. The suggestions of both the primary and fallback parsers will be joined when using the parser
+as the suggestion provider.
+
+```java title="Example of Either"
+commandBuilder.required("either", ArgumentParser.firstOf(integerParser(), booleanParser()))
+  .handler(context -> {
+      Either<Integer, Boolean> either = context.get("either");
+      if (either.primary().isPresent()){
+          int integer = either.primary().get();
+      } else {
+          boolean bool = either.fallback().get();
+      }
+  });
+```
+
 ### Custom Parsers
 
 Cloud allows you to create your own parsers.
