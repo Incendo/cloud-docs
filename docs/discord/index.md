@@ -1,17 +1,24 @@
 # cloud-discord
 
-The [cloud-discord](https://github.com/incendo/cloud-discord) repository houses several different modules:
+## Modules
 
-- [cloud-discord-common](https://github.com/Incendo/cloud-discord/tree/master/cloud-discord-common):
-  Common utilities for the Discord implementations
-  Notably, the module contains tooling for integrating with slash commands.
-- [cloud-jda](./jda.md): Integration for JDA4. No slash command support.
-- [cloud-jda5](./jda5.md): Integration for JDA5 slash commands.
-- [cloud-kord](./kord.md): Integration for Kord slash commands.
-- [cloud-javacord](./javacord.md): Integration for Javacord.
+<div class="grid cards" markdown>
 
-Example modules:
+- [Discord4J](discord4j.md)
+- [Kord](kord.md)
+- [JDA5](jda5.md)
+- [JDA (Legacy)](jda.md)
+- [Javacord (Legacy)](javacord.md)
+- [:material-github: Source Code](https://github.com/incendo/cloud-discord)
 
-- [example-discord4j](https://github.com/Incendo/cloud-discord/tree/master/examples/example-discord4j): Example bot using Discord4J.
-- [example-jda5](https://github.com/Incendo/cloud-discord/tree/master/examples/example-jda5): Example bot using JDA5.
-- [example-kord](https://github.com/Incendo/cloud-discord/tree/master/examples/example-kord): Example bot using Kord.
+</div>
+
+### Example modules
+
+<div class="grid cards" markdown>
+
+- [Discord4J Examples](https://github.com/Incendo/cloud-discord/tree/master/examples/example-discord4j)
+- [JDA5 Examples](https://github.com/Incendo/cloud-discord/tree/master/examples/example-jda5)
+- [Kord Examples](https://github.com/Incendo/cloud-discord/tree/master/examples/example-kord)
+
+</div>
