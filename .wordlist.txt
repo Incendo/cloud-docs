@@ -95,3 +95,8 @@ Subcommands
 kord
 Kord
 Kord's
+Integrations
+fontawesome
+github
+https
+md

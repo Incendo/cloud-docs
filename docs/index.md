@@ -25,6 +25,17 @@ They are written for the Bukkit Minecraft API but the examples are not specific 
 
 ## Structure
 
+<div class="grid cards" markdown>
+
+- [:material-book: Core](core/index.md)
+- [:fontawesome-solid-at: Annotated Commands](annotations/index.md)
+- [:material-language-kotlin: Kotlin Support](kotlin/index.md)
+- [:material-minecraft: Minecraft Integrations](minecraft/index.md)
+- [:simple-discord: Discord Integrations](discord/index.md)
+- [:material-factory: Postprocessors](https://github.com/Incendo/cloud-processors)
+
+</div>
+
 The documentation is split into different sections for the different Cloud modules.
 It is highly recommended that you get started with the [cloud-core](./core/index.md) docs before you delve into the
 platform-specific docs.
