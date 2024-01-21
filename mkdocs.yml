@@ -20,6 +20,7 @@ nav:
       - extensions: kotlin/extensions.md
   - cloud-discord:
       - cloud-discord: discord/index.md
+      - cloud-discord4j: discord/discord4j.md
       - cloud-javacord: discord/javacord.md
       - cloud-jda: discord/jda.md
       - cloud-jda5: discord/jda5.md
