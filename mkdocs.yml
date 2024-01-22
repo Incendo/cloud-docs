@@ -38,11 +38,12 @@ nav:
       - cloud-fabric: minecraft/fabric.md
       - cloud-neoforge: minecraft/neoforge.md
   - cloud-spring:
-      - "cloud-spring ⮺": https://github.com/incendo/cloud-spring
+      - cloud-spring: spring/index.md
   - cloud-processors:
-      - "confirmation ⮺": https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation
-      - "cooldown ⮺": https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown
-      - "requirements ⮺": https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-requirements
+      - cloud-processors: processors/index.md
+      - confirmation: processors/confirmation.md
+      - cooldown: processors/cooldown.md
+      - requirements: processors/requirements.md
   - Other:
       - cloud-irc: other/irc.md
 theme:

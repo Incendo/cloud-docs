@@ -32,7 +32,7 @@ They are written for the Bukkit Minecraft API but the examples are not specific 
 - [:material-language-kotlin: Kotlin Support](kotlin/index.md)
 - [:material-minecraft: Minecraft Integrations](minecraft/index.md)
 - [:simple-discord: Discord Integrations](discord/index.md)
-- [:material-factory: Postprocessors](https://github.com/Incendo/cloud-processors)
+- [:material-factory: Postprocessors](processors/index.md)
 
 </div>
 

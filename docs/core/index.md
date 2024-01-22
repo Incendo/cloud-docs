@@ -370,9 +370,9 @@ and `CommandManager#registerCommandPostProcessor`.
 
 Incendo maintains some processors that you may depend on in your projects:
 
-- [cloud-processors-confirmation](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation)
-- [cloud-processors-cooldown](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown)
-- [cloud-processors-requirements](https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-requirements)
+- [cloud-processors-confirmation](../processors/confirmation.md)
+- [cloud-processors-cooldown](../processors/cooldown.md)
+- [cloud-processors-requirements](../processors/requirements.md)
 
 #### Exception handling
 
