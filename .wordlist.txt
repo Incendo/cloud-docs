@@ -108,3 +108,8 @@ TextColorParser
 integrations
 Mojang's
 neoforge
+CLI
+autowire
+cooldowns
+JavaDocs
+hashmap
