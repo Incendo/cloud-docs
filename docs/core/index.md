@@ -583,13 +583,13 @@ Aggregate parsers are a new concept as of Cloud v2, and they supersede the old c
 An aggregate parser is a combination of multiple parsers that maps the intermediate results into an output
 type using a mapper.
 
-You may either implement the `AggregateCommandParser` interface, or using construct the parser by using a builder
-that you create by calling `AggregateCommandParser.builder()`.
+You may either implement the `AggregateParser` interface, or using construct the parser by using a builder
+that you create by calling `AggregateParser.builder()`.
 
 <!-- prettier-ignore -->
 !!! example "Example Aggregate Parser"
     ```java
-    final AggregateCommandParser<CommandSender, Location> locationParser = AggregateCommandParser.<CommandSender>builder()
+    final AggregateParser<CommandSender, Location> locationParser = AggregateParser.<CommandSender>builder()
         .withComponent("world", worldParser())
         .withComponent("x", integerParser())
         .withComponent("y", integerParser())
