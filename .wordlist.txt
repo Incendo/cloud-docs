@@ -101,3 +101,10 @@ github
 https
 md
 incendo
+MinecraftExceptionHandler
+MinecraftHelp
+RichDescription
+TextColorParser
+integrations
+Mojang's
+neoforge
