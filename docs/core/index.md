@@ -723,7 +723,8 @@ There are three types of query results:
 You may query for results by using `HelpHandler.query(HelpQuery)`.
 The help handler does not display any information, this is instead done by a `HelpRenderer`.
 `cloud-core` does not contain any implementations of the help renderer as this is highly platform-specific,
-but `cloud-minecraft-extras` contains an opinionated implementation of the help system for Minecraft.
+but [cloud-minecraft-extras](../minecraft/minecraft-extras.md#minecraft-help)
+contains an opinionated implementation of the help system for Minecraft.
 
 You can find examples on GitHub for either
 [Builders](https://github.com/Incendo/cloud-minecraft/blob/master/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/builder/feature/HelpExample.java) or

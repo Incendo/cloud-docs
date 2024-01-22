@@ -8,7 +8,7 @@ nav:
   - Cloud:
       - Cloud: index.md
       - "Cloud v2": cloud-v2.md
-      - "Cloud v1 docs": https://github.com/Incendo/cloud/tree/1.9.0-dev/docs
+      - "Cloud v1 docs ⮺": https://github.com/Incendo/cloud/tree/1.9.0-dev/docs
   - cloud-core:
       - cloud-core: core/index.md
   - cloud-annotations:
@@ -21,8 +21,8 @@ nav:
   - cloud-discord:
       - cloud-discord: discord/index.md
       - cloud-discord4j: discord/discord4j.md
-      - cloud-javacord: discord/javacord.md
-      - cloud-jda: discord/jda.md
+      - "cloud-javacord ⮺": https://github.com/Incendo/cloud-discord/tree/master/cloud-javacord
+      - "cloud-jda ⮺": https://github.com/Incendo/cloud-discord/tree/master/cloud-jda
       - cloud-jda5: discord/jda5.md
       - cloud-kord: discord/kord.md
   - cloud-minecraft:
@@ -38,11 +38,11 @@ nav:
       - cloud-fabric: minecraft/fabric.md
       - cloud-neoforge: minecraft/neoforge.md
   - cloud-spring:
-      - cloud-spring: https://github.com/incendo/cloud-spring
+      - "cloud-spring ⮺": https://github.com/incendo/cloud-spring
   - cloud-processors:
-      - confirmation: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation
-      - cooldown: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown
-      - requirements: https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-requirements
+      - "confirmation ⮺": https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-confirmation
+      - "cooldown ⮺": https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-cooldown
+      - "requirements ⮺": https://github.com/Incendo/cloud-processors/tree/master/cloud-processors-requirements
   - Other:
       - cloud-irc: other/irc.md
 theme:

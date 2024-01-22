@@ -6,7 +6,7 @@ An example bot using cloud-discord4j can be found [here](https://github.com/Ince
 
 ## Installation
 
-Cloud Annotations is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
+Cloud for Discord4J is available through [Maven Central](https://search.maven.org/search?q=org.incendo).
 
 <!-- prettier-ignore -->
 === "Maven"

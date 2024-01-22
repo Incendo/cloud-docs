@@ -6,7 +6,7 @@ An example bot using cloud-kord can be found [here](https://github.com/Incendo/c
 
 ## Installation
 
-Cloud Annotations is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
+Cloud for Kord is available through [Maven Central](https://search.maven.org/search?q=org.incendo).
 
 <!-- prettier-ignore -->
 === "Maven"

@@ -4,15 +4,15 @@
 
 <div class="grid cards" markdown>
 
-- [Brigadier](./brigadier.md)
-- [Minecraft Extras](./minecraft-extras.md)
-- [Bukkit](./bukkit.md)
-- [Paper](./paper.md)
-- [Velocity](./velocity.md)
-- [BungeeCord](./bungee.md)
-- [NeoForge](./neoforge.md)
-- [Fabric](./fabric.md)
-- [Sponge](./sponge.md)
-- [Cloudburst](./cloudburst.md)
+- [Brigadier](./brigadier.md): Brigadier integration
+- [Minecraft Extras](./minecraft-extras.md): Optional additions
+- [Bukkit](./bukkit.md): Basic Bukkit integration
+- [Paper](./paper.md): Paper/Spigot integration
+- [Velocity](./velocity.md): Velocity integration
+- [BungeeCord](./bungee.md): BungeeCord integration
+- [NeoForge](./neoforge.md): NeoForge integration
+- [Fabric](./fabric.md): Fabric integration
+- [Sponge](./sponge.md): Sponge integration
+- [Cloudburst](./cloudburst.md): CloudBurst integration
 
 </div>
