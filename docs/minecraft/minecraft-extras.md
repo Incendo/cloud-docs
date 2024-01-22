@@ -2,6 +2,12 @@
 
 `cloud-minecraft-extras` contains some optional utilities for the Minecraft integrations.
 
+<!-- prettier-ignore -->
+!!! note
+    These utilities depend on [adventure](https://docs.advntr.dev/). You may need to depend on Adventure and shade it
+    into your project, depending on the platform you're targeting. Many Minecraft platforms, such as Paper, ship with
+    native implementations of Adventure, in which case you do not need to include it yourself.
+
 <div class="grid cards" markdown>
 
 - [MinecraftHelp](#minecraft-help)
@@ -11,11 +17,34 @@
 
 </div>
 
+## Installation
+
+Cloud Minecraft Extras is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
+
 <!-- prettier-ignore -->
-!!! note
-    These utilities depend on [adventure](https://docs.advntr.dev/). You may need to depend on Adventure and shade it
-    into your project, depending on the platform you're targeting. Many Minecraft platforms, such as Paper, ship with
-    native implementations of Adventure, in which case you do not need to include it yourself.
+=== "Maven"
+
+    ```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.incendo</groupId>
+            <artifactId>cloud-minecraft-extras</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    ```
+
+=== "Gradle (Kotlin)"
+
+    ```kotlin
+    implementation("cloud.commandframework:cloud-minecraft-extras:2.0.0-SNAPSHOT")
+    ```
+
+=== "Gradle (Groovy)"
+
+    ```groovy
+    implementation 'cloud.commandframework:cloud-minecraft-extras:2.0.0-SNAPSHOT'
+    ```
 
 ## Minecraft Help
 
@@ -110,6 +139,76 @@ You may choose to add suggestions to the query argument as well:
 
 ## Minecraft Exception Handler
 
+`MinecraftExceptionHandler` is an opinionated collection of [exception handlers](../core/index.md#exception-handling)
+that uses Adventure components for styling.
+
+All interactions with the system are done through an instance of `MinecraftExceptionHandler`.
+
+<!-- prettier-ignore -->
+=== "Native Audience"
+
+    ```java
+    // Assuming your sender type extends Audience
+    MinecraftExceptionHandler.createNative();
+    ```
+
+=== "Other"
+
+    ```java
+    MinecraftExceptionHandler.create(audienceProvider // C -> Audience);
+    ```
+
+You then use the fluent methods to create handlers for the different exception types.
+If you want to register the default handlers for all types you may use `defaultHandlers()`.
+
+You may supply a decorator which will transform the created components. This is useful if you
+want to prefix all messages, or apply specific styling.
+
+```java title="Example decorator"
+MinecraftExceptionHandler.creativeNative()
+    .decorator(component -> text()
+        .append("[Example] ", NamedTextColor.DARK_RED)
+        .append(component)
+        .build()
+    );
+```
+
+When you're done configuring the builder you need to apply it to the command manager by using
+`registerTo(CommandManager)`.
+
+```java title="Complete example"
+MinecraftExceptionHandler.createNative()
+        .defaultHandlers()
+        .decorator(component -> text()
+            .append("[Example] ", NamedTextColor.DARK_RED)
+            .append(component)
+            .build()
+        )
+        .registerTo(manager);
+```
+
 ## Rich Description
 
+`RichDescription` allows for the use of Adventure components in both component and command descriptions.
+These descriptions are supported by [MinecraftHelp](#minecraft-help). If descriptions are used in other places
+they are likely to be transformed into plain text.
+
+```java
+// Static factory:
+Description description = RichDescription.of(text("Hello world!"));
+
+// Statically importable alias:
+Description description = RichDescription.richDescription(text("Hello world!"));
+
+// Utility for translatable components:
+Description description = RichDescription.translatable("some.key", text("an arg"));
+```
+
 ## Text Color Parser
+
+`TextColorParser` is a [parser](../core/index.md#parsers) which parses Adventure `TextColor`s.
+It parses `NamedTextColor`, legacy color codes using `&` as well as hex codes.
+
+```java
+ParserDescriptor<?, TextColor> parser = TextColorParser.textColorParser();
+```
