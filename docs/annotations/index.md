@@ -84,6 +84,9 @@ instance of the class that you wish to parse.
 
 ## Command Methods
 
+![Example Annotations](https://github.com/Incendo/cloud/blob/master/img/code/annotations_java_dark.png?raw=true#only-dark){ loading = lazy }
+![Example Annotations](https://github.com/Incendo/cloud/blob/master/img/code/annotations_java_light.png?raw=true#only-light){ loading = lazy }
+
 Command methods are annotated methods that are used to construct and handle commands.
 The method has to be annotated with a `@Command` annotation that specifies the command
 syntax.

@@ -113,22 +113,8 @@ parsing and suggestion generation asynchronously. You may customize the asynchro
 
 ### Building a command
 
-<!-- prettier-ignore -->
-!!! example
-    ```java
-    Command<YourSenderType> command = manager.commandBuilder("command")
-        .commandDescription(commandDescription("This is an example of a command"))
-        .literal("literal")
-        .required("string", stringParser(), description("A string"))
-        .literal("another-literal")
-        .optional("integer", integerParser(), description("An integer"))
-        .handler(context -> {
-            String string = context.get("string");
-            int integer = context.getOrDefault("integer", 0);
-            // ...
-        })
-        .build();
-    ```
+![Example Builder](https://github.com/Incendo/cloud/blob/master/img/code/builder_java_dark.png?raw=true#only-dark)
+![Example Builder](https://github.com/Incendo/cloud/blob/master/img/code/builder_java_light.png?raw=true#only-light)
 
 Commands are created using a command builder.
 You may either create a new builder by calling `Command.newBuilder` or through the command manager using
