@@ -28,3 +28,40 @@ per-argument validation, coloring and syntax hinting.
   ![Brigadier Separate Arguments](../assets/images/minecraft/brigadier_separate_args.png)
   <figcaption>Accurate Command Structure</figcaption>
 </figure>
+
+## CloudBrigadierManager
+
+You can get an instance of `CloudBrigadierManager` from the command manager for your platform of choice.
+If the command manager is a `BrigadierManagerHolder`, then you can get the instance using `commandManager.brigadierManager()`.
+
+The `CloudBrigadierManager` is how you interact with Brigadier to register mappings and configure settings.
+
+### Settings
+
+`CloudBrigadierManager` has settings that can be accessed using `CloudBrigadierManager.settings()`.
+
+```java title="Example Setting Usage"
+CloudBrigadierManager<YourSenderType> manager = commandManager.brigadierManager();
+Configurable<BrigadierSetting> settings = manager.settings();
+settings.set(BrigadierSetting.FORCE_EXECUTABLE, true);
+```
+
+### Native Suggestions
+
+You may choose whether Cloud should delegate suggestions to Brigadier or use the Cloud suggestion provider
+when generating suggestions for mapped Brigadier types.
+
+You may enable or disable suggestions for all numerical types using
+`CloudBrigadierManager.setNativeNumberSuggestion(Boolean)`. By default, this is `false` as Brigadier doesn't suggest
+numbers whereas Cloud does.
+
+You may use `CloudBrigadierManager.setNativeSuggestions(parserClass, true)` to enable native suggestions for
+a specific parser.
+
+### Mappings
+
+You may map your custom parsers to Brigadier parsers, which means that you will have access to client-side
+validation, suggestions, etc.
+
+Mappings are registered through a `BrigadierMappings` instance which can be retrieved from the
+`CloudBrigadierManager`.

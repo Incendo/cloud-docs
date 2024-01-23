@@ -27,7 +27,7 @@ Cloud Minecraft Extras is available through [Maven Central](https://search.maven
     ```xml
     <dependencies>
         <dependency>
-            <groupId>org.incendo</groupId>
+            <groupId>cloud.commandframework</groupId>
             <artifactId>cloud-minecraft-extras</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
