@@ -63,3 +63,7 @@ if (commandManager.hasCapability(CloudBukkitCapabilities.ASYNCHRONOUS_COMPLETION
   commandManager.registerAsynchronousCompletions();
 }
 ```
+
+## Parsers
+
+`cloud-paper` has access to all the parsers from [cloud-bukkit](bukkit.md#parsers).
