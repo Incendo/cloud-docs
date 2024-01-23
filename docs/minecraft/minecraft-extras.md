@@ -51,10 +51,20 @@ Cloud Minecraft Extras is available through [Maven Central](https://search.maven
 `MinecraftHelp` is an opinionated implementation of the [help system](../core/index.md#help-generation) using
 Adventure components for styling and click handling.
 
-![Minecraft Help 1](../assets/images/mce_help_1_dark.png#only-dark)
-![Minecraft Help 1](../assets/images/mce_help_1_light.png#only-light)
-![Minecraft Help 2](../assets/images/mce_help_2_dark.png#only-dark)
-![Minecraft Help 2](../assets/images/mce_help_2_light.png#only-light)
+<!--![Minecraft Help 1](../assets/images/minecraft/mce_help_1_dark.png#only-dark)
+![Minecraft Help 1](../assets/images/minecraft/mce_help_1_light.png#only-light)
+![Minecraft Help 2](../assets/images/minecraft/mce_help_2_dark.png#only-dark)
+![Minecraft Help 2](../assets/images/minecraft/mce_help_2_light.png#only-light)-->
+
+<figure markdown>
+  ![Minecraft Help Index](../assets/images/minecraft/mce_help_index.png)
+  <figcaption>Index View</figcaption>
+</figure>
+
+<figure markdown>
+  ![Minecraft Help Verbose](../assets/images/minecraft/mce_help_verbose.png)
+  <figcaption>Verbose View</figcaption>
+</figure>
 
 All interactions with the Minecraft help system will take place through a `MinecraftHelp` instance.
 
