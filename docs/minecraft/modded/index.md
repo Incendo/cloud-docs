@@ -16,4 +16,6 @@
 | ----------------------- | -------------------------------- |
 | 1.19.4+                 | 2.0.0-SNAPSHOT                   |
 
+Keep in mind only the latest release is supported.
+
 ## Common
