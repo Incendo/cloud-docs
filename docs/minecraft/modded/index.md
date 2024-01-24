@@ -10,4 +10,10 @@
 
 </div>
 
+## Compatibility
+
+| Minecraft version range | `cloud-minecraft-modded` version |
+| ----------------------- | -------------------------------- |
+| 1.19.4+                 | 2.0.0-SNAPSHOT                   |
+
 ## Common
