@@ -1,11 +1,19 @@
 # cloud-paper
 
-<!-- prettier-ignore -->
 `cloud-paper` is an extension of `cloud-bukkit` with additional support for
 [Paper](https://papermc.io/software/paper)-based platforms. `cloud-paper` maintains support for all platforms supported
 by `cloud-bukkit`, and therefore is the recommended dependency to use Cloud on any Bukkit-based platform.
 The following documentation is written with the assumption that you have already read and understand the
 [`cloud-bukkit` documentation](bukkit.md).
+
+## Links
+
+<div class="grid cards" markdown>
+
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud-minecraft/tree/master/cloud-paper)
+- [:fontawesome-brands-github: Example Plugin](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-bukkit)
+
+</div>
 
 ## Installation
 
@@ -70,8 +78,8 @@ PaperCommandManager<CommandSender> commandManager = PaperCommandManager.createNa
 
 ## Brigadier
 
-Paper exposes Brigadier, which means that you may use the features from [cloud-brigadier](brigadier.md) on Paper
-servers.
+Paper exposes [Brigadier](https://github.com/mojang/brigadier), which means that you may use the features
+from [cloud-brigadier](brigadier.md) on Paper servers.
 
 You may enable Brigadier mappings using `PaperCommandManager#registerBrigadier()`. You should make use of the
 capability system to make sure that Brigadier is available on the server your plugin is running on:
