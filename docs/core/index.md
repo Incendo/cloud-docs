@@ -6,14 +6,14 @@ Generally you'll want to depend on a platform module which implements Cloud for 
 
 ## Installation
 
-Cloud is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-core).
+Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-core).
 
 <!-- prettier-ignore -->
 === "Maven"
 
     ```xml
     <dependency>
-      <groupId>cloud.commandframework</groupId>
+      <groupId>org.incendo</groupId>
       <artifactId>cloud-core</artifactId>
       <version>2.0.0-SNAPSHOT</version>
     </dependency>
@@ -22,13 +22,13 @@ Cloud is available through [Maven Central](https://central.sonatype.com/artifact
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-core:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-core:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-core:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-core:2.0.0-SNAPSHOT'
     ```
 
 ## Command
@@ -117,8 +117,8 @@ parsing and suggestion generation asynchronously. You may customize the asynchro
 ![Example Builder](https://github.com/Incendo/cloud/blob/master/img/code/builder_java_light.png?raw=true#only-light)
 
 Commands are created using a command builder.
-You may either create a new builder by calling `Command.newBuilder` or through the command manager using
-`CommandManager.commandBuilder`.
+You may either create a new builder by calling `Command#newBuilder` or through the command manager using
+`CommandManager#commandBuilder`.
 It is recommended to use the command manager to create a new command builder, as this ties the command builder
 to the [parser registry](#parser-registry).
 
@@ -126,7 +126,7 @@ The command builders are immutable, and each method returns a new command builde
 This allows you to store intermediate steps and reuse them to build multiple distinct commands.
 
 You must register your command to the command manager for it to be recognized.
-You do this by calling `CommandManager.command(Command)` or `CommandManager.command(Command.Builder)`.
+You do this by calling `CommandManager#command(Command)` or `CommandManager#command(Command.Builder)`.
 
 #### Descriptions
 
@@ -154,7 +154,7 @@ builder.description(Description.of("The description"))
 ##### Command descriptions
 
 Command descriptions can be added through the command builder by calling
-`Command.Builder.commandDescription(CommandDescription)`.
+`Command.Builder#commandDescription(CommandDescription)`.
 The `CommandDescription` instance contains two instances of `Description`, one short version
 and an optional verbose version.
 
@@ -196,7 +196,7 @@ that maps between your custom type and the native command sender type.
 
 When you create a command you may override the sender type for that specific command, as long as the new
 sender type has `<C>` as its supertype.
-This is done by using the `Command.Builder.senderType(Class)` method.
+This is done by using the `Command.Builder#senderType(Class)` method.
 Cloud will make sure that the sender is of the right type when executing the command, and will fail exceptionally
 if it isn't.
 
@@ -237,7 +237,7 @@ Command literals are fixed strings, and represent what you might think of as a "
 They may have secondary aliases, depending on the platform you're targeting.
 Literals may be placed after required variable components, but never after optional variable components.
 
-The literals are created by using the various different `Command.Builder.literal` methods, for example:
+The literals are created by using the various different `Command.Builder#literal` methods, for example:
 
 ```java title="Example of literals"
 builder
@@ -269,12 +269,12 @@ in a type-safe manner.
 
 ##### Required
 
-You can create a required variable component either by using `CommandComponent.Builder.required()` or any
+You can create a required variable component either by using `CommandComponent.Builder.#equired()` or any
 of the many different overloaded `required` factory methods in `Command.Builder`.
 
 ##### Optional
 
-You can create a required variable component either by using `CommandComponent.Builder.optional()` or any
+You can create a required variable component either by using `CommandComponent.Builder#optional()` or any
 of the many different overloaded `optional` factory methods in `Command.Builder`.
 
 When creating an optional variable component you may supply a default value. The default value will be used in the case
@@ -292,7 +292,7 @@ This allows you to easily add input validation to existing parsers.
 
 Cloud has a built-in processor that validates the input using a regular expression.
 You can find it here:
-[RegexPreprocessor](https://github.com/Incendo/cloud/blob/master/cloud-core/src/main/java/cloud/commandframework/arguments/preprocessor/RegexPreprocessor.java)
+[RegexPreprocessor](https://github.com/Incendo/cloud/blob/master/cloud-core/src/main/java/org/incendo/cloud/component/preprocessor/RegexPreprocessor.java)
 
 #### Command context
 
@@ -333,14 +333,14 @@ builder.handler(ctx -> {
 You may implement `CommandExecutionHandler.FutureCommandExecutionHandler` to have the handler be a future-returning
 function. Cloud will wait for the future to complete and will handle any completion exceptions gracefully.
 
-You may delegate to other handlers using `CommandExecutionHandler.delegatingHandler`.
+You may delegate to other handlers using `CommandExecutionHandler.delegatingExecutionHandler`.
 The command builder also has some utility functions for creating handlers that delegate to the existing handler, like
-`Command.Builder.prependHandler` and `Command.Builder.appendHandler`.
+`Command.Builder#prependHandler` and `Command.Builder#appendHandler`.
 
 ### Registering commands
 
-The command may be registered to the command manager by using `CommandManager.register(Command)`.
-You may also register a command builder using `CommandManager.register(Command.Builder)`
+The command may be registered to the command manager by using `CommandManager#register(Command)`.
+You may also register a command builder using `CommandManager#register(Command.Builder)`
 in which case the command will be built by the manager.
 
 Commands may also be registered by passing a `CommandFactory` to the command manager.
@@ -415,7 +415,7 @@ The caption registry allows you to register caption providers that provide value
 You may register multiple caption providers and the registry will iterate over them until one responds
 with a non-`null` value.
 There are some static factory methods in `CaptionProvider` that help generating providers for constant values.
-All standard caption keys can be found in [StandardCaptionKey](TODO).
+All standard caption keys can be found in [StandardCaptionKeys](TODO).
 Some platform adapters have their own caption key classes as well.
 
 The JavaDoc for the caption keys list their replacement variables.
@@ -436,7 +436,7 @@ to be thrown.
 You may create a custom caption formatter that generates more complex output types than strings.
 This is particularly useful if you want to route the captions through some external system to generate
 platform-native message types (i.e. `Component` for Minecraft). You may format captions using this custom
-type by invoking `ParserException.formatCaption` or `CommandContext.formatCaption`.
+type by invoking `ParserException#formatCaption` or `CommandContext#formatCaption`.
 
 ## Parsers
 
@@ -551,7 +551,7 @@ Flags can have aliases alongside their full names.
 When referring to the full name of a flag, you use `--name` whereas an alias uses the syntax `-a`.
 You can chain the aliases of multiple presence flags together, such that `-a -b -c` is equivalent to `-abc`.
 
-The flag values are contained in `FlagContext` which can be retrieved using `CommandContext.flags()`.
+The flag values are contained in `FlagContext` which can be retrieved using `CommandContext#flags()`.
 
 <!-- prettier-ignore -->
 !!! example "Example of a command with a presence flag"
@@ -708,9 +708,9 @@ method, as it'll return `this` by default.
 ### Help generation
 
 Cloud has a system that assists in querying for command information.
-This is accessible through the `HelpHandler` that can be accessed using `CommandManager.createHelpHandler`.
+This is accessible through the `HelpHandler` that can be accessed using `CommandManager#createHelpHandler`.
 This invokes a `HelpHandlerFactory`.
-You may replace the default `HelpHandlerFactory` using `CommandManager.helpHandlerFactory(HelpHandlerFactory)`
+You may replace the default `HelpHandlerFactory` using `CommandManager#helpHandlerFactory(HelpHandlerFactory)`
 to change how the information is generated.
 
 The help handler will try to output as much information as it can, depending on how precise the query is.
@@ -720,7 +720,7 @@ There are three types of query results:
 - **Multiple**: Returns a list of partial results.
 - **Verbose**: Returns verbose information about a specific command.
 
-You may query for results by using `HelpHandler.query(HelpQuery)`.
+You may query for results by using `HelpHandler#query(HelpQuery)`.
 The help handler does not display any information, this is instead done by a `HelpRenderer`.
 `cloud-core` does not contain any implementations of the help renderer as this is highly platform-specific,
 but [cloud-minecraft-extras](../minecraft/minecraft-extras.md#minecraft-help)

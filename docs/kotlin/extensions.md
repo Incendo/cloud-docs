@@ -4,19 +4,19 @@ This module contains extensions to different parts of Cloud.
 
 ## Installation
 
-Cloud is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-kotlin-extensions).
+Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-extensions).
 
 <!-- prettier-ignore -->
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-kotlin-extensions:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-kotlin-extensions:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-kotlin-extensions:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-kotlin-extensions:2.0.0-SNAPSHOT'
     ```
 
 ## MutableCommandBuilder
@@ -24,8 +24,8 @@ Cloud is available through [Maven Central](https://central.sonatype.com/artifact
 `MutableCommandBuilder` is a small DSL for `Command.Builder` which allows for the creation of commands
 in more idiomatic Kotlin.
 
-You can initiate the mutable command builder using `CommandManager.commandBuilder` or
-create and register the command in one step by using `CommandManager.buildAndRegister`.
+You can initiate the mutable command builder using `CommandManager#commandBuilder` or
+create and register the command in one step by using `CommandManager#buildAndRegister`.
 
 ```kotlin title="Example MutableCommandBuilder usage"
 manager.buildAndRegister("command") {
@@ -43,7 +43,7 @@ manager.buildAndRegister("command") {
 
 ## Extension Functions
 
-The `cloud.commandframework.kotlin.extension` package contains extensions to:
+The `org.incendo.kotlin.extension` package contains extensions to:
 
 - `CloudKeyContainer`
 - `CloudKey`
@@ -51,5 +51,7 @@ The `cloud.commandframework.kotlin.extension` package contains extensions to:
 - `CommandManager`
 - `ExceptionController`
 - `ArgumentParser`
+- `ParserDescriptor`
+- `Either`
 
 The extensions exist to make it easier to use Cloud in Kotlin.

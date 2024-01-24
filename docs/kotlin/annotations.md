@@ -16,19 +16,19 @@ suspend fun yourCommand(
 
 ## Installation
 
-Cloud is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-kotlin-coroutines-annotations).
+Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-coroutines-annotations).
 
 <!-- prettier-ignore -->
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-kotlin-coroutines-annotations:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-kotlin-coroutines-annotations:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-SNAPSHOT'
     ```
 
 You then need to install the `AnnotationParser` extension:

@@ -12,7 +12,7 @@ Examples can be found on
 
 ## Installation
 
-Cloud Annotations is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-annotations).
+Cloud Annotations is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-annotations).
 
 <!-- prettier-ignore -->
 === "Maven"
@@ -20,7 +20,7 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
     ```xml
     <dependencies>
         <dependency>
-            <groupId>cloud.commandframework</groupId>
+            <groupId>org.incendo</groupId>
             <artifactId>cloud-annotations</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
@@ -35,7 +35,7 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>cloud.commandframework</groupId>
+                            <groupId>org.incendo</groupId>
                             <artifactId>cloud-annotations</artifactId>
                             <version>2.0.0-SNAPSHOT</version>
                         </path>
@@ -49,17 +49,17 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-annotations:2.0.0-SNAPSHOT")
     // Optional:
-    annotationProcessor("cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT")
+    annotationProcessor("org.incendo:cloud-annotations:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-annotations:2.0.0-SNAPSHOT'
     // Optional:
-    annotationProcessor 'cloud.commandframework:cloud-annotations:2.0.0-SNAPSHOT'
+    annotationProcessor 'org.incendo:cloud-annotations:2.0.0-SNAPSHOT'
     ```
 
 You then need to create an `AnnotationParser` instance.
