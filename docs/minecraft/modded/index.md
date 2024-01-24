@@ -1,4 +1,4 @@
-# cloud-minecraft-modded
+# [cloud-minecraft-modded](https://github.com/Incendo/cloud-minecraft-modded)
 
 ## Modules
 

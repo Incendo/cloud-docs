@@ -1,4 +1,4 @@
-# cloud-minecraft
+# [cloud-minecraft](https://github.com/Incendo/cloud-minecraft)
 
 ## Modules
 
