@@ -5,7 +5,7 @@ For suspending commands methods, see [cloud-kotlin-coroutines-annotations](./ann
 
 ## Installation
 
-Cloud is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
+Cloud is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-kotlin-coroutines).
 
 <!-- prettier-ignore -->
 === "Gradle (Kotlin)"

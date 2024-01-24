@@ -16,7 +16,7 @@ suspend fun yourCommand(
 
 ## Installation
 
-Cloud is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
+Cloud is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-kotlin-coroutines-annotations).
 
 <!-- prettier-ignore -->
 === "Gradle (Kotlin)"

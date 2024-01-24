@@ -6,7 +6,7 @@ An example bot using cloud-jda5 can be found [here](https://github.com/Incendo/c
 
 ## Installation
 
-Cloud for JDA5 is available through [Maven Central](https://search.maven.org/search?q=org.incendo).
+Cloud for JDA5 is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-jda5).
 
 <!-- prettier-ignore -->
 === "Maven"

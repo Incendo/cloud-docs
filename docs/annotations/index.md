@@ -12,7 +12,7 @@ Examples can be found on
 
 ## Installation
 
-Cloud Annotations is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
+Cloud Annotations is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-annotations).
 
 <!-- prettier-ignore -->
 === "Maven"
