@@ -6,7 +6,7 @@ An example bot using cloud-discord4j can be found [here](https://github.com/Ince
 
 ## Installation
 
-Cloud for Discord4J is available through [Maven Central](https://search.maven.org/search?q=org.incendo).
+Cloud for Discord4J is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-discord4j).
 
 <!-- prettier-ignore -->
 === "Maven"

@@ -10,9 +10,13 @@
 - [Paper](./paper.md): Paper/Spigot integration
 - [Velocity](./velocity.md): Velocity integration
 - [BungeeCord](./bungee.md): BungeeCord integration
-- [NeoForge](./neoforge.md): NeoForge integration
-- [Fabric](./fabric.md): Fabric integration
 - [Sponge](./sponge.md): Sponge integration
 - [Cloudburst](./cloudburst.md): CloudBurst integration
 
+</div>
+
+See also:
+
+<div class="grid cards" markdown>
+- [`cloud-minecraft-modded`](modded/index.md) for Fabric and NeoForge integrations
 </div>

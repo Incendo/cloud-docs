@@ -35,8 +35,10 @@ nav:
       - cloud-bungee: minecraft/bungee.md
       - cloud-cloudburst: minecraft/cloudburst.md
       - cloud-sponge: minecraft/sponge.md
-      - cloud-fabric: minecraft/fabric.md
-      - cloud-neoforge: minecraft/neoforge.md
+  - cloud-minecraft-modded:
+      - cloud-minecraft-modded: minecraft/modded/index.md
+      - cloud-fabric: minecraft/modded/fabric.md
+      - cloud-neoforge: minecraft/modded/neoforge.md
   - cloud-spring:
       - cloud-spring: spring/index.md
   - cloud-processors:

@@ -1,58 +1,8 @@
 # cloud-bukkit
 
-<!-- prettier-ignore -->
-!!! note
-    It is not recommended to use `cloud-bukkit`. Instead, we recommend using [cloud-paper](paper.md) which works on both
-    Spigot & Paper servers, and offers access to modern features such as Brigadier and asynchronous suggestions.
-
-## Installation
-
-Cloud for Bukkit is available through [Maven Central](https://search.maven.org/search?q=cloud.commandframework).
-
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>cloud.commandframework</groupId>
-            <artifactId>cloud-bukkit</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("cloud.commandframework:cloud-bukkit:2.0.0-SNAPSHOT")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'cloud.commandframework:cloud-bukkit:2.0.0-SNAPSHOT'
-    ```
-
-## Usage
-
-`cloud-bukkit` has a command manager implementation called `BukkitCommandManager`, which you construct like:
-
-```java
-BukkitCommandManager<YourSenderType> commandManager = new BukkitCommandManager<>(
-  yourPlugin /* 1 */,
-  executionCoordinator /* 2 */,
-  senderMapper /* 3 */
-);
-```
-
-1. You need to pass an instance of the plugin that is constructing the command manager. This is used to register
-   the commands and the different event listeners.
-2. Information about execution coordinators can be found
-   [here](../core/index.md#execution-coordinators).
-3. The sender mapper is a two-way mapping between Bukkit's
-   [CommandSender](https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html) and your custom sender type.
-   If you use `CommandSender` as the sender type, then you may use `SenderMapper.identity()`.
+The `cloud-bukkit` module is home to parsers and other classes that make up the base of Cloud for Bukkit-based platforms.
+`cloud-bukkit` is not intended to be consumed as a direct dependency, instead it should be consumed as
+a transitive dependency of [`cloud-paper`](paper.md).
 
 ## Parsers
 

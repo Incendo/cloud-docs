@@ -6,7 +6,7 @@ An example bot using cloud-kord can be found [here](https://github.com/Incendo/c
 
 ## Installation
 
-Cloud for Kord is available through [Maven Central](https://search.maven.org/search?q=org.incendo).
+Cloud for Kord is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kord).
 
 <!-- prettier-ignore -->
 === "Maven"
