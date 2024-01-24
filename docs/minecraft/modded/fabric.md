@@ -1,3 +1,5 @@
+# cloud-fabric
+
 ## Installation
 
 Cloud for Fabric is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-fabric).
