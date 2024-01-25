@@ -10,6 +10,15 @@ There are extensions to `cloud-annotations` for Kotlin, more information [here](
 Examples can be found on
 [GitHub](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations)
 
+## Links
+
+<div class="grid cards" markdown>
+
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud)
+- [:fontawesome-brands-java: JavaDoc](https://javadoc.io/doc/org.incendo/cloud-annotations/latest)
+
+</div>
+
 ## Installation
 
 Cloud Annotations is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-annotations).
@@ -22,7 +31,7 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
         <dependency>
             <groupId>org.incendo</groupId>
             <artifactId>cloud-annotations</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
+            <version>2.0.0-beta.1</version>
         </dependency>
     </dependencies>
 
@@ -37,7 +46,7 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
                         <path>
                             <groupId>org.incendo</groupId>
                             <artifactId>cloud-annotations</artifactId>
-                            <version>2.0.0-SNAPSHOT</version>
+                            <version>2.0.0-beta.1</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -49,20 +58,22 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-annotations:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-annotations:2.0.0-beta.1")
     // Optional:
-    annotationProcessor("org.incendo:cloud-annotations:2.0.0-SNAPSHOT")
+    annotationProcessor("org.incendo:cloud-annotations:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-annotations:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-annotations:2.0.0-beta.1'
     // Optional:
-    annotationProcessor 'org.incendo:cloud-annotations:2.0.0-SNAPSHOT'
+    annotationProcessor 'org.incendo:cloud-annotations:2.0.0-beta.1'
     ```
 
-You then need to create an `AnnotationParser` instance.
+You then need to create an
+[`AnnotationParser`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/AnnotationParser.html)
+instance.
 When creating the annotation parser you can supply an optional
 function that maps parser parameters to [command meta](../core/index.md#command-meta), these
 parameters can be set using [annotation mappers](#annotation-mappers) and allow you to map annotations
@@ -79,8 +90,9 @@ AnnotationParser<C> annotationParser = new AnnotationParser(
 );
 ```
 
-To parse & register the different annotated methods you simply invoke `AnnotationParser.parse` with an
-instance of the class that you wish to parse.
+To parse & register the different annotated methods you simply invoke
+[`AnnotationParser#parse(Object)`](<https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/AnnotationParser.html#parse(T)>)
+with an instance of the class that you wish to parse.
 
 ## Command Methods
 
@@ -88,11 +100,14 @@ instance of the class that you wish to parse.
 ![Example Annotations](https://github.com/Incendo/cloud/blob/master/img/code/annotations_java_light.png?raw=true#only-light){ loading = lazy }
 
 Command methods are annotated methods that are used to construct and handle commands.
-The method has to be annotated with a `@Command` annotation that specifies the command
-syntax.
+The method has to be annotated with a
+[`@Command`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Command.html)
+annotation that specifies the command syntax.
 The parsed command components are mapped to the method parameters.
 The parameters may also be mapped to [injected](#injections) values, such as the command sender instance,
-the `CommandContext` or custom injections.
+the
+[`CommandContext`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html)
+or custom injections.
 
 The annotation may be repeated in order to generate multiple commands from the same method.
 
@@ -116,9 +131,10 @@ The types of the variable components are determined from the method parameters.
 
 ### Command Components
 
-`@Argument` annotations on method parameters is used to map the method parameter to the corresponding syntax fragment.
+[`@Argument`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Argument.html)
+annotations on method parameters is used to map the method parameter to the corresponding syntax fragment.
 
-If you compile with the `-parameters` compiler option then you do not need to specify the name in the annotation and
+If you compile with the `-parameters` compiler option then you do not need to specify the name in the annotation, and
 it will instead be inferred from the parameter name (though you can override it if you want to).
 You may also choose not to add the annotation at all.
 
@@ -137,11 +153,12 @@ public void yourCommand(
 
 #### Default values
 
-[Default values](../core/index.md#optional) can be specified using the `@DefaultValue` annotation.
-These values will always be parsed:
+[Default values](../core/index.md#optional) can be specified using the
+[`@Default`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Default.html)
+annotation. These values will always be parsed:
 
 ```java
-@DefaultValue("foo") @Argument String string
+@Default("foo") @Argument String string
 ```
 
 #### Either
@@ -158,17 +175,27 @@ public void yourCommand(Either<Integer, Boolean> either) {
 
 ### Flags
 
-Flags can be generated by using the `@Flag` annotation.
-Similarly to `@Argument`, this annotation can be used to specify suggestion providers, parsers, etc.
+Flags can be generated by using the
+[`@Flag`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Flag.html)
+annotation. Similarly to
+[`@Argument`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Argument.html),
+this annotation can be used to specify suggestion providers, parsers, etc.
 
-If a boolean parameter is annotated with `@Flag` then it will generate a presence flag.
+If a boolean parameter is annotated with
+[`@Flag`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Flag.html)
+then it will generate a presence flag.
 Otherwise, it will become a value flag with the parameter type as the value type.
 
-Flags should _not_ be annotated with `@Argument` and should not present in the `@Command` syntax.
+Flags should _not_ be annotated with
+[`@Argument`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Argument.html)
+and should not present in the
+[`@Command`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Command.html)
+syntax.
 
 ### Descriptions
 
-`@Command` can be added to an annotated command method to set the command description.
+[`@CommandDescription`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/CommandDescription.html)
+can be added to an annotated command method to set the command description.
 
 You can override how the descriptions are mapped by setting replacing the description mapper:
 
@@ -178,19 +205,25 @@ annotationParser.descriptionMapper(string -> Description.of("blablabla " + strin
 
 ### Permissions
 
-`@Permission` can be added to a command method to set the command permission.
+[`@Permission`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Permission.html)
+can be added to a command method to set the command permission.
 Only simple string-permissions can be used.
 You may use a [builder modifier](#builder-modifiers) to do more complex mappings.
 
 ### Proxies
 
-`@ProxiedBy` can be used to generate a command proxy.
-In most cases it is recommended to use multiple `@Command` annotations instead as it allows for better control
+[`@ProxiedBy`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/ProxiedBy.html)
+can be used to generate a command proxy.
+In most cases it is recommended to use multiple
+[`@Command`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Command.html)
+annotations instead as it allows for better control
 over the generated command.
 
 ## Parsers
 
-You may create [parsers](../core/index.md#parsers) from annotated methods by using the `@Parser` annotation.
+You may create [parsers](../core/index.md#parsers) from annotated methods by using the
+[`@Parser`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/parser/Parser.html)
+annotation.
 If no value is passed to the annotation then the parser will become the default parser for the method return type.
 You may also pass a suggestion provider name to the annotation to bind the parser to a specific suggestion provider.
 
@@ -204,16 +237,18 @@ public YourParsedType parserName(CommandContext<C> context, CommandInput input) 
 }
 ```
 
-Exceptions will be wrapped in `ArgumentParseResult.failure`.
+Exceptions will be wrapped in
+[`ArgumentParseResult.failure`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html#failure()>).
 
 ## Suggestion Providers
 
-You may create [suggestion providers](../core/index.md#suggestions) from annotated methods by using the `@Suggestions`
+You may create [suggestion providers](../core/index.md#suggestions) from annotated methods by using the
+[`@Suggestions`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/suggestion/Suggestions.html)
 annotation.
 
-The parameters of the method must be `CommandContext<C> context, String input`
-or `CommandContext<C> context, CommandInput input` but the return type can be an iterable
-(or stream) of suggestion objects, or strings.
+The signature of the suggestion methods is quite flexible, and you may use [injected values](#injections).
+The return type can be an iterable (or stream) of suggestion objects, or strings. You can find more
+information in the [JavaDoc](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/suggestion/Suggestions.html).
 
 ```java title="Example signatures"
 @Suggestions("name")
@@ -232,10 +267,13 @@ public Iterable<String> suggestions(CommandContext<C> context, String input) { /
 ## Exception Handlers
 
 You may create [exception handlers](../core/index.md#exception-handling) from annotated methods by using the
-`@ExceptionHandler` annotation. You must specify which exception you want to handle.
+[`@ExceptionHandler`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/exception/ExceptionHandler.html)
+annotation. You must specify which exception you want to handle.
 
-The method parameter can be any [injected](#injections) value, the command sender, `CommandContext`,
-`ExceptionContext` or the exception type specified in the annotation.
+The method parameter can be any [injected](#injections) value, the command sender,
+[`CommandContext`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html),
+[`ExceptionContext`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/handling/ExceptionContext.html),
+or the exception type specified in the annotation.
 
 ```java title="Example exception handler"
 @ExceptionHandler(CutenessException.class)
@@ -250,7 +288,9 @@ Command methods may have parameters that are not mapped to command components.
 Common examples are the command sender objects as well as the command context.
 These values are referred to as _injected values_.
 
-Injected values are retrieved from the `ParameterInjectorRegistry` using injector services.
+Injected values are retrieved from the
+[`ParameterInjectorRegistry`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/injection/ParameterInjectorRegistry.html)
+using injector services.
 You may register parameter injectors to the default service, or register your own injection service
 that hooks into an external dependency injection system.
 
@@ -266,7 +306,7 @@ manager.parameterInjectorRegistry().registerInjector(
 ```
 
 Cloud has an injection service implementation for Guice:
-[GuiceInjectionService](https://github.com/Incendo/cloud/blob/master/cloud-core/src/main/java/cloud/commandframework/annotations/injection/GuiceInjectionService.java).
+[GuiceInjectionService](https://github.com/Incendo/cloud/blob/master/cloud-core/src/main/java/org/incendo/cloud/injection/GuiceInjectionService.java).
 You may register injection services to the parameter registry using
 
 ```java
@@ -339,4 +379,4 @@ of `@Command`-annotated methods.
 
 When using `cloud-annotations` as an annotation processor it is possible to make use of command containers.
 
-For more information see the [JavaDoc](TODO).
+For more information see the [JavaDoc](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/processing/CommandContainer.html).
