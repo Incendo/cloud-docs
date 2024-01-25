@@ -24,20 +24,20 @@ Cloud is available through [Maven Central](https://central.sonatype.com/artifact
     <dependency>
       <groupId>org.incendo</groupId>
       <artifactId>cloud-core</artifactId>
-      <version>2.0.0-SNAPSHOT</version>
+      <version>2.0.0-beta.1</version>
     </dependency>
     ```
 
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-core:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-core:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-core:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-core:2.0.0-beta.1'
     ```
 
 ## Command
