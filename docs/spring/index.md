@@ -45,12 +45,12 @@ The example module contains a Spring Boot application with a couple of commands.
     <dependency>
         <groupId>cloud.commandframework</groupId>
         <artifactId>cloud-spring</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
 
-You should first familiarize yourself with the [Cloud Docs](https://cloud.incendo.org).
+You should first familiarize yourself with the [cloud-core](../core/index.md) docs.
 The easiest way to use the `SpringCommandManager` is by using `SpringCommandSender` as the command sender type,
 because there are default bindings set up for this.
 If you want to use a custom command sender type then you'll want to create a binding for `CommandSenderSupplier`:
