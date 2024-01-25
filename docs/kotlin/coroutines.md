@@ -3,6 +3,15 @@
 This module adds coroutine support to commands using builders.
 For suspending commands methods, see [cloud-kotlin-coroutines-annotations](./annotations.md).
 
+## Links
+
+<div class="grid cards" markdown>
+
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud)
+- [:material-language-kotlin: Dokka](https://javadoc.io/doc/org.incendo/cloud-kotlin-coroutines/latest)
+
+</div>
+
 ## Installation
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-coroutines).
@@ -11,13 +20,13 @@ Cloud is available through [Maven Central](https://central.sonatype.com/artifact
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-kotlin-coroutines:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-kotlin-coroutines:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-kotlin-coroutines:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-kotlin-coroutines:2.0.0-beta.1'
     ```
 
 ## Suspending command execution handlers

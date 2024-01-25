@@ -14,6 +14,15 @@ suspend fun yourCommand(
 }
 ```
 
+## Links
+
+<div class="grid cards" markdown>
+
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud)
+- [:material-language-kotlin: Dokka](https://javadoc.io/doc/org.incendo/cloud-kotlin-coroutines-annotations/latest)
+
+</div>
+
 ## Installation
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-coroutines-annotations).
@@ -22,13 +31,13 @@ Cloud is available through [Maven Central](https://central.sonatype.com/artifact
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-beta.1'
     ```
 
 You then need to install the `AnnotationParser` extension:

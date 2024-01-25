@@ -2,6 +2,15 @@
 
 This module contains extensions to different parts of Cloud.
 
+## Links
+
+<div class="grid cards" markdown>
+
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud)
+- [:material-language-kotlin: Dokka](https://javadoc.io/doc/org.incendo/cloud-kotlin-extensions/latest)
+
+</div>
+
 ## Installation
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-extensions).
@@ -10,13 +19,13 @@ Cloud is available through [Maven Central](https://central.sonatype.com/artifact
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-kotlin-extensions:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-kotlin-extensions:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-kotlin-extensions:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-kotlin-extensions:2.0.0-beta.1'
     ```
 
 ## MutableCommandBuilder
