@@ -13,7 +13,7 @@
 
 ## Installation
 
-Cloud for Velocity is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-paper).
+Cloud for Velocity is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-paper).
 
 <!-- prettier-ignore -->
 === "Maven"
@@ -21,7 +21,7 @@ Cloud for Velocity is available through [Maven Central](https://central.sonatype
     ```xml
     <dependencies>
         <dependency>
-            <groupId>cloud.commandframework</groupId>
+            <groupId>org.incendo</groupId>
             <artifactId>cloud-velocity</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
@@ -31,13 +31,13 @@ Cloud for Velocity is available through [Maven Central](https://central.sonatype
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-velocity:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-velocity:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-velocity:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-velocity:2.0.0-SNAPSHOT'
     ```
 
 ## Usage

@@ -2,7 +2,7 @@
 
 ## Installation
 
-Cloud for Fabric is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-fabric).
+Cloud for Fabric is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-fabric).
 
 === "Gradle (Kotlin)"
 
@@ -12,7 +12,7 @@ Cloud for Fabric is available through [Maven Central](https://central.sonatype.c
     }
 
     dependencies {
-      val cloudFabric = "cloud.commandframework:cloud-fabric:VERSION"
+      val cloudFabric = "org.incendo:cloud-fabric:VERSION"
       modImplementation(cloudFabric)
       include(cloudFabric)
     }
@@ -26,7 +26,7 @@ Cloud for Fabric is available through [Maven Central](https://central.sonatype.c
     }
 
     dependencies {
-      def cloudFabric = 'cloud.commandframework:cloud-fabric:VERSION'
+      def cloudFabric = 'org.incendo:cloud-fabric:VERSION'
       modImplementation(cloudFabric)
       include(cloudFabric)
     }

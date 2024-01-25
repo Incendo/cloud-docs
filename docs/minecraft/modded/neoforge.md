@@ -2,7 +2,7 @@
 
 ## Installation
 
-Cloud for NeoForge is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-neoforge).
+Cloud for NeoForge is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-neoforge).
 
 === "Gradle (Kotlin, NeoGradle)"
 
@@ -14,7 +14,7 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     jarJar.enable()
 
     dependencies {
-      val cloudFabric = "cloud.commandframework:cloud-neoforge:VERSION"
+      val cloudFabric = "org.incendo:cloud-neoforge:VERSION"
       implementation(cloudFabric)
       jarJar(cloudFabric)
     }
@@ -30,7 +30,7 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     jarJar.enable()
 
     dependencies {
-      def cloudFabric = 'cloud.commandframework:cloud-neoforge:VERSION'
+      def cloudFabric = 'org.incendo:cloud-neoforge:VERSION'
       implementation(cloudFabric)
       jarJar(cloudFabric)
     }
@@ -44,7 +44,7 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     }
 
     dependencies {
-      val cloudFabric = "cloud.commandframework:cloud-neoforge:VERSION"
+      val cloudFabric = "org.incendo:cloud-neoforge:VERSION"
       modImplementation(cloudFabric)
       include(cloudFabric)
     }
@@ -58,7 +58,7 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     }
 
     dependencies {
-      def cloudFabric = 'cloud.commandframework:cloud-neoforge:VERSION'
+      def cloudFabric = 'org.incendo:cloud-neoforge:VERSION'
       modImplementation(cloudFabric)
       include(cloudFabric)
     }

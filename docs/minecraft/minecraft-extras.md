@@ -19,7 +19,7 @@
 
 ## Installation
 
-Cloud Minecraft Extras is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-minecraft-extras).
+Cloud Minecraft Extras is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-minecraft-extras).
 
 <!-- prettier-ignore -->
 === "Maven"
@@ -27,7 +27,7 @@ Cloud Minecraft Extras is available through [Maven Central](https://central.sona
     ```xml
     <dependencies>
         <dependency>
-            <groupId>cloud.commandframework</groupId>
+            <groupId>org.incendo</groupId>
             <artifactId>cloud-minecraft-extras</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
@@ -37,13 +37,13 @@ Cloud Minecraft Extras is available through [Maven Central](https://central.sona
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-minecraft-extras:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-minecraft-extras:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-minecraft-extras:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-minecraft-extras:2.0.0-SNAPSHOT'
     ```
 
 ## Minecraft Help

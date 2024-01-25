@@ -17,7 +17,7 @@ The following documentation is written with the assumption that you have already
 
 ## Installation
 
-Cloud for Paper is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-paper).
+Cloud for Paper is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-paper).
 
 <!-- prettier-ignore -->
 === "Maven"
@@ -25,7 +25,7 @@ Cloud for Paper is available through [Maven Central](https://central.sonatype.co
     ```xml
     <dependencies>
         <dependency>
-            <groupId>cloud.commandframework</groupId>
+            <groupId>org.incendo</groupId>
             <artifactId>cloud-paper</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
@@ -35,13 +35,13 @@ Cloud for Paper is available through [Maven Central](https://central.sonatype.co
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-paper:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-paper:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-paper:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-paper:2.0.0-SNAPSHOT'
     ```
 
 ## Usage

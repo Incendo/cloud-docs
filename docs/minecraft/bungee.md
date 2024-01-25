@@ -13,7 +13,7 @@
 
 ## Installation
 
-Cloud for BungeeCord is available through [Maven Central](https://central.sonatype.com/artifact/cloud.commandframework/cloud-bungee).
+Cloud for BungeeCord is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-bungee).
 
 <!-- prettier-ignore -->
 === "Maven"
@@ -21,7 +21,7 @@ Cloud for BungeeCord is available through [Maven Central](https://central.sonaty
     ```xml
     <dependencies>
         <dependency>
-            <groupId>cloud.commandframework</groupId>
+            <groupId>org.incendo</groupId>
             <artifactId>cloud-bungee</artifactId>
             <version>2.0.0-SNAPSHOT</version>
         </dependency>
@@ -31,13 +31,13 @@ Cloud for BungeeCord is available through [Maven Central](https://central.sonaty
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("cloud.commandframework:cloud-bungee:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-bungee:2.0.0-SNAPSHOT")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'cloud.commandframework:cloud-bungee:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-bungee:2.0.0-SNAPSHOT'
     ```
 
 ## Usage
