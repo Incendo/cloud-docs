@@ -38,14 +38,12 @@ The example module contains a Spring Boot application with a couple of commands.
 
 ## usage
 
-**cloud-spring is not yet available on Maven Central!**
-
 ```xml
 <dependencies>
     <dependency>
-        <groupId>cloud.commandframework</groupId>
+        <groupId>org.incendo</groupId>
         <artifactId>cloud-spring</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0-beta.1</version>
     </dependency>
 </dependencies>
 ```
