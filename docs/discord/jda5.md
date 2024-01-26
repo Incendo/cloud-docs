@@ -16,7 +16,7 @@ Cloud for JDA5 is available through [Maven Central](https://central.sonatype.com
         <dependency>
             <groupId>org.incendo</groupId>
             <artifactId>cloud-jda5</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0-beta.1</version>
         </dependency>
     </dependencies>
     ```
@@ -24,13 +24,13 @@ Cloud for JDA5 is available through [Maven Central](https://central.sonatype.com
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-jda5:1.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-jda5:1.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-jda5:1.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-jda5:1.0.0-beta.1'
     ```
 
 ## Usage
