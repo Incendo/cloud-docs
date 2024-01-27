@@ -4,6 +4,15 @@ The `cloud-bukkit` module is home to parsers and other classes that make up the 
 `cloud-bukkit` is not intended to be consumed as a direct dependency, instead it should be consumed as
 a transitive dependency of [`cloud-paper`](paper.md).
 
+## Links
+
+<div class="grid cards" markdown>
+
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud-minecraft/tree/master/cloud-bukkit)
+- [:fontawesome-brands-java: JavaDoc](https://javadoc.io/doc/org.incendo/cloud-bukkit)
+
+</div>
+
 ## Parsers
 
 | Parser | Type (\* = cloud type) | Brigadier Type | Note |
