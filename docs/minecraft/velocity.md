@@ -7,6 +7,7 @@
 <div class="grid cards" markdown>
 
 - [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud-minecraft/tree/master/cloud-velocity)
+- [:fontawesome-brands-java: JavaDoc](https://javadoc.io/doc/org.incendo/cloud-velocity)
 - [:fontawesome-brands-github: Example Plugin](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-velocity)
 
 </div>
@@ -42,7 +43,9 @@ Cloud for Velocity is available through [Maven Central](https://central.sonatype
 
 ## Usage
 
-`cloud-velocity` has a command manager implementation called `VelocityCommandManager` that can be created in two ways.
+`cloud-velocity` has a command manager implementation called
+[`VelocityCommandManager`](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCommandManager.html)
+that can be created in two ways.
 
 By using a Guice injector:
 
@@ -76,7 +79,8 @@ VelocityCommandManager<YourSenderType> commandManager = new VelocityCommandManag
    [here](../core/index.md#execution-coordinators).
 2. The sender mapper is a two-way mapping between Velocity's
    [`CommandSource`](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/command/CommandSource.html) and your custom sender type.
-   You may use `SenderMapper.identity()` if using `CommandSource` as the sender type.
+   You may use [`SenderMapper.identity()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>)
+   if using [`CommandSource`](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/command/CommandSource.html) as the sender type.
 
 ## Brigadier
 
@@ -85,7 +89,7 @@ use the features from [cloud-brigadier](brigadier.md).
 
 ## Parsers
 
-| Parser       | Type                                                                                                                |
-| ------------ | ------------------------------------------------------------------------------------------------------------------- |
-| PlayerParser | [Player](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/proxy/Player.html)                            |
-| ServerParser | [RegisteredServer](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/proxy/server/RegisteredServer.html) |
+| Parser                                                                                                                       | Type                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| [PlayerParser](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/parser/PlayerParser.html) | [Player](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/proxy/Player.html)                            |
+| [ServerParser](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/parser/ServerParser.html) | [RegisteredServer](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/proxy/server/RegisteredServer.html) |
