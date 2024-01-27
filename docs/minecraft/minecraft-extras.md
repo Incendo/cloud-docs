@@ -101,7 +101,7 @@ or you may override the defaults by using a builder:
       .commandManager(commandManager)
       .audienceProvider(AudienceProvider.nativeProvider())
       .commandPrefix("/helpcommand")
-      .withColors(MinecraftHelp.helpColors(/* colors... */))
+      .colors(MinecraftHelp.helpColors(/* colors... */))
       /* other settings... */
       .build();
     ```
@@ -113,7 +113,7 @@ or you may override the defaults by using a builder:
       .commandManager(commandManager)
       .audienceProvider(yourAudienceProvider)
       .commandPrefix("/helpcommand")
-      .withColors(MinecraftHelp.helpColors(/* colors... */))
+      .colors(MinecraftHelp.helpColors(/* colors... */))
       /* other settings... */
       .build();
     ```
