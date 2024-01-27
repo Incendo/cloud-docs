@@ -7,6 +7,7 @@
 <div class="grid cards" markdown>
 
 - [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud-minecraft/tree/master/cloud-bungee)
+- [:fontawesome-brands-java: JavaDoc](https://javadoc.io/doc/org.incendo/cloud-bungee)
 - [:fontawesome-brands-github: Example Plugin](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-bungee)
 
 </div>
@@ -42,13 +43,15 @@ Cloud for BungeeCord is available through [Maven Central](https://central.sonaty
 
 ## Usage
 
-`cloud-bungee` has a command manager implementation called `BungeeCommandManager` that can be created like:
+`cloud-bungee` has a command manager implementation called
+[`BungeeCommandManager`](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCommandManager.html)
+that can be created like:
 
 ```{ .java .annotate }
 BungeeCommandManager<YourSenderType> commandManager = new BungeeCommandManager<>(
   plugin,
-  executionCoordinator, /* (1) */
-  senderMapper /* (2) */
+  executionCoordinator, /* (1)! */
+  senderMapper /* (2)! */
 );
 ```
 
@@ -56,11 +59,11 @@ BungeeCommandManager<YourSenderType> commandManager = new BungeeCommandManager<>
    [here](../core/index.md#execution-coordinators).
 2. The sender mapper is a two-way mapping between BungeeCord's
    [`CommandSender`](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/CommandSender.html) and your custom sender type.
-   You may use `SenderMapper.identity()` if using `CommandSender` as the sender type.
+   You may use [`SenderMapper.identity()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>) if using [`CommandSender`](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/CommandSender.html) as the sender type.
 
 ## Parsers
 
-| Parser       | Type                                                                                                                        |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| PlayerParser | [ProxiedPlayer](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/connection/ProxiedPlayer.html) |
-| ServerParser | [ServerInfo](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/config/ServerInfo.html)           |
+| Parser                                                                                                                   | Type                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| [PlayerParser](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/parser/PlayerParser.html) | [ProxiedPlayer](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/connection/ProxiedPlayer.html) |
+| [ServerParser](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/parser/ServerParser.html) | [ServerInfo](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/config/ServerInfo.html)           |
