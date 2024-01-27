@@ -23,7 +23,7 @@ Cloud for Velocity is available through [Maven Central](https://central.sonatype
         <dependency>
             <groupId>org.incendo</groupId>
             <artifactId>cloud-velocity</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
+            <version>2.0.0-beta.1</version>
         </dependency>
     </dependencies>
     ```
@@ -31,13 +31,13 @@ Cloud for Velocity is available through [Maven Central](https://central.sonatype
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-velocity:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-velocity:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-velocity:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-velocity:2.0.0-beta.1'
     ```
 
 ## Usage

@@ -29,7 +29,7 @@ Cloud Minecraft Extras is available through [Maven Central](https://central.sona
         <dependency>
             <groupId>org.incendo</groupId>
             <artifactId>cloud-minecraft-extras</artifactId>
-            <version>2.0.0-SNAPSHOT</version>
+            <version>2.0.0-beta.1</version>
         </dependency>
     </dependencies>
     ```
@@ -37,13 +37,13 @@ Cloud Minecraft Extras is available through [Maven Central](https://central.sona
 === "Gradle (Kotlin)"
 
     ```kotlin
-    implementation("org.incendo:cloud-minecraft-extras:2.0.0-SNAPSHOT")
+    implementation("org.incendo:cloud-minecraft-extras:2.0.0-beta.1")
     ```
 
 === "Gradle (Groovy)"
 
     ```groovy
-    implementation 'org.incendo:cloud-minecraft-extras:2.0.0-SNAPSHOT'
+    implementation 'org.incendo:cloud-minecraft-extras:2.0.0-beta.1'
     ```
 
 ## Minecraft Help
