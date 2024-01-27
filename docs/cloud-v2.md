@@ -97,8 +97,18 @@ Command execution is now handled by a `CommandExecutor` which can be retrieved f
 This allows suggestion providers to consume more than a single token at a time, and also gives them access to whitespace
 information. This allows for better multi-token suggestions.
 
+**Simplify execution coordination API ([#609](https://github.com/Incendo/cloud/pull/609))**
+It is easier to create & modify execution coordinators.
+
+**Make ParserRegistry easier to use ((#592)[https://github.com/Incendo/cloud/pull/592])**
+You may now register `ParserDescriptor` instances.
+
 **Move confirmation system to external repository ([#620](https://github.com/Incendo/cloud/pull/620))**
 The confirmation system now lives in [cloud-processors](https://github.com/Incendo/cloud-processors).
+
+**Add Either ([647](https://github.com/Incendo/cloud/pull/647))**
+`Either<A, B>` can be parsed by `ArgumentParser.firstOf(ParserDescriptor, ParserDescriptor)` which allows
+for multiple variable components on the same level.
 
 ### Annotations
 
@@ -134,6 +144,12 @@ Decorators are like builder modifiers, but they're applied to _all_ builders con
 **Allow for a different class loader when parsing command containers**
 This fixes issues with platforms that use custom class loaders for plugins.
 
+**Use the same parameter matching logic everywhere ([617](https://github.com/Incendo/cloud/pull/617))**
+This allows for injections and more flexible signatures in more places.
+
+**Support Gradle incremental compilation ([#624](https://github.com/Incendo/cloud/pull/624))**
+Faster compilation.
+
 ### Kotlin
 
 **Support default values ([#511](https://github.com/Incendo/cloud/pull/511))**
@@ -164,6 +180,9 @@ Brigadier doesn't display suggestions for numbers.
 **Better inner node construction ([#610](https://github.com/Incendo/cloud/pull/610))**
 Issues with inner nodes in aggregate components have been resolved and these nodes are now constructed in the
 same way as other nodes.
+
+**Remove checked exception from creating Bukkit/Paper command managers**
+It simplifies the setup process. They may still throw runtime exceptions, so make sure to read the documentation.
 
 #### Bukkit
 
