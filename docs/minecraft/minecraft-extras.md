@@ -76,7 +76,7 @@ You may create an instance with the default styling:
     ```java
     // Assuming YourSenderType extends Audience
     MinecraftHelp<YourSenderType> help = MinecraftHelp.createNative(
-      "helpcommand",
+      "/helpcommand",
       commandManager
     );
     ```
@@ -85,7 +85,7 @@ You may create an instance with the default styling:
 
     ```java
     MinecraftHelp<YourSenderType> help = MinecraftHelp.create(
-      "helpcommand",
+      "/helpcommand",
       commandManager,
       audienceMapper // YourSenderType -> Audience
     );
