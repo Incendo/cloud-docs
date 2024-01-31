@@ -74,3 +74,11 @@ Cloud will try to determine the description for the Bukkit help menu by:
 1. Use the [`BukkitCommandMeta.BUKKIT_DESCRIPTION`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitCommandMeta.html) [meta](../core/index.md#command-meta) value of the command, if it exists.
 2. Using the [CommandDescription](../core/index.md#command-descriptions), if a command is attached directly to the root literal.
 3. Use the root literal [Description](../core/index.md#component-descriptions), if it's non-empty.
+
+## Localization
+
+`cloud-bukkit` provides additional caption keys for the [localization](../localization/index.md) system.
+These can be found in
+[`BukkitCaptionKeys`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitCaptionKeys.html).
+The default caption values can be found in
+[`BukkitDefaultCaptionsProvider`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitDefaultCaptionsProvider.html).

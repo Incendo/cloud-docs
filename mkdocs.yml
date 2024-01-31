@@ -9,7 +9,7 @@ nav:
       - Cloud: index.md
       - Changelog: cloud-v2.md
       - Core: core/index.md
-      - Internationalization: internationalization/index.md
+      - Localization: localization/index.md
   - Annotations:
       - Annotations: annotations/index.md
   - Kotlin:

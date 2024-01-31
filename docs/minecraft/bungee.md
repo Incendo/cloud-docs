@@ -67,3 +67,11 @@ BungeeCommandManager<YourSenderType> commandManager = new BungeeCommandManager<>
 | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | [PlayerParser](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/parser/PlayerParser.html) | [ProxiedPlayer](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/connection/ProxiedPlayer.html) |
 | [ServerParser](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/parser/ServerParser.html) | [ServerInfo](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/config/ServerInfo.html)           |
+
+## Localization
+
+`cloud-bungee` provides additional caption keys for the [localization](../localization/index.md) system.
+These can be found in
+[`BungeeCaptionKeys`](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCaptionKeys.html).
+The default caption values can be found in
+[`BungeeCommandManager`](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCommandManager.html).

@@ -93,3 +93,11 @@ use the features from [cloud-brigadier](brigadier.md).
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | [PlayerParser](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/parser/PlayerParser.html) | [Player](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/proxy/Player.html)                            |
 | [ServerParser](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/parser/ServerParser.html) | [RegisteredServer](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/proxy/server/RegisteredServer.html) |
+
+## Localization
+
+`cloud-velocity` provides additional caption keys for the [localization](../localization/index.md) system.
+These can be found in
+[`VelocityCaptionKeys`](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCaptionKeys.html).
+The default caption values can be found in
+[`VelocityCommandManager`](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCommandManager.html).

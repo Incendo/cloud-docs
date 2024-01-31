@@ -473,46 +473,10 @@ This can be for several reasons, such as:
 - The provided command input is invalid ([`InvalidSyntaxException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidSyntaxException.html))
 - The parser cannot parse the input provided ([`ArgumentParseException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html))
 
-##### Captions
+##### Localization
 
-[`ParserException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html)
-makes use of Cloud's caption system.
-(Nearly) all argument parsers in Cloud will throw
-[`ParserException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html) on invalid input, in which case you're able
-to override the exception message by configuring the manager's [`CaptionRegistry`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/CaptionRegistry.html).
-
-The caption registry allows you to register caption providers that provide values for caption keys.
-You may register multiple caption providers and the registry will iterate over them until one responds
-with a non-`null` value.
-There are some static factory methods in
-[`CaptionProvider`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/CaptionProvider.html)
-that help generating providers for constant values.
-All standard caption keys can be found in
-[StandardCaptionKeys](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/StandardCaptionKeys.html).
-Some platform adapters have their own caption key classes as well.
-
-The JavaDoc for the caption keys list their replacement variables.
-The message registered for the caption will have those variables replaced with variables specific to the parser.
-`<input>` is accepted by all parser captions, and will be replaced with the input that caused the exception
-to be thrown.
-
-<!-- prettier-ignore -->
-!!! example annotate "Example caption registry usage"
-    ```java
-    final CaptionRegistry<SenderType> registry = manager.captionRegistry();
-    registry.registerProvider(CaptionProvider.constantProvider(
-            StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_BOOLEAN,
-            "'<input>' ain't a boolean >:("
-    ));
-    ```
-
-You may create a custom caption formatter that generates more complex output types than strings.
-This is particularly useful if you want to route the captions through some external system to generate
-platform-native message types (i.e. `Component` for Minecraft). You may format captions using this custom
-type by invoking
-[`ParserException#formatCaption`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter)>)
-or
-[`CommandContext#formatCaption`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter,org.incendo.cloud.caption.Caption,org.incendo.cloud.caption.CaptionVariable...)>).
+The default exception handlers make use of translatable captions.
+You may learn more about customizing the messages in the section about [Localization](../localization/index.md).
 
 ## Parsers
 
