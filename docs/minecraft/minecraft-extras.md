@@ -10,6 +10,8 @@
 
 <div class="grid cards" markdown>
 
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud-minecraft/tree/master/cloud-minecraft-extras)
+- [:fontawesome-brands-java: JavaDoc](https://javadoc.io/doc/org.incendo/cloud-minecraft-extras)
 - [MinecraftHelp](#minecraft-help)
 - [MinecraftExceptionHandler](#minecraft-exception-handler)
 - [RichDescription](#rich-description)
