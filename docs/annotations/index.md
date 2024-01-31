@@ -207,7 +207,18 @@ annotationParser.descriptionMapper(string -> Description.of("blablabla " + strin
 
 [`@Permission`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Permission.html)
 can be added to a command method to set the command permission.
-Only simple string-permissions can be used.
+
+```java
+// Simple string permission.
+@Permission("the.permission")
+
+// Compound permissions are also supported.
+// - Equivalent to Permission.anyOf:
+@Permission(value = { "permission.1", "permission.2" }, mode = Permission.Mode.ANY_OF)
+// - Equivalent to Permission.allOf:
+@Permission(value = { "permission.1", "permission.2" }, mode = Permission.Mode.ALL_OF)
+```
+
 You may use a [builder modifier](#builder-modifiers) to do more complex mappings.
 
 ### Proxies
