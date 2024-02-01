@@ -155,11 +155,31 @@ public void yourCommand(
 
 [Default values](../core/index.md#optional) can be specified using the
 [`@Default`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Default.html)
-annotation. These values will always be parsed:
+annotation. You may choose to either supply a value that will get parsed, or refer to a named default-providing method.
 
 ```java
+// Parsed:
 @Default("foo") @Argument String string
+
+// Referencing a method:
+@Default(name = "method") @Argument String string
 ```
+
+Methods annotated with [`@Default`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Default.html)
+will get parsed by the annotation parser. The only accepted method parameter is
+[`Parameter`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/reflect/Parameter.html), which
+refers to the parameter that the default value is being generated for.
+The method must return an instance of [`DefaultValue`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html).
+You may choose to specify a name. If you do not specify a name, the method name will be used as the name of the provider.
+
+```java title="Creating a default-providing method"
+@Default(name = "method") // Could also be @Default without an explicit name!
+public DefaultValue<YourType> method(Parameter parameter) {
+  return DefaultValue.dynamic(context -> /* your logic */);
+}
+```
+
+<!-- TODO(City): Refer to manual registration once the JavaDoc are available... -->
 
 #### Either
 
