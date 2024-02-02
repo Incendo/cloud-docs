@@ -111,6 +111,16 @@ or custom injections.
 
 The annotation may be repeated in order to generate multiple commands from the same method.
 
+The command method may return [`CompletableFuture<Void>`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/CompletableFuture.html)
+in which case the execution coordinator will wait for the returned future to complete:
+
+```java
+@Command("command")
+public CompletableFuture<Void> command() {
+  return CompletableFuture.supplyAsync(() -> null);
+}
+```
+
 ### Syntax
 
 There are three different parts that make up the command syntax:

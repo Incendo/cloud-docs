@@ -383,7 +383,12 @@ builder.handler(ctx -> {
 You may implement
 [`CommandExecutionHandler.FutureCommandExecutionHandler`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.FutureCommandExecutionHandler.html)
 to have the handler be a future-returning
-function. Cloud will wait for the future to complete and will handle any completion exceptions gracefully.
+function. Cloud will wait for the future to complete and will handle any completion exceptions gracefully. You may
+use the `futureHandler` command builder method to specify a future-returning handler:
+
+```java
+builder.futureHandler(ctx -> CompletableFuture.completedFuture(null))
+```
 
 You may delegate to other handlers using
 [`CommandExecutionHandler.delegatingExecutionHandler`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.html#delegatingExecutionHandler(java.util.List)>).
