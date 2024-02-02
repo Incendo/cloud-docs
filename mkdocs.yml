@@ -110,6 +110,7 @@ markdown_extensions:
       base_path:
         - "./code/src/main/java/org/incendo/cloud/snippet/"
       check_paths: true
+      dedent_subsections: true
   - attr_list
   - md_in_html
 plugins:
@@ -159,3 +160,4 @@ copyright: >
   <a href="#__consent">Change cookie settings</a>
 watch:
   - code
+  - main.py

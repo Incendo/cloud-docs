@@ -608,22 +608,7 @@ interface, or using construct the parser by using a builder
 that you create by calling
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html#builder()", "AggregateParser.builder()") }}.
 
-<!-- prettier-ignore -->
-!!! example "Example Aggregate Parser"
-    ```java
-    final AggregateParser<CommandSender, Location> locationParser = AggregateParser.<CommandSender>builder()
-        .withComponent("world", worldParser())
-        .withComponent("x", integerParser())
-        .withComponent("y", integerParser())
-        .withComponent("z", integerParser())
-        .withMapper(Location.class, (commandContext, aggregateCommandContext) -> {
-            final World world = aggregateCommandContext.get("world");
-            final int x = aggregateCommandContext.get("x");
-            final int y = aggregateCommandContext.get("y");
-            final int z = aggregateCommandContext.get("z");
-            return CompletableFuture.completedFuture(new Location(world, x, y, z));
-    }).build();
-    ```
+{{ snippet("AggregateParserExample.java", title = "Example Aggregate Parser") }}
 
 ### Either
 
@@ -635,17 +620,7 @@ The parser will first attempt to parse the primary type `A`, and if this fails i
 fallback type `B`. The suggestions of both the primary and fallback parsers will be joined when using the parser
 as the suggestion provider.
 
-```java title="Example of Either"
-commandBuilder.required("either", ArgumentParser.firstOf(integerParser(), booleanParser()))
-  .handler(context -> {
-      Either<Integer, Boolean> either = context.get("either");
-      if (either.primary().isPresent()){
-          int integer = either.primary().get();
-      } else {
-          boolean bool = either.fallback().get();
-      }
-  });
-```
+{{ snippet("EitherExample.java", title = "Example of Either") }}
 
 ### Custom Parsers
 
