@@ -106,6 +106,10 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets:
+      base_path:
+        - "./code/src/main/java/org/incendo/cloud/snippet/"
+      check_paths: true
   - attr_list
   - md_in_html
 plugins:
@@ -153,3 +157,5 @@ extra:
 copyright: >
   Copyright &copy; 2024 Incendo –
   <a href="#__consent">Change cookie settings</a>
+watch:
+  - code

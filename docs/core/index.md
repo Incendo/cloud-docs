@@ -707,27 +707,7 @@ in which case, a successful result is returned as a completed future, and a fail
 exceptionally completed future.
 Returning a future is useful when the parsing needs to take place on a specific thread.
 
-<!-- prettier-ignore -->
-!!! example annotate "Example Parser"
-    ```java
-    public class UUIDParser<C /* (1)! */> implements ArgumentParser<C, UUID> {
-
-        @Override
-        public ArgumentParseResult<UUID> parse(
-                CommandContext<C> context,
-                CommandInput commandInput
-        ) {
-            final String input = commandInput.peekString(); // Does not remove the string from the input!
-            try {
-                final UUID uuid = UUID.fromString(input);
-                input.readString(); // Removes the string from the input.
-                return ArgumentParseResult.success(uuid);
-            } catch(final IllegalArgumentException e) {
-                return ArgumentParseResult.failure(new UUIDParseException(input, commandContext));
-            }
-        }
-    }
-    ```
+{{ snippet("UUIDParser.java", "Example Parser") }}
 
 1. The command sender type.
 
