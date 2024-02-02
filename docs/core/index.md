@@ -707,7 +707,7 @@ in which case, a successful result is returned as a completed future, and a fail
 exceptionally completed future.
 Returning a future is useful when the parsing needs to take place on a specific thread.
 
-{{ snippet("UUIDParser.java", "Example Parser") }}
+{{ snippet("UUIDParser.java", title = "Example Parser") }}
 
 1. The command sender type.
 
