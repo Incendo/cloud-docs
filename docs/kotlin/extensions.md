@@ -15,18 +15,7 @@ This module contains extensions to different parts of Cloud.
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-extensions).
 
-<!-- prettier-ignore -->
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-kotlin-extensions:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-kotlin-extensions:2.0.0-beta.1'
-    ```
+{{ dependency_listing("kotlin-extensions", "core") }}
 
 ## MutableCommandBuilder
 

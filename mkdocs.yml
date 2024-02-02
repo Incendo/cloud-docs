@@ -110,6 +110,9 @@ markdown_extensions:
   - md_in_html
 plugins:
   - search
+  - macros:
+      include_yaml:
+        - version: versions.yml
   - git-revision-date-localized:
       enable_creation_date: false
       fallback_to_build_date: true

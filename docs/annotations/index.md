@@ -23,53 +23,7 @@ Examples can be found on
 
 Cloud Annotations is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-annotations).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.incendo</groupId>
-            <artifactId>cloud-annotations</artifactId>
-            <version>2.0.0-beta.1</version>
-        </dependency>
-    </dependencies>
-
-    <!-- Optional -->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.incendo</groupId>
-                            <artifactId>cloud-annotations</artifactId>
-                            <version>2.0.0-beta.1</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-annotations:2.0.0-beta.1")
-    // Optional:
-    annotationProcessor("org.incendo:cloud-annotations:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-annotations:2.0.0-beta.1'
-    // Optional:
-    annotationProcessor 'org.incendo:cloud-annotations:2.0.0-beta.1'
-    ```
+{{ dependency_listing("annotations", "core") }}
 
 You then need to create an
 [`AnnotationParser`](https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/AnnotationParser.html)

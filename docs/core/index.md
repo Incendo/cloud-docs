@@ -17,28 +17,7 @@ Generally you'll want to depend on a platform module which implements Cloud for 
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-core).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependency>
-      <groupId>org.incendo</groupId>
-      <artifactId>cloud-core</artifactId>
-      <version>2.0.0-beta.1</version>
-    </dependency>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-core:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-core:2.0.0-beta.1'
-    ```
+{{ dependency_listing("core") }}
 
 ## Command
 

@@ -20,30 +20,7 @@ The following documentation is written with the assumption that you have already
 
 Cloud for Paper is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-paper).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.incendo</groupId>
-            <artifactId>cloud-paper</artifactId>
-            <version>2.0.0-beta.1</version>
-        </dependency>
-    </dependencies>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-paper:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-paper:2.0.0-beta.1'
-    ```
+{{ dependency_listing("paper") }}
 
 ## Usage
 

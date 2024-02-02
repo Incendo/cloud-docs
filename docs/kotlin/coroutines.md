@@ -16,18 +16,7 @@ For suspending commands methods, see [cloud-kotlin-coroutines-annotations](./ann
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-coroutines).
 
-<!-- prettier-ignore -->
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-kotlin-coroutines:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-kotlin-coroutines:2.0.0-beta.1'
-    ```
+{{ dependency_listing("kotlin-coroutines", "core") }}
 
 ## Suspending command execution handlers
 

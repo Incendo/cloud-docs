@@ -8,30 +8,7 @@ An example bot using cloud-jda5 can be found [here](https://github.com/Incendo/c
 
 Cloud for JDA5 is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-jda5).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.incendo</groupId>
-            <artifactId>cloud-jda5</artifactId>
-            <version>1.0.0-beta.1</version>
-        </dependency>
-    </dependencies>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-jda5:1.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-jda5:1.0.0-beta.1'
-    ```
+{{ dependency_listing("jda5") }}
 
 ## Usage
 
