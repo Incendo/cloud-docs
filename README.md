@@ -40,3 +40,9 @@ then you may run prettier using:
 ```shell
 $ npx prettier . --write
 ```
+
+### Snippets
+
+The `code` directory contains a Gradle project with compiled examples.
+Snippets from these docs are used in the examples using the `{{ snippet("File.java") }}` macro.
+The project will be built by the CI pipeline to validate that the snippets compile.
