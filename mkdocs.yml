@@ -20,8 +20,8 @@ nav:
   - Discord:
       - Discord: discord/index.md
       - Discord4J: discord/discord4j.md
-      - "Javacord ⮺": https://github.com/Incendo/cloud-discord/tree/master/cloud-javacord
-      - "JDA ⮺": https://github.com/Incendo/cloud-discord/tree/master/cloud-jda
+      - Javacord: https://github.com/Incendo/cloud-discord/tree/master/cloud-javacord
+      - JDA: https://github.com/Incendo/cloud-discord/tree/master/cloud-jda
       - JDA5: discord/jda5.md
       - Kord: discord/kord.md
   - Minecraft:
@@ -48,7 +48,7 @@ nav:
       - Requirements: processors/requirements.md
   # - Misc:
   #    - irc: other/irc.md
-  - "Legacy Docs ⮺": https://github.com/Incendo/cloud/tree/1.9.0-dev/docs
+  - "Legacy Docs": https://github.com/Incendo/cloud/tree/1.9.0-dev/docs
 theme:
   name: material
   features:
