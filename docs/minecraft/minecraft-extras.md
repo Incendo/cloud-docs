@@ -205,11 +205,11 @@ MinecraftExceptionHandler.createNative()
 
 `MinecraftExceptionHandler` uses the [localization](../localization/index.md) system. By default, the exception
 handler will make use of a
-[`ComponentCaptionFormatter`](https://javadoc.io/doc/org.incendo/cloud-minecraft-extras/latest/org/incendo/cloud/minecraft/extras/ComponentCaptionFormatter.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-minecraft-extras/latest/org/incendo/cloud/minecraft/extras/ComponentCaptionFormatter.html", "ComponentCaptionFormatter") }}
 that wraps the caption value in a text component.
 
 You may choose to replace the caption formatter with a component formatter that uses [MiniMessage](https://docs.advntr.dev/minimessage/index.html) by using
-[`ComponentCaptionFormatter.miniMessage()`](https://javadoc.io/doc/org.incendo/cloud-minecraft-extras/latest/org/incendo/cloud/minecraft/extras/ComponentCaptionFormatter.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-minecraft-extras/latest/org/incendo/cloud/minecraft/extras/ComponentCaptionFormatter.html", "ComponentCaptionFormatter.miniMessage()") }}.
 [MiniMessage](https://docs.advntr.dev/minimessage/index.html) will then be used for both styling and placeholder replacements.
 
 ## Rich Description

@@ -25,7 +25,7 @@ Cloud for Paper is available through [Maven Central](https://central.sonatype.co
 ## Usage
 
 `cloud-paper` has a command manager implementation called
-[`PaperCommandManager`](https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html", "PaperCommandManager") }}
 that can be created in two ways.
 
 With a custom sender type:
@@ -38,7 +38,7 @@ PaperCommandManager<YourSenderType> commandManager = new PaperCommandManager<>(
 );
 ```
 
-Or, using Bukkit's [`CommandSender`](https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html):
+Or, using Bukkit's {{ javadoc("https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html", "CommandSender") }}:
 
 ```java
 PaperCommandManager<CommandSender> commandManager = PaperCommandManager.createNative(
@@ -53,9 +53,9 @@ PaperCommandManager<CommandSender> commandManager = PaperCommandManager.createNa
    [here](../core/index.md#execution-coordinators). See [below](#execution-coordinators) for info specific to
    Bukkit-based platforms.
 3. The sender mapper is a two-way mapping between Bukkit's
-   [`CommandSender`](https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html) and your custom sender type.
-   Using [`SenderMapper.identity()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>)
-   is equivalent to the [`createNative`](<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#createNative(org.bukkit.plugin.Plugin,org.incendo.cloud.execution.ExecutionCoordinator)>)
+   {{ javadoc("https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html", "CommandSender") }} and your custom sender type.
+   Using {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>", "SenderMapper.identity()") }}
+   is equivalent to the {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#createNative(org.bukkit.plugin.Plugin,org.incendo.cloud.execution.ExecutionCoordinator)>", "createNative") }}
    static factory method.
 
 ## Brigadier
@@ -64,7 +64,7 @@ Paper exposes [Brigadier](https://github.com/mojang/brigadier), which means that
 from [cloud-brigadier](brigadier.md) on Paper servers.
 
 You may enable Brigadier mappings using
-[`PaperCommandManager#registerBrigadier()`](<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#registerBrigadier()>).
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#registerBrigadier()>", "PaperCommandManager#registerBrigadier()") }}.
 You should make use of the
 capability system to make sure that Brigadier is available on the server your plugin is running on:
 
@@ -85,7 +85,7 @@ Paper allows for non-blocking suggestions. You are highly recommended to make us
 the argument parsers during suggestion generation which ideally should not take place on the main server thread.
 
 You may enable asynchronous completions using
-[`PaperCommandManager#registerAsynchronousCompletions()`](<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#registerAsynchronousCompletions()>).
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#registerAsynchronousCompletions()>", "PaperCommandManager#registerAsynchronousCompletions()") }}.
 You should make use of the capability system to make sure that this is available on the server your plugin is running on:
 
 ```java
@@ -97,9 +97,9 @@ if (commandManager.hasCapability(CloudBukkitCapabilities.ASYNCHRONOUS_COMPLETION
 ## Execution coordinators
 
 Due to Bukkit blocking the main thread for suggestion requests, it's potentially unsafe to use anything other than
-[`ExecutionCoordinator.nonSchedulingExecutor()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#nonSchedulingExecutor()>)
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#nonSchedulingExecutor()>", "ExecutionCoordinator.nonSchedulingExecutor()") }}
 for
-[`ExecutionCoordinator.Builder#suggestionsExecutor(Executor)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.Builder.html#suggestionsExecutor(java.util.concurrent.Executor)>).
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.Builder.html#suggestionsExecutor(java.util.concurrent.Executor)>", "ExecutionCoordinator.Builder#suggestionsExecutor(Executor)") }}.
 Once the coordinator, a suggestion provider, parser,
 or similar routes suggestion logic off of the calling \(main) thread, it won't be possible to schedule further logic
 back to the main thread without a deadlock. When Brigadier support is active, this issue is avoided, as it allows

@@ -6,14 +6,14 @@
 
 The exception handlers shipped with Cloud (including [`MinecraftExceptionHandler`](../minecraft/minecraft-extras.md#minecraft-exception-handler))
 uses the
-[`Caption`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/Caption.html) system.
-A [`Caption`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/Caption.html) is a key
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/Caption.html", "Caption") }} system.
+A {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/Caption.html", "Caption") }} is a key
 to a configurable message, which allows you to override the default messages on a per-sender level.
 The default messages are simple strings, but it's possible to use a custom [formatter](#formatting) to format
 the messages into rich objects.
 
 The messages retrieved using caption providers that are registered to the
-command manager's [`CaptionRegistry`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/CaptionRegistry.html).
+command manager's {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/CaptionRegistry.html", "CaptionRegistry") }}.
 You may register however many providers you want. The system will iterate over the providers until one returns a non-`null`
 result.
 
@@ -43,7 +43,7 @@ manager.captionRegistry().registerProvider(
 ```
 
 The captions for [`cloud-core`](../core/index.md) can be found in
-[`StandardCaptionKeys`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/StandardCaptionKeys.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/StandardCaptionKeys.html", "StandardCaptionKeys") }}.
 The platform adapters may include additional captions. See the platform-specific documentation for more information.
 
 #### Formatting
@@ -53,19 +53,19 @@ The JavaDoc for the caption keys list the available placeholders for the caption
 The message registered for the caption will have those variables replaced with variables specific to the parser.
 
 You can replace the default formatter if you want to, this can be done by invoking
-[`CommandManager#captionFormatter(CaptionFormatter)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#captionFormatter(org.incendo.cloud.caption.CaptionFormatter)>).
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#captionFormatter(org.incendo.cloud.caption.CaptionFormatter)>", "CommandManager#captionFormatter(CaptionFormatter)") }}.
 
 You may create a custom caption formatter that generates more complex output types than strings.
 This is particularly useful if you want to route the captions through some external system to generate
 platform-native message types (i.e. `Component` for Minecraft). You may format captions using this custom
 type by invoking
-[`ParserException#formatCaption`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter)>)
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter)>", "ParserException#formatCaption") }}
 or
-[`CommandContext#formatCaption`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter,org.incendo.cloud.caption.Caption,org.incendo.cloud.caption.CaptionVariable...)>).
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter,org.incendo.cloud.caption.Caption,org.incendo.cloud.caption.CaptionVariable...)>", "CommandContext#formatCaption") }}.
 
 ## Translations
 
-[`cloud-translations`](https://github.com/incendo/cloud-translations) contains community-contributed translations of the [captions](#captions)
+{{ javadoc("https://github.com/incendo/cloud-translations", "cloud-translations") }} contains community-contributed translations of the [captions](#captions)
 used in the official Cloud modules. You may see the translation progress (and also contribute) yourself at
 our [Crowdin](https://crowdin.com/project/incendo-cloud) page.
 

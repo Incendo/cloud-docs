@@ -21,7 +21,7 @@ Cloud for Velocity is available through [Maven Central](https://central.sonatype
 ## Usage
 
 `cloud-velocity` has a command manager implementation called
-[`VelocityCommandManager`](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCommandManager.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCommandManager.html", "VelocityCommandManager") }}
 that can be created in two ways.
 
 By using a Guice injector:
@@ -55,9 +55,9 @@ VelocityCommandManager<YourSenderType> commandManager = new VelocityCommandManag
 1. Information about execution coordinators in general can be found
    [here](../core/index.md#execution-coordinators).
 2. The sender mapper is a two-way mapping between Velocity's
-   [`CommandSource`](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/command/CommandSource.html) and your custom sender type.
-   You may use [`SenderMapper.identity()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>)
-   if using [`CommandSource`](https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/command/CommandSource.html) as the sender type.
+   {{ javadoc("https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/command/CommandSource.html", "CommandSource") }} and your custom sender type.
+   You may use {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>", "SenderMapper.identity()") }}
+   if using {{ javadoc("https://jd.papermc.io/velocity/3.0.0/com/velocitypowered/api/command/CommandSource.html", "CommandSource") }} as the sender type.
 
 ## Brigadier
 
@@ -75,6 +75,6 @@ use the features from [cloud-brigadier](brigadier.md).
 
 `cloud-velocity` provides additional caption keys for the [localization](../localization/index.md) system.
 These can be found in
-[`VelocityCaptionKeys`](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCaptionKeys.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCaptionKeys.html", "VelocityCaptionKeys") }}.
 The default caption values can be found in
-[`VelocityCommandManager`](https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCommandManager.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-velocity/latest/org/incendo/cloud/velocity/VelocityCommandManager.html", "VelocityCommandManager") }}.

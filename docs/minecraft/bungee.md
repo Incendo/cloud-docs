@@ -44,7 +44,7 @@ Cloud for BungeeCord is available through [Maven Central](https://central.sonaty
 ## Usage
 
 `cloud-bungee` has a command manager implementation called
-[`BungeeCommandManager`](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCommandManager.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCommandManager.html", "BungeeCommandManager") }}
 that can be created like:
 
 ```{ .java .annotate }
@@ -58,8 +58,8 @@ BungeeCommandManager<YourSenderType> commandManager = new BungeeCommandManager<>
 1. Information about execution coordinators in general can be found
    [here](../core/index.md#execution-coordinators).
 2. The sender mapper is a two-way mapping between BungeeCord's
-   [`CommandSender`](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/CommandSender.html) and your custom sender type.
-   You may use [`SenderMapper.identity()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>) if using [`CommandSender`](https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/CommandSender.html) as the sender type.
+   {{ javadoc("https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/CommandSender.html", "CommandSender") }} and your custom sender type.
+   You may use {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>", "SenderMapper.identity()") }} if using {{ javadoc("https://ci.md-5.net/job/BungeeCord/ws/api/target/apidocs/net/md_5/bungee/api/CommandSender.html", "CommandSender") }} as the sender type.
 
 ## Parsers
 
@@ -72,6 +72,6 @@ BungeeCommandManager<YourSenderType> commandManager = new BungeeCommandManager<>
 
 `cloud-bungee` provides additional caption keys for the [localization](../localization/index.md) system.
 These can be found in
-[`BungeeCaptionKeys`](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCaptionKeys.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCaptionKeys.html", "BungeeCaptionKeys") }}.
 The default caption values can be found in
-[`BungeeCommandManager`](https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCommandManager.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bungee/latest/org/incendo/cloud/bungee/BungeeCommandManager.html", "BungeeCommandManager") }}.
