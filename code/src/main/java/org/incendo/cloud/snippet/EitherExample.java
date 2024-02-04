@@ -13,17 +13,17 @@ import static org.incendo.cloud.parser.standard.IntegerParser.integerParser;
  */
 public class EitherExample<C> {
 
-    public void example(final Command.@NonNull Builder<C> commandBuilder) {
-        // --8<-- [start:snippet]
-        commandBuilder.required("either", ArgumentParser.firstOf(integerParser(), booleanParser()))
-                .handler(context -> {
-                    Either<Integer, Boolean> either = context.get("either");
-                    if (either.primary().isPresent()){
-                        int integer = either.primary().get();
-                    } else {
-                        boolean bool = either.fallback().get();
-                    }
-                });
-        // --8<-- [end:snippet]
-    }
+  public void example(final Command.@NonNull Builder<C> commandBuilder) {
+    // --8<-- [start:snippet]
+    commandBuilder.required("either", ArgumentParser.firstOf(integerParser(), booleanParser()))
+      .handler(context -> {
+        Either<Integer, Boolean> either = context.get("either");
+        if (either.primary().isPresent()) {
+          int integer = either.primary().get();
+        } else {
+          boolean bool = either.fallback().get();
+        }
+      });
+    // --8<-- [end:snippet]
+  }
 }

@@ -42,14 +42,22 @@ def define_env(env):
         return '[`{title}`](<{link}> "Click to open the JavaDoc")'.format(link=link, title=title)
 
     @env.macro
-    def snippet(path: str, section: str = "snippet", title: str = None) -> str:
+    def snippet(path: str, section: str = "snippet", title: str = None, indent = 0) -> str:
         if title is None:
             title = path
+        if title:
+            title = 'title="{title}"'.format(title = title)
+
         if section is not None:
             path = path + ":" + section
 
-        return """
-```java title="{title}"
+        return ''.join((' ' * indent) + line for line in """
+```java {title}
 --8<-- "{path}"
 ```
-    """.format(path=path, title=title)
+    """.format(path=path, title=title).splitlines(True))
+
+    @env.macro
+    def figure(path: str, caption: str) -> str:
+        return ("<figure markdown>![{caption}]({path})<figcaption>{caption}</figcaption></figure>"
+                .format(path = path, caption = caption))

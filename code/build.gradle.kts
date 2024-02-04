@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
   implementation(libs.cloud.core)
+  implementation(libs.cloud.minecraft.extras)
 }
 
 indra {

@@ -53,20 +53,8 @@ Cloud Minecraft Extras is available through [Maven Central](https://central.sona
 `MinecraftHelp` is an opinionated implementation of the [help system](../core/index.md#help-generation) using
 Adventure components for styling and click handling.
 
-<!--![Minecraft Help 1](../assets/images/minecraft/mce_help_1_dark.png#only-dark)
-![Minecraft Help 1](../assets/images/minecraft/mce_help_1_light.png#only-light)
-![Minecraft Help 2](../assets/images/minecraft/mce_help_2_dark.png#only-dark)
-![Minecraft Help 2](../assets/images/minecraft/mce_help_2_light.png#only-light)-->
-
-<figure markdown>
-  ![Minecraft Help Index](../assets/images/minecraft/mce_help_index.png)
-  <figcaption>Index View</figcaption>
-</figure>
-
-<figure markdown>
-  ![Minecraft Help Verbose](../assets/images/minecraft/mce_help_verbose.png)
-  <figcaption>Verbose View</figcaption>
-</figure>
+{{ figure("../assets/images/minecraft/mce_help_index.png", "Index View") }}
+{{ figure("../assets/images/minecraft/mce_help_verbose.png", "Verbose View") }}
 
 All interactions with the Minecraft help system will take place through a `MinecraftHelp` instance.
 
@@ -98,58 +86,20 @@ or you may override the defaults by using a builder:
 <!-- prettier-ignore -->
 === "Native Audience"
 
-    ```java
-    MinecraftHelp<YourSenderType> help = MinecraftHelp.<YourSenderType>builder()
-      .commandManager(commandManager)
-      .audienceProvider(AudienceProvider.nativeProvider())
-      .commandPrefix("/helpcommand")
-      .colors(MinecraftHelp.helpColors(/* colors... */))
-      /* other settings... */
-      .build();
-    ```
+    {{ snippet("minecraft/MinecraftHelpExample.java", section = "native", title = "", indent = 4) }}
 
 === "Other"
 
-    ```java
-    MinecraftHelp<YourSenderType> help = MinecraftHelp.<YourSenderType>builder()
-      .commandManager(commandManager)
-      .audienceProvider(yourAudienceProvider)
-      .commandPrefix("/helpcommand")
-      .colors(MinecraftHelp.helpColors(/* colors... */))
-      /* other settings... */
-      .build();
-    ```
+    {{ snippet("minecraft/MinecraftHelpExample.java", section="non_native", title = "", indent = 4) }}
 
 You then want to invoke `MinecraftHelp.queryCommands(query, recipient)` in order to query the commands
 and display the results to the recipient.
 
-```java title="Example Help Command"
-commandManager.command(
-  commandManager.commandBuilder("helpcommand")
-    .optional("query", greedyStringParser(), DefaultValue.constant(""))
-    .handler(context -> {
-      help.queryCommands(context.get("query"), context.sender());
-    })
-);
-```
+{{ snippet("minecraft/MinecraftHelpExample.java", section = "help_command", title = "Example Help Command") }}
 
 You may choose to add suggestions to the query argument as well:
 
-```java title="Query Suggestions"
-.optional(
-  "query",
-  greedyStringParser(),
-  DefaultValue.constant(""),
-  SuggestionProvider.blocking((ctx, in) -> commandManager.createHelpHandler()
-      .queryRootIndex(ctx.sender())
-      .entries()
-      .stream()
-      .map(CommandEntry::syntax)
-      .map(Suggestion::simple)
-      .collect(Collectors.toList())
-  )
-)
-```
+{{ snippet("minecraft/MinecraftHelpExample.java", section = "help_suggestions", title = "Query Suggestions") }}
 
 ## Minecraft Exception Handler
 
@@ -178,28 +128,12 @@ If you want to register the default handlers for all types you may use `defaultH
 You may supply a decorator which will transform the created components. This is useful if you
 want to prefix all messages, or apply specific styling.
 
-```java title="Example decorator"
-MinecraftExceptionHandler.creativeNative()
-    .decorator(component -> text()
-        .append("[Example] ", NamedTextColor.DARK_RED)
-        .append(component)
-        .build()
-    );
-```
+{{ snippet("minecraft/MinecraftExceptionHandlerExample.java", section = "native", title = "Example decorator") }}
 
 When you're done configuring the builder you need to apply it to the command manager by using
 `registerTo(CommandManager)`.
 
-```java title="Complete example"
-MinecraftExceptionHandler.createNative()
-        .defaultHandlers()
-        .decorator(component -> text()
-            .append("[Example] ", NamedTextColor.DARK_RED)
-            .append(component)
-            .build()
-        )
-        .registerTo(manager);
-```
+{{ snippet("minecraft/MinecraftExceptionHandlerExample.java", section = "complete", title = "Complete example") }}
 
 ### Localization
 

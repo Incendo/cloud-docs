@@ -10,33 +10,34 @@ import java.util.Objects;
 
 public final class UUIDParseException extends ParserException {
 
-    private final String input;
+  private final String input;
 
-    public UUIDParseException(final @NonNull String input, final @NonNull CommandContext<?> context) {
-        super(
-                UUIDParser.class,
-                context,
-                StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_UUID,
-                CaptionVariable.of("input", input));
-        this.input = input;
-    }
+  public UUIDParseException(final @NonNull String input, final @NonNull CommandContext<?> context) {
+    super(
+      UUIDParser.class,
+      context,
+      StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_UUID,
+      CaptionVariable.of("input", input)
+    );
+    this.input = input;
+  }
 
-    public String input() {
-        return this.input;
-    }
+  public String input() {
+    return this.input;
+  }
 
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        } else if (o != null && this.getClass() == o.getClass()) {
-            final UUIDParseException that = (UUIDParseException) o;
-            return this.input.equals(that.input());
-        } else {
-            return false;
-        }
+  public boolean equals(final Object o) {
+    if (this == o) {
+      return true;
+    } else if (o != null && this.getClass() == o.getClass()) {
+      final UUIDParseException that = (UUIDParseException) o;
+      return this.input.equals(that.input());
+    } else {
+      return false;
     }
+  }
 
-    public int hashCode() {
-        return Objects.hash(new Object[]{this.input});
-    }
+  public int hashCode() {
+    return Objects.hash(new Object[]{this.input});
+  }
 }
