@@ -1,9 +1,9 @@
 core: 2.0.0-beta.2
 processors: 1.0.0-beta.1
 # Discord
-discord4j: 1.0.0-beta.1
-jda5: 1.0.0-beta.1
-kord: 1.0.0-beta.1
+discord4j: 1.0.0-beta.2
+jda5: 1.0.0-beta.2
+kord: 1.0.0-beta.2
 # Minecraft
 paper: 2.0.0-beta.1
 velocity: 2.0.0-beta.1
