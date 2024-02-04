@@ -10,6 +10,8 @@
 
 <div class="grid cards" markdown>
 
+- [:fontawesome-brands-github: Source Code](https://github.com/Incendo/cloud-minecraft/tree/master/cloud-minecraft-extras)
+- [:fontawesome-brands-java: JavaDoc](https://javadoc.io/doc/org.incendo/cloud-minecraft-extras)
 - [MinecraftHelp](#minecraft-help)
 - [MinecraftExceptionHandler](#minecraft-exception-handler)
 - [RichDescription](#rich-description)
@@ -21,50 +23,15 @@
 
 Cloud Minecraft Extras is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-minecraft-extras).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.incendo</groupId>
-            <artifactId>cloud-minecraft-extras</artifactId>
-            <version>2.0.0-beta.1</version>
-        </dependency>
-    </dependencies>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-minecraft-extras:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-minecraft-extras:2.0.0-beta.1'
-    ```
+{{ dependency_listing("minecraft-extras") }}
 
 ## Minecraft Help
 
 `MinecraftHelp` is an opinionated implementation of the [help system](../core/index.md#help-generation) using
 Adventure components for styling and click handling.
 
-<!--![Minecraft Help 1](../assets/images/minecraft/mce_help_1_dark.png#only-dark)
-![Minecraft Help 1](../assets/images/minecraft/mce_help_1_light.png#only-light)
-![Minecraft Help 2](../assets/images/minecraft/mce_help_2_dark.png#only-dark)
-![Minecraft Help 2](../assets/images/minecraft/mce_help_2_light.png#only-light)-->
-
-<figure markdown>
-  ![Minecraft Help Index](../assets/images/minecraft/mce_help_index.png)
-  <figcaption>Index View</figcaption>
-</figure>
-
-<figure markdown>
-  ![Minecraft Help Verbose](../assets/images/minecraft/mce_help_verbose.png)
-  <figcaption>Verbose View</figcaption>
-</figure>
+{{ figure("../assets/images/minecraft/mce_help_index.png", "Index View") }}
+{{ figure("../assets/images/minecraft/mce_help_verbose.png", "Verbose View") }}
 
 All interactions with the Minecraft help system will take place through a `MinecraftHelp` instance.
 
@@ -96,58 +63,20 @@ or you may override the defaults by using a builder:
 <!-- prettier-ignore -->
 === "Native Audience"
 
-    ```java
-    MinecraftHelp<YourSenderType> help = MinecraftHelp.<YourSenderType>builder()
-      .commandManager(commandManager)
-      .audienceProvider(AudienceProvider.nativeProvider())
-      .commandPrefix("/helpcommand")
-      .colors(MinecraftHelp.helpColors(/* colors... */))
-      /* other settings... */
-      .build();
-    ```
+    {{ snippet("minecraft/MinecraftHelpExample.java", section = "native", title = "", indent = 4) }}
 
 === "Other"
 
-    ```java
-    MinecraftHelp<YourSenderType> help = MinecraftHelp.<YourSenderType>builder()
-      .commandManager(commandManager)
-      .audienceProvider(yourAudienceProvider)
-      .commandPrefix("/helpcommand")
-      .colors(MinecraftHelp.helpColors(/* colors... */))
-      /* other settings... */
-      .build();
-    ```
+    {{ snippet("minecraft/MinecraftHelpExample.java", section="non_native", title = "", indent = 4) }}
 
 You then want to invoke `MinecraftHelp.queryCommands(query, recipient)` in order to query the commands
 and display the results to the recipient.
 
-```java title="Example Help Command"
-commandManager.command(
-  commandManager.commandBuilder("helpcommand")
-    .optional("query", greedyStringParser(), DefaultValue.constant(""))
-    .handler(context -> {
-      help.queryCommands(context.get("query"), context.sender());
-    })
-);
-```
+{{ snippet("minecraft/MinecraftHelpExample.java", section = "help_command", title = "Example Help Command") }}
 
 You may choose to add suggestions to the query argument as well:
 
-```java title="Query Suggestions"
-.optional(
-  "query",
-  greedyStringParser(),
-  DefaultValue.constant(""),
-  SuggestionProvider.blocking((ctx, in) -> commandManager.createHelpHandler()
-      .queryRootIndex(ctx.sender())
-      .entries()
-      .stream()
-      .map(CommandEntry::syntax)
-      .map(Suggestion::simple)
-      .collect(Collectors.toList())
-  )
-)
-```
+{{ snippet("minecraft/MinecraftHelpExample.java", section = "help_suggestions", title = "Query Suggestions") }}
 
 ## Minecraft Exception Handler
 
@@ -176,28 +105,23 @@ If you want to register the default handlers for all types you may use `defaultH
 You may supply a decorator which will transform the created components. This is useful if you
 want to prefix all messages, or apply specific styling.
 
-```java title="Example decorator"
-MinecraftExceptionHandler.creativeNative()
-    .decorator(component -> text()
-        .append("[Example] ", NamedTextColor.DARK_RED)
-        .append(component)
-        .build()
-    );
-```
+{{ snippet("minecraft/MinecraftExceptionHandlerExample.java", section = "native", title = "Example decorator") }}
 
 When you're done configuring the builder you need to apply it to the command manager by using
 `registerTo(CommandManager)`.
 
-```java title="Complete example"
-MinecraftExceptionHandler.createNative()
-        .defaultHandlers()
-        .decorator(component -> text()
-            .append("[Example] ", NamedTextColor.DARK_RED)
-            .append(component)
-            .build()
-        )
-        .registerTo(manager);
-```
+{{ snippet("minecraft/MinecraftExceptionHandlerExample.java", section = "complete", title = "Complete example") }}
+
+### Localization
+
+`MinecraftExceptionHandler` uses the [localization](../localization/index.md) system. By default, the exception
+handler will make use of a
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-minecraft-extras/latest/org/incendo/cloud/minecraft/extras/ComponentCaptionFormatter.html", "ComponentCaptionFormatter") }}
+that wraps the caption value in a text component.
+
+You may choose to replace the caption formatter with a component formatter that uses [MiniMessage](https://docs.advntr.dev/minimessage/index.html) by using
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-minecraft-extras/latest/org/incendo/cloud/minecraft/extras/ComponentCaptionFormatter.html", "ComponentCaptionFormatter.miniMessage()") }}.
+[MiniMessage](https://docs.advntr.dev/minimessage/index.html) will then be used for both styling and placeholder replacements.
 
 ## Rich Description
 

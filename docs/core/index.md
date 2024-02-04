@@ -17,28 +17,7 @@ Generally you'll want to depend on a platform module which implements Cloud for 
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-core).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependency>
-      <groupId>org.incendo</groupId>
-      <artifactId>cloud-core</artifactId>
-      <version>2.0.0-beta.1</version>
-    </dependency>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-core:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-core:2.0.0-beta.1'
-    ```
+{{ dependency_listing("core") }}
 
 ## Command
 
@@ -112,18 +91,18 @@ and suggestions with tooltips in
 
 The execution coordinator is responsible for coordinating command parsing and execution.
 You may create a simple execution coordinator by using
-[`ExecutionCoordinator.simpleCoordinator()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#simpleCoordinator()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#simpleCoordinator()", "ExecutionCoordinator.simpleCoordinator()") }}
 which will not
 enforce any particular executor and both parsing and suggestion generation will take place on the calling
 thread unless the parser or suggestion provider redirects to another executor.
 
 You may also use
-[`ExecutionCoordinator.asyncCoordinator()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#asyncCoordinator()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#asyncCoordinator()", "ExecutionCoordinator.asyncCoordinator()") }}
 to create an execution coordinator that will perform
 parsing and suggestion generation asynchronously. You may customize the asynchronous coordinator by using
-[`ExecutionCoordinator.builder()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#builder()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#builder()", "ExecutionCoordinator.builder()") }}
 and supply different executors for different execution steps, or use
-[`ExecutionCoordinator.coordinatorFor(Executor)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#coordinatorFor(java.util.concurrent.Executor)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/ExecutionCoordinator.html#coordinatorFor(java.util.concurrent.Executor)", "ExecutionCoordinator.coordinatorFor(Executor)") }}
 to supply an executor which is used at every execution step.
 
 ### Building a command
@@ -133,9 +112,9 @@ to supply an executor which is used at every execution step.
 
 Commands are created using a command builder.
 You may either create a new builder by calling
-[`Command#newBuilder`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.html#newBuilder(java.lang.String,org.incendo.cloud.meta.CommandMeta,org.incendo.cloud.description.Description,java.lang.String...)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.html#newBuilder(java.lang.String,org.incendo.cloud.meta.CommandMeta,org.incendo.cloud.description.Description,java.lang.String...)", "Command#newBuilder") }}
 or through the command manager using
-[`CommandManager#commandBuilder`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandBuilderSource.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandBuilderSource.html", "CommandManager#commandBuilder") }}.
 It is recommended to use the command manager to create a new command builder, as this ties the command builder
 to the [parser registry](#parser-registry).
 
@@ -144,9 +123,9 @@ This allows you to store intermediate steps and reuse them to build multiple dis
 
 You must register your command to the command manager for it to be recognized.
 You do this by calling
-[`CommandManager#command(Command)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command)", "CommandManager#command(Command)") }}
 or
-[`CommandManager#command(Command.Builder)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command.Builder)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command.Builder)", "CommandManager#command(Command.Builder)") }}.
 
 #### Descriptions
 
@@ -174,11 +153,11 @@ builder.description(Description.of("The description"))
 ##### Command descriptions
 
 Command descriptions can be added through the command builder by calling
-[`Command.Builder#commandDescription(CommandDescription)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#commandDescription(org.incendo.cloud.description.CommandDescription)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#commandDescription(org.incendo.cloud.description.CommandDescription)", "Command.Builder#commandDescription(CommandDescription)") }}.
 The
-[`CommandDescription`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/description/CommandDescription.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/description/CommandDescription.html", "CommandDescription") }}
 instance contains two instances of
-[`Description`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/description/Description.html),
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/description/Description.html", "Description") }},
 one short version and an optional verbose version.
 
 ```java
@@ -204,9 +183,9 @@ Depending on the platform, it might also determine who is allowed to _see_ the c
 The permission is ultimately evaluated by the platform integration.
 Though, cloud has support for some more complex permission types, such as:
 
-- [`Permission.anyOf(Permission...)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/permission/Permission.html#allOf(org.incendo.cloud.permission.Permission...)>): Takes in multiple permissions and evaluates to `true` if any of the permissions evaluate to `true`.
-- [`Permission.allOf(Permission...)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/permission/Permission.html#anyOf(org.incendo.cloud.permission.Permission...)>): Takes in multiple permissions and evaluates to `true` if all the permissions evaluate to `true`.
-- [`PredicatePermission.of(Predicate)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/permission/Permission.html#of(java.lang.String)>): Evaluates to `true` if the predicate evaluates to `true`.
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/permission/Permission.html#allOf(org.incendo.cloud.permission.Permission...)", "Permission.anyOf(Permission...)") }}: Takes in multiple permissions and evaluates to `true` if any of the permissions evaluate to `true`.
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/permission/Permission.html#anyOf(org.incendo.cloud.permission.Permission...)", "Permission.allOf(Permission...)") }}: Takes in multiple permissions and evaluates to `true` if all the permissions evaluate to `true`.
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/permission/Permission.html#of(java.lang.String)", "PredicatePermission.of(Predicate)") }}: Evaluates to `true` if the predicate evaluates to `true`.
 
 #### Sender types
 
@@ -220,7 +199,7 @@ that maps between your custom type and the native command sender type.
 When you create a command you may override the sender type for that specific command, as long as the new
 sender type has `<C>` as its supertype.
 This is done by using the
-[`Command.Builder#senderType(Class)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#senderType(java.lang.Class)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#senderType(java.lang.Class)", "Command.Builder#senderType(Class)") }}
 method.
 Cloud will make sure that the sender is of the right type when executing the command, and will fail exceptionally
 if it isn't.
@@ -263,7 +242,7 @@ They may have secondary aliases, depending on the platform you're targeting.
 Literals may be placed after required variable components, but never after optional variable components.
 
 The literals are created by using the various different
-[`Command.Builder#literal`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#literal(java.lang.String,java.lang.String...)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#literal(java.lang.String,java.lang.String...)", "Command.Builder#literal") }}
 methods, for example:
 
 ```java title="Example of literals"
@@ -282,20 +261,20 @@ Literals are always required.
 
 Variable components are parsed using parsers.
 You can create a variable component either by using a
-[`CommandComponent.Builder`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.Builder.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.Builder.html", "CommandComponent.Builder") }}
 that you create using
-[`CommandComponent.builder`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.html#builder()>),
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.html#builder()", "CommandComponent.builder") }},
 or by using one of the many different
-[`Command.Builder`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html", "Command.Builder") }}
 overloads.
 
 The component wraps a [parser](#parsers), but in many cases you will want to work with a
-[`ParserDescriptor`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ParserDescriptor.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ParserDescriptor.html", "ParserDescriptor") }}
 instead.
 A
-[`ParserDescriptor`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ParserDescriptor.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ParserDescriptor.html", "ParserDescriptor") }}
 is a structure containing an
-[`ArgumentParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParser.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParser.html", "ArgumentParser") }}
 as well as a `TypeToken` that describes the object
 produced by the parser.
 If you do not provide a parser descriptor, then you will have to manually specify the value type.
@@ -303,33 +282,33 @@ If you do not provide a parser descriptor, then you will have to manually specif
 All variable components have a name.
 When you want to extract the parsed values in a [command handler](#handler) you do so using the component name.
 You may use a
-[`CloudKey<T>`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/key/CloudKey.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/key/CloudKey.html", "CloudKey<T>") }}
 instead of the name, which then allows you to retrieve the parsed values
 in a type-safe manner.
 
 ##### Required
 
 You can create a required variable component either by using
-[`CommandComponent.Builder#required()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.Builder.html#required()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.Builder.html#required()", "CommandComponent.Builder#required()") }}
 or any
 of the many different overloaded `required` factory methods in
-[`Command.Builder`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html", "Command.Builder") }}.
 
 ##### Optional
 
 You can create a required variable component either by using
-[`CommandComponent.Builder#optional()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.Builder.html#optional()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/CommandComponent.Builder.html#optional()", "CommandComponent.Builder#optional()") }}
 or any
 of the many different overloaded `optional` factory methods in
-[`Command.Builder`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html", "Command.Builder") }}
 .
 
 When creating an optional variable component you may supply a default value. The default value will be used in the case
 that the user has not supplied any input for the component. There are three different types of default values:
 
-- [`DefaultValue.constant(Value)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html#constant(T)>): A constant default value.
-- [`DefaultValue.dynamic(Function)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html#dynamic(org.incendo.cloud.component.DefaultValue)>): A dynamic value that is evaluated when the command is parsed.
-- [`DynamicValue.parsed(String)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html#parsed(java.lang.String)>): A string that is parsed by the component parser when the command is parsed.
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html#constant(T)", "DefaultValue.constant(Value)") }}: A constant default value.
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html#dynamic(org.incendo.cloud.component.DefaultValue)", "DefaultValue.dynamic(Function)") }}: A dynamic value that is evaluated when the command is parsed.
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/component/DefaultValue.html#parsed(java.lang.String)", "DynamicValue.parsed(String)") }}: A string that is parsed by the component parser when the command is parsed.
 
 ##### Component pre-processing
 
@@ -343,12 +322,12 @@ You can find it here:
 
 #### Command context
 
-The [`CommandContext`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html)
+The {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html", "CommandContext") }}
 is used to store values throughout the parsing process, such as parsed component values,
 values from preprocessors, parsed flags, etc.
 
 You can fetch values from the command context using both strings and
-[`CloudKey`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/key/CloudKey.html). It is recommended to use
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/key/CloudKey.html", "CloudKey") }}. It is recommended to use
 keys to access values from the context as they are type-safe.
 
 ```java title="Example context usage"
@@ -369,7 +348,7 @@ final List<Cat> cats = commandContext.inject(new TypeToken<List<Cat>>() {});
 #### Handler
 
 The command handler is an instance of
-[`CommandExecutionHandler`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.html", "CommandExecutionHandler") }}
 and is invoked when a command has been parsed successfully.
 Depending on the command execution coordinator the handler might be invoked asynchronously.
 The handler is passed an instance of the [command context](#command-context).
@@ -381,27 +360,32 @@ builder.handler(ctx -> {
 ```
 
 You may implement
-[`CommandExecutionHandler.FutureCommandExecutionHandler`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.FutureCommandExecutionHandler.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.FutureCommandExecutionHandler.html", "CommandExecutionHandler.FutureCommandExecutionHandler") }}
 to have the handler be a future-returning
-function. Cloud will wait for the future to complete and will handle any completion exceptions gracefully.
+function. Cloud will wait for the future to complete and will handle any completion exceptions gracefully. You may
+use the `futureHandler` command builder method to specify a future-returning handler:
+
+```java
+builder.futureHandler(ctx -> CompletableFuture.completedFuture(null))
+```
 
 You may delegate to other handlers using
-[`CommandExecutionHandler.delegatingExecutionHandler`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.html#delegatingExecutionHandler(java.util.List)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/execution/CommandExecutionHandler.html#delegatingExecutionHandler(java.util.List)", "CommandExecutionHandler.delegatingExecutionHandler") }}.
 The command builder also has some utility functions for creating handlers that delegate to the existing handler, like
-[`Command.Builder#prependHandler`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#prependHandler(org.incendo.cloud.execution.CommandExecutionHandler)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#prependHandler(org.incendo.cloud.execution.CommandExecutionHandler)", "Command.Builder#prependHandler") }}
 and
-[`Command.Builder#appendHandler`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#appendHandler(org.incendo.cloud.execution.CommandExecutionHandler)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/Command.Builder.html#appendHandler(org.incendo.cloud.execution.CommandExecutionHandler)", "Command.Builder#appendHandler") }}.
 
 ### Registering commands
 
 The command may be registered to the command manager by using
-[`CommandManager#command(Command)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command)", "CommandManager#command(Command)") }}.
 You may also register a command builder using
-[`CommandManager#command(Command.Builder)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command.Builder)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#command(org.incendo.cloud.Command.Builder)", "CommandManager#command(Command.Builder)") }}
 in which case the command will be built by the manager.
 
 Commands may also be registered by passing a
-[`CommandFactory`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandFactory.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandFactory.html", "CommandFactory") }}
 to the command manager.
 The command factory is an interface which outputs a list of commands.
 
@@ -411,23 +395,23 @@ The command factory is an interface which outputs a list of commands.
 
 When a command is entered by a command sender, it goes through the following stages:
 
-1. It is converted into a [`CommandInput`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandInput.html) instance.
+1. It is converted into a {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandInput.html", "CommandInput") }} instance.
 2. A command context is created for the input.
 3. The context is passed to the preprocessors, which may alter the command input or write to the context.
-   - If a command processor causes an interrupt using [`ConsumerService.interrupt()`](<https://javadoc.io/doc/org.incendo/cloud-services/latest/org/incendo/cloud/services/type/ConsumerService.html#interrupt()>) the context will be filtered out
+   - If a command processor causes an interrupt using {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-services/latest/org/incendo/cloud/services/type/ConsumerService.html#interrupt()", "ConsumerService.interrupt()") }} the context will be filtered out
      and the command will not be parsed.
 4. The input is parsed into a command chain, and the parsed values are written to the context.
    - If the input cannot be parsed into a command that the sender is allowed to execute, the sender is
      notified and the parsing is canceled.
 5. The command postprocessors get to act on the command, and may alter the command context.
    They may also postpone command execution, which can be used to require confirmations, etc.
-   - If a postprocessor causes an interrupt using [`ConsumerService.interrupt()`](<https://javadoc.io/doc/org.incendo/cloud-services/latest/org/incendo/cloud/services/type/ConsumerService.html#interrupt()>) the command will not be executed.
+   - If a postprocessor causes an interrupt using {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-services/latest/org/incendo/cloud/services/type/ConsumerService.html#interrupt()", "ConsumerService.interrupt()") }} the command will not be executed.
 6. The command is executed using the command executor.
 
 The pre- and post-processors can be registered to the command manager using
-[`CommandManager#registerCommandPreProcessor`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#registerCommandPreProcessor(org.incendo.cloud.execution.preprocessor.CommandPreprocessor)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#registerCommandPreProcessor(org.incendo.cloud.execution.preprocessor.CommandPreprocessor)", "CommandManager#registerCommandPreProcessor") }}
 and
-[`CommandManager#registerCommandPostProcessor`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#registerCommandPostProcessor(org.incendo.cloud.execution.postprocessor.CommandPostprocessor)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#registerCommandPostProcessor(org.incendo.cloud.execution.postprocessor.CommandPostprocessor)", "CommandManager#registerCommandPostProcessor") }}.
 
 Incendo maintains some processors that you may depend on in your projects:
 
@@ -439,9 +423,9 @@ Incendo maintains some processors that you may depend on in your projects:
 
 Cloud v2 introduced a new exception handling system.
 You may register exception handlers through the
-[`ExceptionController`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/handling/ExceptionController.html),
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/handling/ExceptionController.html", "ExceptionController") }},
 which can be retrieved using
-[`CommandManager#exceptionController`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#exceptionController()>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#exceptionController()", "CommandManager#exceptionController") }}.
 
 Cloud will attempt to match a thrown exception to any of the registered exception handlers,
 giving preference to the most specific exception type and to the last registered handler.
@@ -452,14 +436,14 @@ Cloud will iterate over the exception handlers (giving preference to the last re
 consumes the exception, which allows for the registration of default handlers.
 
 Some exception types, such as
-[`ArgumentParseException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html", "ArgumentParseException") }}
 and
-[`CommandExecutionException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/CommandExecutionException.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/CommandExecutionException.html", "CommandExecutionException") }}
 wrap the actual exceptions
 thrown by the parser or command handler.
 By default, Cloud will forward the wrapper exceptions.
 If you instead want to be able to register exception handlers for the causes, then you may use the
-[`ExceptionHandler.unwrappingHandler()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/handling/ExceptionHandler.html#unwrappingHandler()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/handling/ExceptionHandler.html#unwrappingHandler()", "ExceptionHandler.unwrappingHandler()") }}
 methods to unwrap these exceptions.
 You can choose to unwrap all instances of a given exception type, all instances with a given cause type or
 all instances that pass a given predicate.
@@ -467,52 +451,16 @@ all instances that pass a given predicate.
 Command exceptions are thrown whenever a command cannot be parsed or executed normally.
 This can be for several reasons, such as:
 
-- The command sender does not have the required permission ([`NoPermissionException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoPermissionException.html))
-- The command sender is of the wrong type ([`InvalidCommandSenderException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidCommandSenderException.html))
-- The requested command does not exist ([`NoSuchCommandException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoSuchCommandException.html))
-- The provided command input is invalid ([`InvalidSyntaxException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidSyntaxException.html))
-- The parser cannot parse the input provided ([`ArgumentParseException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html))
+- The command sender does not have the required permission ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoPermissionException.html)", "NoPermissionException") }}
+- The command sender is of the wrong type ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidCommandSenderException.html)", "InvalidCommandSenderException") }}
+- The requested command does not exist ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoSuchCommandException.html)", "NoSuchCommandException") }}
+- The provided command input is invalid ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidSyntaxException.html)", "InvalidSyntaxException") }}
+- The parser cannot parse the input provided ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html)", "ArgumentParseException") }}
 
-##### Captions
+##### Localization
 
-[`ParserException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html)
-makes use of Cloud's caption system.
-(Nearly) all argument parsers in Cloud will throw
-[`ParserException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html) on invalid input, in which case you're able
-to override the exception message by configuring the manager's [`CaptionRegistry`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/CaptionRegistry.html).
-
-The caption registry allows you to register caption providers that provide values for caption keys.
-You may register multiple caption providers and the registry will iterate over them until one responds
-with a non-`null` value.
-There are some static factory methods in
-[`CaptionProvider`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/CaptionProvider.html)
-that help generating providers for constant values.
-All standard caption keys can be found in
-[StandardCaptionKeys](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/caption/StandardCaptionKeys.html).
-Some platform adapters have their own caption key classes as well.
-
-The JavaDoc for the caption keys list their replacement variables.
-The message registered for the caption will have those variables replaced with variables specific to the parser.
-`<input>` is accepted by all parser captions, and will be replaced with the input that caused the exception
-to be thrown.
-
-<!-- prettier-ignore -->
-!!! example annotate "Example caption registry usage"
-    ```java
-    final CaptionRegistry<SenderType> registry = manager.captionRegistry();
-    registry.registerProvider(CaptionProvider.constantProvider(
-            StandardCaptionKeys.ARGUMENT_PARSE_FAILURE_BOOLEAN,
-            "'<input>' ain't a boolean >:("
-    ));
-    ```
-
-You may create a custom caption formatter that generates more complex output types than strings.
-This is particularly useful if you want to route the captions through some external system to generate
-platform-native message types (i.e. `Component` for Minecraft). You may format captions using this custom
-type by invoking
-[`ParserException#formatCaption`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter)>)
-or
-[`CommandContext#formatCaption`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html#formatCaption(org.incendo.cloud.caption.CaptionFormatter,org.incendo.cloud.caption.Caption,org.incendo.cloud.caption.CaptionVariable...)>).
+The default exception handlers make use of translatable captions.
+You may learn more about customizing the messages in the section about [Localization](../localization/index.md).
 
 ## Parsers
 
@@ -526,7 +474,7 @@ The parser registry is primarily used in two different places:
 
 If you are creating a library or using [cloud-annotations](../annotations/index.md), it is recommended to register your parser
 in the parser registry. You can access the parser registry via
-[`CommandManager#parserRegistry`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#parserRegistry()>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#parserRegistry()", "CommandManager#parserRegistry") }}.
 The parser suppliers get access to a structure containing parser parameters.
 These parameters are most often mapped to annotations, and allow for the customization of the parsers
 when using [cloud-annotations](../annotations/index.md).
@@ -558,7 +506,7 @@ Cloud has four different string "modes":
 The string parsers do not produce suggestions by default.
 
 The string parsers can be created using the static factory methods found in
-[`StringParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/StringParser.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/StringParser.html", "StringParser") }}.
 
 #### String Array
 
@@ -569,7 +517,7 @@ it encounters a [flag](#flags).
 The string array parser does not produce suggestions by default.
 
 The string array parser can be created using the static factory methods found in
-[`StringArrayParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/StringArrayParser.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/StringArrayParser.html", "StringArrayParser") }}.
 
 #### Character
 
@@ -577,7 +525,7 @@ This parses a single space-delimited character.
 The character parser does not produce suggestions by default.
 
 The character parser can be created using the static factory methods found in
-[`CharacterParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/CharacterParser.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/CharacterParser.html", "CharacterParser") }}.
 
 #### Numbers
 
@@ -588,12 +536,12 @@ Cloud will generate suggestions for all numerical types, except for `float` and 
 
 The numerical parsers can be created using the static factory methods found in:
 
-- [`ByteParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/ByteParser.html)
-- [`ShortParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/ShortParser.html)
-- [`IntegerParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/IntegerParser.html)
-- [`LongParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/LongParser.html)
-- [`DoubleParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/DoubleParser.html)
-- [`FloatParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/FloatParser.html)
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/ByteParser.html", "ByteParser") }}
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/ShortParser.html", "ShortParser") }}
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/IntegerParser.html", "IntegerParser") }}
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/LongParser.html", "LongParser") }}
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/DoubleParser.html", "DoubleParser") }}
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/FloatParser.html", "FloatParser") }}
 
 #### Boolean
 
@@ -602,7 +550,7 @@ A strict boolean parser only accepts (independent of the case) `true` and `false
 A liberal boolean parser also accepts `yes`, `no`, `on` and `off`.
 
 The boolean parser can be created using the static factory methods found in
-[`BooleanParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/BooleanParser.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/BooleanParser.html", "BooleanParser") }}.
 
 #### Enum
 
@@ -610,14 +558,14 @@ The enum parser matches the input (independent of the case) to the names of an e
 the enum values as suggestions.
 
 The enum parser can be created using the static factory methods found in
-[`EnumParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/EnumParser.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/EnumParser.html", "EnumParser") }}.
 
 #### UUID
 
 The UUID parser parses dash-separated UUIDs.
 
 The UUID parser can be created using the static factory methods found in
-[`UUIDParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/UUIDParser.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/standard/UUIDParser.html", "UUIDParser") }}.
 
 ### Flags
 
@@ -634,9 +582,9 @@ When referring to the full name of a flag, you use `--name` whereas an alias use
 You can chain the aliases of multiple presence flags together, such that `-a -b -c` is equivalent to `-abc`.
 
 The flag values are contained in
-[`FlagContext`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/flag/FlagContext.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/flag/FlagContext.html", "FlagContext") }}
 which can be retrieved using
-[`CommandContext#flags()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html#flags()>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/context/CommandContext.html#flags()", "CommandContext#flags()") }}.
 
 <!-- prettier-ignore -->
 !!! example "Example of a command with a presence flag"
@@ -655,27 +603,12 @@ An aggregate parser is a combination of multiple parsers that maps the intermedi
 type using a mapper.
 
 You may either implement the
-[`AggregateParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html", "AggregateParser") }}
 interface, or using construct the parser by using a builder
 that you create by calling
-[`AggregateParser.builder()`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html#builder()>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html#builder()", "AggregateParser.builder()") }}.
 
-<!-- prettier-ignore -->
-!!! example "Example Aggregate Parser"
-    ```java
-    final AggregateParser<CommandSender, Location> locationParser = AggregateParser.<CommandSender>builder()
-        .withComponent("world", worldParser())
-        .withComponent("x", integerParser())
-        .withComponent("y", integerParser())
-        .withComponent("z", integerParser())
-        .withMapper(Location.class, (commandContext, aggregateCommandContext) -> {
-            final World world = aggregateCommandContext.get("world");
-            final int x = aggregateCommandContext.get("x");
-            final int y = aggregateCommandContext.get("y");
-            final int z = aggregateCommandContext.get("z");
-            return CompletableFuture.completedFuture(new Location(world, x, y, z));
-    }).build();
-    ```
+{{ snippet("AggregateParserExample.java", title = "Example Aggregate Parser") }}
 
 ### Either
 
@@ -687,17 +620,7 @@ The parser will first attempt to parse the primary type `A`, and if this fails i
 fallback type `B`. The suggestions of both the primary and fallback parsers will be joined when using the parser
 as the suggestion provider.
 
-```java title="Example of Either"
-commandBuilder.required("either", ArgumentParser.firstOf(integerParser(), booleanParser()))
-  .handler(context -> {
-      Either<Integer, Boolean> either = context.get("either");
-      if (either.primary().isPresent()){
-          int integer = either.primary().get();
-      } else {
-          boolean bool = either.fallback().get();
-      }
-  });
-```
+{{ snippet("EitherExample.java", title = "Example of Either") }}
 
 ### Custom Parsers
 
@@ -729,7 +652,7 @@ The recommended way of parsing an argument is to:
 
 The parser has two different choices when it comes to which method to implement.
 If the parser implements
-[`ArgumentParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParser.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParser.html", "ArgumentParser") }}
 then the signature looks like
 
 ```java
@@ -739,14 +662,14 @@ public ArgumentParseResult<OutputType> parse(
 ```
 
 where the
-[`ArgumentParseResult`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html", "ArgumentParseResult") }}
 can either be a
-[`ArgumentParseResult.success(OutputType)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html#success(T)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html#success(T)", "ArgumentParseResult.success(OutputType)") }}
 or
-[`ArgumentParseResult.failure(Exception)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html#failure(java.lang.Throwable)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParseResult.html#failure(java.lang.Throwable)", "ArgumentParseResult.failure(Exception)") }}.
 
 The parser may also implement
-[`ArgumentParser.FutureArgumentParser`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParser.FutureArgumentParser.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/ArgumentParser.FutureArgumentParser.html", "ArgumentParser.FutureArgumentParser") }}
 in which case the signature looks like
 
 ```java
@@ -759,34 +682,14 @@ in which case, a successful result is returned as a completed future, and a fail
 exceptionally completed future.
 Returning a future is useful when the parsing needs to take place on a specific thread.
 
-<!-- prettier-ignore -->
-!!! example annotate "Example Parser"
-    ```java
-    public class UUIDParser<C /* (1)! */> implements ArgumentParser<C, UUID> {
-
-        @Override
-        public ArgumentParseResult<UUID> parse(
-                CommandContext<C> context,
-                CommandInput input
-        ) {
-            final String input = input.peekString(); // Does not remove the string from the input!
-            try {
-                final UUID uuid = UUID.fromString(input);
-                input.readString(); // Removes the string from the input.
-                return ArgumentParseResult.success(uuid);
-            } catch(final IllegalArgumentException e) {
-                return ArgumentParseResult.failure(new UUIDParseException(input, commandContext));
-            }
-        }
-    }
-    ```
+{{ snippet("UUIDParser.java", title = "Example Parser") }}
 
 1. The command sender type.
 
 #### Exceptions
 
 It is recommended to make use of
-[`ParserException`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/parsing/ParserException.html", "ParserException") }}
 when returning a failed result. This allows for integration with the caption system,
 see [exception handling](#exception-handling) for more information.
 
@@ -797,19 +700,19 @@ These suggestions will be used to provide suggestions for the component using th
 unless the component is created using a custom suggestion provider.
 
 Parsers implement
-[`SuggestionProviderHolder`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html", "SuggestionProviderHolder") }}
 which means that they can return a suggestion provider by overriding
 the
-[`suggestionProvider`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html#suggestionProvider()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html#suggestionProvider()", "suggestionProvider") }}
 method.
 However, the recommended way of providing suggestions is by implementing one of the suggestion provider
-interfaces ([`SuggestionProvider`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProvider.html),
-[`BlockingSuggestionProvider`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.html),
+interfaces ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProvider.html", "SuggestionProvider") }},
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.html", "BlockingSuggestionProvider") }},
 or
-[`BlockingSuggestionProvider.Strings`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.Strings.html)).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.Strings.html)", "BlockingSuggestionProvider.Strings") }}.
 
 If the parser implements a suggestion provider interface it does not need to override the
-[`suggestionProvider`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html#suggestionProvider()>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html#suggestionProvider()", "suggestionProvider") }}
 method, as it'll return `this` by default.
 
 ## Extra
@@ -818,15 +721,15 @@ method, as it'll return `this` by default.
 
 Cloud has a system that assists in querying for command information.
 This is accessible through the
-[`HelpHandler`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandler.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandler.html", "HelpHandler") }}
 that can be accessed using
-[`CommandManager#createHelpHandler`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#createHelpHandler()>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#createHelpHandler()", "CommandManager#createHelpHandler") }}.
 This invokes a
-[`HelpHandlerFactory`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandlerFactory.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandlerFactory.html", "HelpHandlerFactory") }}.
 You may replace the default
-[`HelpHandlerFactory`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandlerFactory.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandlerFactory.html", "HelpHandlerFactory") }}
 using
-[`CommandManager#helpHandlerFactory(HelpHandlerFactory)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#helpHandlerFactory(org.incendo.cloud.help.HelpHandlerFactory)>)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/CommandManager.html#helpHandlerFactory(org.incendo.cloud.help.HelpHandlerFactory)", "CommandManager#helpHandlerFactory(HelpHandlerFactory)") }}
 to change how the information is generated.
 
 The help handler will try to output as much information as it can, depending on how precise the query is.
@@ -837,9 +740,9 @@ There are three types of query results:
 - **Verbose**: Returns verbose information about a specific command.
 
 You may query for results by using
-[`HelpHandler#query(HelpQuery)`](<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandler.html#query(org.incendo.cloud.help.HelpQuery)>).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpHandler.html#query(org.incendo.cloud.help.HelpQuery)", "HelpHandler#query(HelpQuery)") }}.
 The help handler does not display any information, this is instead done by a
-[`HelpRenderer`](https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpRenderer.html).
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/help/HelpRenderer.html", "HelpRenderer") }}.
 `cloud-core` does not contain any implementations of the help renderer as this is highly platform-specific,
 but [cloud-minecraft-extras](../minecraft/minecraft-extras.md#minecraft-help)
 contains an opinionated implementation of the help system for Minecraft.

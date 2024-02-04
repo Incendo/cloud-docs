@@ -38,15 +38,7 @@ The example module contains a Spring Boot application with a couple of commands.
 
 ## usage
 
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.incendo</groupId>
-        <artifactId>cloud-spring</artifactId>
-        <version>1.0.0-beta.1</version>
-    </dependency>
-</dependencies>
-```
+{{ dependency_listing("spring") }}
 
 You should first familiarize yourself with the [cloud-core](../core/index.md) docs.
 The easiest way to use the `SpringCommandManager` is by using `SpringCommandSender` as the command sender type,

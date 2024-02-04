@@ -4,21 +4,7 @@ Postprocessor that adds the ability to require an extra confirmation before exec
 
 ## Installation
 
-Snapshots are available on the Sonatype Snapshots Repository:
-
-```xml
-<!-- For Snapshots -->
-<repository>
-  <id>sonatype-snapshots</id>
-  <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-</repository>
-
-<dependency>
-    <groupId>org.incendo</groupId>
-    <artifactId>cloud-processors-confirmation</artifactId>
-    <version>1.0.0-beta.1</version>
-</dependency>
-```
+{{ dependency_listing("processors-confirmation", "processors") }}
 
 ## Usage
 

@@ -2,7 +2,7 @@
 
 The `cloud-bukkit` module is home to parsers and other classes that make up the base of Cloud for Bukkit-based platforms.
 `cloud-bukkit` is not intended to be consumed as a direct dependency, instead it should be consumed as
-a transitive dependency of [`cloud-paper`](paper.md).
+a transitive dependency of {{ javadoc("paper.md", "cloud-paper") }}.
 
 ## Links
 
@@ -37,7 +37,7 @@ a transitive dependency of [`cloud-paper`](paper.md).
 ### NamespacedKeyParser
 
 The
-[`NamespacedKeyParser`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/parser/NamespacedKeyParser.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/parser/NamespacedKeyParser.html", "NamespacedKeyParser") }}
 parses namespaced key in the form `namespace:key`.
 
 #### Annotations
@@ -45,14 +45,14 @@ parses namespaced key in the form `namespace:key`.
 ###### `@DefaultNamespace`
 
 Use
-[`@DefaultNamespace("namespace")`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/annotation/specifier/DefaultNamespace.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/annotation/specifier/DefaultNamespace.html", "@DefaultNamespace(\"namespace\")") }}
 on a component to set the namespace which will be used in the case that no
 namespace is supplied by the command sender.
 
 ###### `@RequireExplicitNamespace`
 
 Use
-[`@RequireExplicitNamespace`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/annotation/specifier/RequireExplicitNamespace.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/annotation/specifier/RequireExplicitNamespace.html", "@RequireExplicitNamespace") }}
 to fail parsing if the command sender does not supply a namespace.
 
 ### Selectors
@@ -62,7 +62,7 @@ to fail parsing if the command sender does not supply a namespace.
 ##### `@AllowEmptySelection`
 
 Use
-[`@AllowEmptySelection`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/annotation/specifier/AllowEmptySelection.html)
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/annotation/specifier/AllowEmptySelection.html", "@AllowEmptySelection") }}
 to allow the command sender to execute a command with a selector which selects zero entities.
 
 ## Descriptions
@@ -71,6 +71,14 @@ Cloud will register all root literals to the Bukkit [CommandMap](https://jd.pape
 which means that they will show up in the Bukkit help menu.
 Cloud will try to determine the description for the Bukkit help menu by:
 
-1. Use the [`BukkitCommandMeta.BUKKIT_DESCRIPTION`](https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitCommandMeta.html) [meta](../core/index.md#command-meta) value of the command, if it exists.
+1. Use the {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitCommandMeta.html", "BukkitCommandMeta.BUKKIT_DESCRIPTION") }} [meta](../core/index.md#command-meta) value of the command, if it exists.
 2. Using the [CommandDescription](../core/index.md#command-descriptions), if a command is attached directly to the root literal.
 3. Use the root literal [Description](../core/index.md#component-descriptions), if it's non-empty.
+
+## Localization
+
+`cloud-bukkit` provides additional caption keys for the [localization](../localization/index.md) system.
+These can be found in
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitCaptionKeys.html", "BukkitCaptionKeys") }}.
+The default caption values can be found in
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-bukkit/latest/org/incendo/cloud/bukkit/BukkitDefaultCaptionsProvider.html", "BukkitDefaultCaptionsProvider") }}.

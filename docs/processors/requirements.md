@@ -8,21 +8,7 @@ are defined on a per-command basis.
 
 ## Installation
 
-Snapshots are available on the Sonatype Snapshots Repository:
-
-```xml
-<!-- For Snapshots -->
-<repository>
-  <id>sonatype-snapshots</id>
-  <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-</repository>
-
-<dependency>
-    <groupId>org.incendo</groupId>
-    <artifactId>cloud-processors-requirements</artifactId>
-    <version>1.0.0-beta.1</version>
-</dependency>
-```
+{{ dependency_listing("processors-requirements", "processors") }}
 
 ## Usage
 

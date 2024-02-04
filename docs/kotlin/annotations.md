@@ -27,18 +27,7 @@ suspend fun yourCommand(
 
 Cloud is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-kotlin-coroutines-annotations).
 
-<!-- prettier-ignore -->
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-kotlin-coroutines-annotations:2.0.0-beta.1'
-    ```
+{{ dependency_listing("kotlin-coroutines-annotations", "core") }}
 
 You then need to install the `AnnotationParser` extension:
 

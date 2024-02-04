@@ -14,7 +14,7 @@
 
 | Minecraft version range | `cloud-minecraft-modded` version |
 | ----------------------- | -------------------------------- |
-| 1.19.4+                 | 2.0.0-beta.1                     |
+| 1.19.4+                 | {{ version.modded }}             |
 
 Keep in mind only the latest release is supported.
 

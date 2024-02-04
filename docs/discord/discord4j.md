@@ -8,30 +8,7 @@ An example bot using cloud-discord4j can be found [here](https://github.com/Ince
 
 Cloud for Discord4J is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-discord4j).
 
-<!-- prettier-ignore -->
-=== "Maven"
-
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.incendo</groupId>
-            <artifactId>cloud-discord4j</artifactId>
-            <version>1.0.0-beta.1</version>
-        </dependency>
-    </dependencies>
-    ```
-
-=== "Gradle (Kotlin)"
-
-    ```kotlin
-    implementation("org.incendo:cloud-discord4j:1.0.0-beta.1")
-    ```
-
-=== "Gradle (Groovy)"
-
-    ```groovy
-    implementation 'org.incendo:cloud-discord4j:1.0.0-beta.1'
-    ```
+{{ dependency_listing("discord4j") }}
 
 ## Usage
 
