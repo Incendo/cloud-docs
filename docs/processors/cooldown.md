@@ -24,7 +24,6 @@ CooldownConfiguration.<YourSenderType>builder()
         .repository(CooldownRepository.forMap(new HashMap<>()))
         .addActiveCooldownListener(...)
         .addCreationListener(...)
-        .cooldownNotifier(notifier)
         .build();
 ```
 
