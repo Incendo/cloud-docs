@@ -23,7 +23,7 @@ but an example would be:
 CooldownConfiguration.<YourSenderType>builder()
         .repository(CooldownRepository.forMap(new HashMap<>()))
         .addActiveCooldownListener(...)
-        .addCooldownCreationListener(...)
+        .addCreationListener(...)
         .cooldownNotifier(notifier)
         .build();
 ```
