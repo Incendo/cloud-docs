@@ -38,7 +38,7 @@ You then need to register the postprocessor to the command manager:
 
 ```java
 commandManager.registerCommandPostProcessor(
-  confirmationManager.createPostProcessor()
+  confirmationManager.createPostprocessor()
 );
 ```
 
