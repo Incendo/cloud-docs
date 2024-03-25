@@ -16,6 +16,7 @@
 - [MinecraftExceptionHandler](#minecraft-exception-handler)
 - [RichDescription](#rich-description)
 - [TextColorParser](#text-color-parser)
+- [ComponentParser](#component-parser)
 
 </div>
 
@@ -147,4 +148,18 @@ It parses `NamedTextColor`, legacy color codes using `&` as well as hex codes.
 
 ```java
 ParserDescriptor<?, TextColor> parser = TextColorParser.textColorParser();
+```
+
+## Component Parser
+
+`ComponentParser` is a [parser](../core/index.md#parsers) which parses Adventure `Component`s via
+a specified "decoder" function.
+
+```java
+// This creates a parser that uses MiniMessage for decoding the argument, and uses
+// greedy string parsing.
+ParserDescriptor<?, Component> parser = ComponentParser.componentParser(
+  MiniMessage.miniMessage(),
+  StringParser.StringMode.GREEDY_FLAG_YIELDING
+);
 ```
