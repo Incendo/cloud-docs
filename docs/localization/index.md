@@ -69,6 +69,10 @@ or
 used in the official Cloud modules. You may see the translation progress (and also contribute) yourself at
 our [Crowdin](https://crowdin.com/project/incendo-cloud) page.
 
+<!-- prettier-ignore -->
+!!! note
+    The `cloud-translations` modules require _at least_ Java 17.
+
 ### Usage
 
 These modules are available on [Maven Central](https://search.maven.org/search?q=g:org.incendo%20AND%20a:cloud-translations-*).
