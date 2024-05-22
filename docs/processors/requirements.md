@@ -18,7 +18,7 @@ by the generic types. Example:
 
 ```java
 public interface YourRequirementInterface
-  implements Requirement<YourSenderType, YourRequirementInterface> {
+  extends Requirement<YourSenderType, YourRequirementInterface> {
 
     // Example method
     @NonNull String errorMessage();
