@@ -52,7 +52,7 @@ the requirements in the command meta and for the processor to access the stored 
 public static final CloudKey<Requirements<YourSenderType, YourRequirementInterface>>
   REQUIREMENT_KEY = CloudKey.of(
         "requirements",
-        new TypeToken<CloudKey<Requirements<YourSenderType, YourRequirementInterface>>>() {}
+        new TypeToken<>() {}
 );
 ```
 
