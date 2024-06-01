@@ -8,7 +8,7 @@ The module can also function as an [annotation processor](#annotation-processing
 There are extensions to `cloud-annotations` for Kotlin, more information [here](../kotlin/annotations.md).
 
 Examples can be found on
-[GitHub](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-bukkit/src/main/java/cloud/commandframework/examples/bukkit/annotations)
+[GitHub](https://github.com/Incendo/cloud-minecraft/tree/master/examples/example-bukkit/src/main/java/org/incendo/cloud/examples/bukkit/annotations)
 
 ## Links
 
