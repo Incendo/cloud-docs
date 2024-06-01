@@ -7,6 +7,8 @@ dependencies {
 
   // Minecraft
   implementation(libs.cloud.minecraft.extras)
+  implementation(libs.cloud.minecraft.paper)
+  implementation(libs.paper)
 
   // Processors
   implementation(libs.cloud.processors.cooldown)
@@ -14,8 +16,8 @@ dependencies {
 
 indra {
   javaVersions {
-    minimumToolchain(17)
-    target(17)
+    minimumToolchain(21)
+    target(21)
   }
 }
 
