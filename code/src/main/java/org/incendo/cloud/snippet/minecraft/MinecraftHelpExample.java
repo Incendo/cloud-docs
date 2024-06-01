@@ -70,7 +70,7 @@ public class MinecraftHelpExample {
             .entries()
             .stream()
             .map(CommandEntry::syntax)
-            .map(Suggestion::simple)
+            .map(Suggestion::suggestion)
             .collect(Collectors.toList())
           )
         )
