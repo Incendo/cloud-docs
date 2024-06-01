@@ -10,23 +10,12 @@ Postprocessor that adds command cooldowns.
 
 The cooldown system is managed by a `CooldownManager`, so the first step is to create an instance of that:
 
-```java
-CooldownManager<YourSenderType> cooldownManager = CooldownManager.of(
-  configuration
-);
-```
+{{ snippet("processors/CooldownExample.java", section = "creation", title = "") }}
 
 The configuration is an instance of `CooldownConfiguration`. Refer to the JavaDocs for information about specific options,
 but an example would be:
 
-```java
-CooldownConfiguration.<YourSenderType>builder()
-        .repository(CooldownRepository.forMap(new HashMap<>()))
-        .addActiveCooldownListener(...)
-        .addCooldownCreationListener(...)
-        .cooldownNotifier(notifier)
-        .build();
-```
+{{ snippet("processors/CooldownExample.java", section = "configuration", title = "") }}
 
 The listeners are invoked when different events take place. The active cooldown listener in particular may be used to
 inform the command sender that their command execution got blocked due to an active cooldown.
@@ -40,49 +29,24 @@ You may create a repository from a map, `CloudCache` or even implement your own.
 across multiple temporary sessions then you may use a mapping repository to store the cooldown profiles for a persistent key,
 rather than the potentially temporary command sender objects:
 
-```java
-CooldownRepository repository = CooldownRepository.mapping(
-        sender -> sender.uuid(),
-        CooldownRepository.forMap(new HashMap<UUID, CooldownProfile>())
-);
-```
+{{ snippet("processors/CooldownExample.java", section = "mapping", title = "") }}
 
 You may also customize how the cooldown profiles are created by passing a `CooldownProfileFactory` to the `CooldownConfiguration`.
 
 If you want to have the cooldowns automatically removed from the repository to prevent unused profiles from taking up memory you
-may register a `ScheduledCleanupCreationListener`:
+may register a `ScheduledCleanupCreationListener` to the configuration, using
 
-```java
-CooldownRepository repository = CooldownRepository.forMap(new HashMap<>());
-ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-CooldownConfiguration configuration = CooldownConfiguration.<YourSenderType>builder()
-        // ...
-        .repository(repository)
-        .addCreationListener(new ScheduledCleanupCreationListener(executorService, repository))
-        .build();
-```
+{{ snippet("processors/CooldownExample.java", section = "cleanup", title = "") }}
 
 You then need to register the postprocessor:
 
-```java
-commandManager.registerCommandPostProcessor(
-  cooldownManager.createPostprocessor()
-);
-```
+{{ snippet("processors/CooldownExample.java", section = "registration", title = "") }}
 
 ### Builders
 
 The cooldowns are configured using a `Cooldown` instance:
 
-```java
-Cooldown cooldown = Cooldown.of(
-  DurationFunction.constant(Duration.ofMinutes(5L))
-);
-Cooldown cooldown = Cooldown.of(
-  DurationFunction.constant(Duration.ofMinutes(5L)),
-  CooldownGroup.named("group-name")
-);
-```
+{{ snippet("processors/CooldownExample.java", section = "cooldown", title = "") }}
 
 which can then be applied to the command by either manually setting the meta value:
 

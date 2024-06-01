@@ -22,6 +22,9 @@ dependencyResolutionManagement {
       name = "dv8tion"
       mavenContent { releasesOnly() }
     }
+    maven("https://repo.papermc.io/repository/maven-public/") {
+      name = "papermc"
+    }
   }
 }
 

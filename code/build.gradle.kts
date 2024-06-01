@@ -4,13 +4,20 @@ plugins {
 
 dependencies {
   implementation(libs.cloud.core)
+
+  // Minecraft
   implementation(libs.cloud.minecraft.extras)
+  implementation(libs.cloud.minecraft.paper)
+  implementation(libs.paper)
+
+  // Processors
+  implementation(libs.cloud.processors.cooldown)
 }
 
 indra {
   javaVersions {
-    minimumToolchain(8)
-    target(8)
+    minimumToolchain(21)
+    target(21)
   }
 }
 

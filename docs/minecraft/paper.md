@@ -24,28 +24,30 @@ Cloud for Paper is available through [Maven Central](https://central.sonatype.co
 
 ## Usage
 
-`cloud-paper` has a command manager implementation called
-{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html", "PaperCommandManager") }}
-that can be created in two ways.
+`cloud-paper` has two different command manager implementations:
+
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html", "PaperCommandManager") }}: Paper command API
+- {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/LegacyPaperCommandManager.html", "LegacyPaperCommandManager") }}: Legacy command API
+
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html", "PaperCommandManager") }} should be preferred
+when targeting Paper 1.20.6+ exclusively. The new manager allows registering commands at bootstrapping time in addition to `onEnable`,
+which allows for using those commands in datapack functions.
+
+If the plugin is targeting older Paper versions or non-paper servers, then
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/LegacyPaperCommandManager.html", "LegacyPaperCommandManager") }}
+should be used.
+
+### Legacy
+
+The legacy command manager can be instantiated in two different ways.
 
 With a custom sender type:
 
-```java
-PaperCommandManager<YourSenderType> commandManager = new PaperCommandManager<>(
-  yourPlugin, /* 1 */
-  executionCoordinator, /* 2 */
-  senderMapper /* 3 */
-);
-```
+{{ snippet("minecraft/PaperExample.java", section = "legacy_custom", title = "") }}
 
 Or, using Bukkit's {{ javadoc("https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html", "CommandSender") }}:
 
-```java
-PaperCommandManager<CommandSender> commandManager = PaperCommandManager.createNative(
-  yourPlugin, /* 1 */
-  executionCoordinator /* 2 */
-);
-```
+{{ snippet("minecraft/PaperExample.java", section = "legacy_native", title = "") }}
 
 1. You need to pass an instance of the plugin that is constructing the command manager. This is used to register
    the commands and the different event listeners.
@@ -55,16 +57,26 @@ PaperCommandManager<CommandSender> commandManager = PaperCommandManager.createNa
 3. The sender mapper is a two-way mapping between Bukkit's
    {{ javadoc("https://jd.papermc.io/paper/1.20/org/bukkit/command/CommandSender.html", "CommandSender") }} and your custom sender type.
    Using {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/SenderMapper.html#identity()>", "SenderMapper.identity()") }}
-   is equivalent to the {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#createNative(org.bukkit.plugin.Plugin,org.incendo.cloud.execution.ExecutionCoordinator)>", "createNative") }}
+   is equivalent to the {{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/LegacyPaperCommandManager.html#createNative(org.bukkit.plugin.Plugin,org.incendo.cloud.execution.ExecutionCoordinator)>", "createNative") }}
    static factory method.
+
+### Modern
+
+The modern command manager is created using a builder. You may either use the native
+{{ javadoc("https://jd.papermc.io/paper/1.20.6/io/papermc/paper/command/brigadier/CommandSourceStack.html", "CommandSourceStack") }}:
+{{ snippet("minecraft/PaperExample.java", section = "modern_native", title = "") }}
+
+or a custom type:
+{{ snippet("minecraft/PaperExample.java", section = "modern_custom", title = "") }}
 
 ## Brigadier
 
 Paper exposes [Brigadier](https://github.com/mojang/brigadier), which means that you may use the features
-from [cloud-brigadier](brigadier.md) on Paper servers.
+from [cloud-brigadier](brigadier.md) on Paper servers. When using the modern Paper manager, you do not need to explicitly
+enable Brigadier.
 
-You may enable Brigadier mappings using
-{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#registerBrigadier()>", "PaperCommandManager#registerBrigadier()") }}.
+When using the legacy command manager you may enable Brigadier mappings using
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/LegacyPaperCommandManager.html#registerBrigadier()>", "LegacyPaperCommandManager#registerBrigadier()") }}.
 You should make use of the
 capability system to make sure that Brigadier is available on the server your plugin is running on:
 
@@ -85,7 +97,7 @@ Paper allows for non-blocking suggestions. You are highly recommended to make us
 the argument parsers during suggestion generation which ideally should not take place on the main server thread.
 
 You may enable asynchronous completions using
-{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/PaperCommandManager.html#registerAsynchronousCompletions()>", "PaperCommandManager#registerAsynchronousCompletions()") }}.
+{{ javadoc("<https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/LegacyPaperCommandManager.html#registerAsynchronousCompletions()>", "LegacyPaperCommandManager#registerAsynchronousCompletions()") }}.
 You should make use of the capability system to make sure that this is available on the server your plugin is running on:
 
 ```java
