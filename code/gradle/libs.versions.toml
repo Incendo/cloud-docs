@@ -3,6 +3,7 @@ indra = "3.1.3"
 
 cloud = "2.0.0-rc.2"
 cloudMinecraft = "2.0.0-beta.8"
+cloudProcessors = "1.0.0-beta.3"
 
 [plugins]
 indra = { id = "net.kyori.indra", version.ref = "indra" }
@@ -10,3 +11,4 @@ indra = { id = "net.kyori.indra", version.ref = "indra" }
 [libraries]
 cloud-core = { group = "org.incendo", name = "cloud-core", version.ref = "cloud" }
 cloud-minecraft-extras = { group = "org.incendo", name = "cloud-minecraft-extras", version.ref = "cloudMinecraft" }
+cloud-processors-cooldown = { group = "org.incendo", name = "cloud-processors-cooldown", version.ref = "cloudProcessors" }
