@@ -39,7 +39,7 @@ should be used.
 
 !!! tip "Plugin Configuration Files"
 
-    Do not register your commands in your plugin.yml or paper-plugin.yml, Cloud handles the registration 
+    Do not register your commands in your plugin.yml or paper-plugin.yml, Cloud handles the registration
     itself and doing it yourself will cause issues.
 
 ### Legacy
@@ -140,10 +140,9 @@ if (commandManager.hasCapability(CloudBukkitCapabilities.NATIVE_BRIGADIER)) {
 
 ## Provided Sender Mapper
 
-Cloud includes a built-in sender mapper designed for the command manager. Due to the CommandSourceStack having no extensions it can be difficult to work, our sender mapper can be used like so:
+Cloud includes a built-in sender mapper designed for the command manager. Due to the CommandSourceStack having no exposed implementations it can be difficult to work,
+here's an example of creating a command manager with the sender mapper and using the provided mapped sender:
 
-```java
-PaperCommandManager.builder(PaperSimpleSenderMapper.simpleSenderMapper())
-```
+{{ snippet("minecraft/PaperExample.java", section = "modern_simple_sender_mapper", title = "") }}
 
 This will give you access to Source with the included extensions: PlayerSource, ConsoleSource, EntitySource and GenericSource

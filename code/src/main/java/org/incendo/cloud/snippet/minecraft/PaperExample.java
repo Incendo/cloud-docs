@@ -2,12 +2,16 @@ package org.incendo.cloud.snippet.minecraft;
 
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.incendo.cloud.SenderMapper;
 import org.incendo.cloud.execution.ExecutionCoordinator;
 import org.incendo.cloud.paper.LegacyPaperCommandManager;
 import org.incendo.cloud.paper.PaperCommandManager;
+import org.incendo.cloud.paper.util.sender.PaperSimpleSenderMapper;
+import org.incendo.cloud.paper.util.sender.PlayerSource;
+import org.incendo.cloud.paper.util.sender.Source;
 
 public class PaperExample {
 
@@ -56,6 +60,28 @@ public class PaperExample {
       .buildOnEnable(javaPlugin);
       // or: .buildBootstrapped(bootstrapContext);
     // --8<-- [end:modern_custom]
+  }
+
+  public void exampleModernSimpleSEnderMapper(
+    final @NonNull JavaPlugin javaPlugin
+  ) {
+    final ExecutionCoordinator<Source> executionCoordinator = ExecutionCoordinator.simpleCoordinator();
+    // --8<-- [start:modern_simple_sender_mapper]
+    PaperCommandManager<Source> commandManager = PaperCommandManager
+      .builder(PaperSimpleSenderMapper.simpleSenderMapper())
+      .executionCoordinator(executionCoordinator)
+      .buildOnEnable(javaPlugin);
+      // or: .buildBootstrapped(bootstrapContext);
+
+      // this command will only be available to players, and the player type is directly available.
+      commandManager.command(commandManager.commandBuilder("player_command")
+        .senderType(PlayerSource.class)
+        .handler(context -> {
+          Player player = context.sender().source();
+          player.sendMessage("Hello, player!");
+        })
+      );
+    // --8<-- [end:modern_simple_sender_mapper]
   }
 
   public record YourSenderType() {
