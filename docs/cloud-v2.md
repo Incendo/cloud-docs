@@ -51,8 +51,6 @@ The command tree has been rewritten to work with completable futures, and the ar
 **Aggregate Parsers ([#522](https://github.com/Incendo/cloud/pull/522))**
 Aggregate parsers have been introduced as a better version of the compound parsers. You may either implement the aggregate parser interface, or construct an aggregate parser using a builder. The aggregate parsers support suggestion provider overrides for the inner components, which was not possible with the compound parsers.
 
-The compound parsers implement the aggregate parser interface, and thus gets access to the improvements. The existing command builder methods for building argument pairs and triplets will remain.
-
 **CommandDescription ([#530](https://github.com/Incendo/cloud/pull/530))**
 Commands now have descriptions that live outside the command meta. This is different from the description of the root literal of a command. The new `CommandDescription` class replaces the old `DESCRIPTION` and `LONG_DESCRIPTION` meta values.
 
@@ -106,9 +104,26 @@ You may now register `ParserDescriptor` instances.
 **Move confirmation system to external repository ([#620](https://github.com/Incendo/cloud/pull/620))**
 The confirmation system now lives in [cloud-processors](https://github.com/Incendo/cloud-processors).
 
-**Add Either ([647](https://github.com/Incendo/cloud/pull/647))**
+**Add Either ([#647](https://github.com/Incendo/cloud/pull/647))**
 `Either<A, B>` can be parsed by `ArgumentParser.firstOf(ParserDescriptor, ParserDescriptor)` which allows
 for multiple variable components on the same level.
+
+**Refactor numerical parsing ([#649](https://github.com/Incendo/cloud/pull/649))**
+The numerical parsers now extend `NumberParser`. Ranges have been moved into a `Range` object.
+
+**Move standard captions to a provider ([#658](https://github.com/Incendo/cloud/pull/658/files))**
+The standard caption values are now managed by a caption provider.
+
+**Package cleanup ([#659](https://github.com/Incendo/cloud/pull/659), [#660](https://github.com/Incendo/cloud/pull/660))**
+We've moved around and standardized the package names in `cloud-core`. The namespace of the project has been
+changed from `cloud.commandframework` to `org.incendo`.
+
+**Use captions in the default exception handlers ((#671)[https://github.com/Incendo/cloud/issues/671])**
+This allows for the exception handlers to be translated in the same way as any other caption,
+without requiring the entire exception handler to be replaced.
+
+**Flag building cleanup ([#708](https://github.com/Incendo/cloud/pull/708))**
+The process of building command flags has been improved.
 
 ### Annotations
 
@@ -150,6 +165,15 @@ This allows for injections and more flexible signatures in more places.
 **Support Gradle incremental compilation ([#624](https://github.com/Incendo/cloud/pull/624))**
 Faster compilation.
 
+**Organize & rename annotations ((#631)[https://github.com/Incendo/cloud/pull/631])**
+`@CommandMethod` has been renamed to `@Command` and `@CommandPermission` has been renamed to `@Permission`
+
+**Annotated default-returning methods ([#670](https://github.com/Incendo/cloud/issues/670))**
+Methods annotated with `@Default` can be used to register `DefaultValue` instances.
+
+**Allow for multiple permissions ([#675](https://github.com/Incendo/cloud/pull/675))**
+`@Permission` can be used to specify multiple permissions.
+
 ### Kotlin
 
 **Support default values ([#511](https://github.com/Incendo/cloud/pull/511))**
@@ -162,6 +186,9 @@ With suggestion providers having the ability to return futures, we can now prope
 There are new Kotlin-specific utilities for working with suspending suggestion providers and argument parsers.
 
 ### Minecraft
+
+The Minecraft modules have been moved into two separate GitHub repositories: [incendo/cloud-minecraft](https://github.com/Incendo/cloud-minecraft)
+and [incendo/cloud-minecraft-modded](https://github.com/Incendo/cloud-minecraft-modded).
 
 #### Brigadier
 
@@ -196,3 +223,10 @@ This also changes how Bukkit attempts to resolve descriptions for root commands.
 
 **Parse selectors in correct thread context ([#590](https://github.com/Incendo/cloud/pull/590))**
 Selectors can only be parsed on the main server thread. The parser will now switch to the correct thread when parsing.
+
+### Discord
+
+The Discord modules have been moved in a separate repository: [incendo/cloud-discord](https://github.com/Incendo/cloud-discord).
+
+New modules have been created for JDA5, Kord, Javacord and Discord4J. These modules support Discord slash commands.
+The old implementations have been deprecated.
