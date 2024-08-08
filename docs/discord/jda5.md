@@ -35,7 +35,7 @@ You then register the command manager as a JDA event listener. Example:
 
 ```java
 JDABuilder.createDefault(yourToken)
-    .addEventListeners(commandManager)
+    .addEventListeners(commandManager.createListener())
     .build();
 ```
 
