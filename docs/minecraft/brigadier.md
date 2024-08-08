@@ -29,6 +29,11 @@ per-argument validation, coloring and syntax hinting.
   <figcaption>Accurate Command Structure</figcaption>
 </figure>
 
+!!! warning "Alias Registration"
+
+    Only aliases for root nodes will be registered when using Brigadier. Due to how it's command
+    tree works it can quickly become inflated when sub-commands have aliases.
+
 ## CloudBrigadierManager
 
 You can get an instance of `CloudBrigadierManager` from the command manager for your platform of choice.
