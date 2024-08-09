@@ -62,7 +62,7 @@ public class PaperExample {
     // --8<-- [end:modern_custom]
   }
 
-  public void exampleModernSimpleSEnderMapper(
+  public void exampleModernSimpleSenderMapper(
     final @NonNull JavaPlugin javaPlugin
   ) {
     final ExecutionCoordinator<Source> executionCoordinator = ExecutionCoordinator.simpleCoordinator();
