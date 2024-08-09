@@ -37,6 +37,11 @@ If the plugin is targeting older Paper versions or non-paper servers, then
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-paper/latest/org/incendo/cloud/paper/LegacyPaperCommandManager.html", "LegacyPaperCommandManager") }}
 should be used.
 
+!!! tip "Plugin Configuration Files"
+
+    Do not register your commands in your plugin.yml or paper-plugin.yml, Cloud handles the registration
+    itself and doing it yourself will cause issues.
+
 ### Legacy
 
 The legacy command manager can be instantiated in two different ways.
@@ -132,3 +137,12 @@ if (commandManager.hasCapability(CloudBukkitCapabilities.NATIVE_BRIGADIER)) {
 ## Parsers
 
 `cloud-paper` has access to all the parsers from [cloud-bukkit](bukkit.md#parsers).
+
+## Provided Sender Mapper
+
+Cloud includes a built-in sender mapper designed for the command manager. Due to the CommandSourceStack having no exposed implementations it can be difficult to work,
+here's an example of creating a command manager with the sender mapper and using the provided mapped sender:
+
+{{ snippet("minecraft/PaperExample.java", section = "modern_simple_sender_mapper", title = "") }}
+
+This will give you access to Source with the included extensions: PlayerSource, ConsoleSource, EntitySource and GenericSource
