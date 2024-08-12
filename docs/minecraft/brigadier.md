@@ -36,6 +36,11 @@ If the command manager is a `BrigadierManagerHolder`, then you can get the insta
 
 The `CloudBrigadierManager` is how you interact with Brigadier to register mappings and configure settings.
 
+!!! warning "Alias Registration"
+
+    Only aliases for root nodes will be registered when using Brigadier. Due to how it's command
+    tree works it can quickly become inflated when sub-commands have aliases.
+
 ### Settings
 
 `CloudBrigadierManager` has settings that can be accessed using `CloudBrigadierManager.settings()`.
