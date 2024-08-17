@@ -14,7 +14,7 @@
 
 ## Installation
 
-Cloud for Velocity is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-paper).
+Cloud for Velocity is available through [Maven Central](https://central.sonatype.com/artifact/org.incendo/cloud-velocity).
 
 {{ dependency_listing("velocity") }}
 
