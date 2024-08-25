@@ -25,6 +25,10 @@ Cloud Annotations is available through [Maven Central](https://central.sonatype.
 
 {{ dependency_listing("annotations", "core") }}
 
+In order to for Cloud to obtain the parameter names for arguments you'll need to add the parameter flag to your Java/Kotlin compilation step.
+
+{{ javac_parameters() }}
+
 You then need to create an
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/AnnotationParser.html", "AnnotationParser") }}
 instance.

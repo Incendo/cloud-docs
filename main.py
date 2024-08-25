@@ -32,6 +32,149 @@ def define_env(env):
     """.format(name=name, version=env.variables.version[version])
 
     @env.macro
+    def shade_dependency() -> str:
+        return """
+=== "Maven"
+    
+    ```xml
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                        <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                        <relocations>
+                            <relocation>
+                                <pattern>org.incendo.cloud</pattern>
+                                <shadedPattern>com.yourpackage.libs.cloud</shadedPattern>
+                            </relocation>
+                        </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    ```
+
+=== "Gradle (Kotlin)"
+
+    ```kotlin
+    plugins {
+        id("com.gradleup.shadow") version "8.3.0"
+    }
+
+    tasks {
+        assemble {
+            dependsOn(shadowJar)
+        }
+
+        shadowJar {
+            relocate("org.incendo.cloud", "com.yourpackage.libs.cloud")
+        }
+    }
+    ```
+
+=== "Gradle (Groovy)"
+
+    ```groovy
+    plugins {
+        id 'com.gradleup.shadow' version '8.3.0'
+    }
+
+    tasks {
+        assemble {
+            dependsOn shadowJar
+        }
+
+        shadowJar {
+            relocate 'org.incendo.cloud', 'com.yourpackage.libs.cloud'
+        }
+    }
+    ```
+"""
+
+    @env.macro
+    def javac_parameters() -> str:
+        return """
+=== "Maven"
+    
+    ```xml
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!-- For kotlin plugins -->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>1.9.0</version> <!-- Replace with your Kotlin version -->
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <args>
+                                <arg>-java-parameters</arg>
+                            </args>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    ```
+
+=== "Gradle (Kotlin)"
+
+    ```kotlin
+    tasks.withType<JavaCompile> {
+        options.compilerArgs.add("-parameters")
+    }
+
+    // only needed if your project uses Kotlin
+    tasks.withType<KotlinCompile> {
+        compilerOptions {
+            freeCompilerArgs.add("-java-parameters")
+        }
+    }
+    ```
+
+=== "Gradle (Groovy)"
+
+    ```groovy
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-parameters"
+    }
+
+    // only needed if your project uses Kotlin
+    tasks.withType(KotlinCompile) {
+        kotlinOptions {
+            freeCompilerArgs << "-java-parameters"
+        }
+    }
+    ```
+"""
+
+    @env.macro
     def javadoc(link: str, title: str = None) -> str:
         if title is None:
             split = link.split("/")
