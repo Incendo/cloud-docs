@@ -47,15 +47,15 @@ def define_env(env):
                     <execution>
                         <phase>package</phase>
                         <goals>
-                        <goal>shade</goal>
+                            <goal>shade</goal>
                         </goals>
                         <configuration>
-                        <relocations>
-                            <relocation>
-                                <pattern>org.incendo.cloud</pattern>
-                                <shadedPattern>com.yourpackage.libs.cloud</shadedPattern>
-                            </relocation>
-                        </relocations>
+                            <relocations>
+                                <relocation>
+                                    <pattern>org.incendo.cloud</pattern>
+                                    <shadedPattern>com.yourpackage.libs.cloud</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                     </execution>
                 </executions>
