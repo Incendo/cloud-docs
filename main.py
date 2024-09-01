@@ -32,14 +32,16 @@ def define_env(env):
     """.format(name=name, version=env.variables.version[version])
 
     @env.macro
-    def javadoc(link: str, title: str = None) -> str:
+    def javadoc(link: str, title: str = None, code: bool = True) -> str:
         if title is None:
             split = link.split("/")
             title = split[len(split) - 1].replace(".html", "")
         if link.startswith("<"):
             link = link[1: len(link) - 1]
+        if code:
+            title = f'`{title}`'
 
-        return '[`{title}`](<{link}> "Click to open the JavaDoc")'.format(link=link, title=title)
+        return '[{title}](<{link}> "Click to open the JavaDoc")'.format(link=link, title=title)
 
     @env.macro
     def snippet(path: str, section: str = "snippet", title: str = None, indent = 0) -> str:

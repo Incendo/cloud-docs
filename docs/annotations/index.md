@@ -222,7 +222,12 @@ annotation.
 If no value is passed to the annotation then the parser will become the default parser for the method return type.
 You may also pass a suggestion provider name to the annotation to bind the parser to a specific suggestion provider.
 
-The signature of the method must be exactly:
+The parameter list is flexible (see the
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/parser/Parser.html", "JavaDoc", False) }}
+) but the parser _must_ return the type you wish to parse. The parser will be
+registered to the [parser registry](../core/index.md#parser-registry).
+
+Example:
 
 ```java
 // Named parser: @Parser("parserName")
