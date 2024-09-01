@@ -754,6 +754,6 @@ You can find examples on GitHub for either
 ### Usage within projects
 
 Cloud will have differing versions between core and the other groups of modules, Cloud Minecraft for example will be updated seperately. If core has a bug fix or feature that is not yet available 
-inside of the current Cloud Minecraft release you can define cloud-core as it's own dependency force it's use that way.You should also shade Cloud inside of your project, here's an example of doing so:
+inside of the current Cloud Minecraft release you can define cloud-core as it's own dependency force it's use that way. You should also shade Cloud inside of your project, here's an example of doing so:
 
 {{ shade_dependency() }}
