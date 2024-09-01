@@ -637,6 +637,12 @@ A parser can fail when the input does not match the expectations.
 The command manager will turn the failure into a command syntax exception which can then be displayed to the
 sender, informing them about what went wrong.
 
+<!-- prettier-ignore -->
+!!! note
+    Cloud v2 does not require you to peek before consuming from the `CommandInput`. The input is defensively copied
+    before being passed to the parser, unlike in Cloud v1. You may still want to peek in order to determine _how_
+    to parse the input, but it is no longer considered incorrect not to do so.
+
 The recommended way of parsing an argument is to:
 
 1. Peek the command input.
