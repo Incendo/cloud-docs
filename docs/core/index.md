@@ -451,11 +451,11 @@ all instances that pass a given predicate.
 Command exceptions are thrown whenever a command cannot be parsed or executed normally.
 This can be for several reasons, such as:
 
-- The command sender does not have the required permission ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoPermissionException.html)", "NoPermissionException") }}
-- The command sender is of the wrong type ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidCommandSenderException.html)", "InvalidCommandSenderException") }}
-- The requested command does not exist ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoSuchCommandException.html)", "NoSuchCommandException") }}
-- The provided command input is invalid ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidSyntaxException.html)", "InvalidSyntaxException") }}
-- The parser cannot parse the input provided ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html)", "ArgumentParseException") }}
+- The command sender does not have the required permission ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoPermissionException.html", "NoPermissionException") }})
+- The command sender is of the wrong type ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidCommandSenderException.html", "InvalidCommandSenderException") }})
+- The requested command does not exist ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/NoSuchCommandException.html", "NoSuchCommandException") }})
+- The provided command input is invalid ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/InvalidSyntaxException.html", "InvalidSyntaxException") }})
+- The parser cannot parse the input provided ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/exception/ArgumentParseException.html", "ArgumentParseException") }})
 
 ##### Localization
 
@@ -715,7 +715,7 @@ However, the recommended way of providing suggestions is by implementing one of 
 interfaces ({{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProvider.html", "SuggestionProvider") }},
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.html", "BlockingSuggestionProvider") }},
 or
-{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.Strings.html)", "BlockingSuggestionProvider.Strings") }}.
+{{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/BlockingSuggestionProvider.Strings.html", "BlockingSuggestionProvider.Strings") }}).
 
 If the parser implements a suggestion provider interface it does not need to override the
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/suggestion/SuggestionProviderHolder.html#suggestionProvider()", "suggestionProvider") }}
