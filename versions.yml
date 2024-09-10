@@ -5,11 +5,11 @@ discord4j: 1.0.0-beta.3
 jda5: 1.0.0-beta.3
 kord: 1.0.0-beta.3
 # Minecraft
-paper: 2.0.0-beta.8
-velocity: 2.0.0-beta.8
-bungee: 2.0.0-beta.8
-cloudburst: 2.0.0-beta.8
-modded: 2.0.0-beta.7
-minecraft-extras: 2.0.0-beta.8
+paper: 2.0.0-beta.9
+velocity: 2.0.0-beta.9
+bungee: 2.0.0-beta.9
+cloudburst: 2.0.0-beta.9
+modded: 2.0.0-beta.9
+minecraft-extras: 2.0.0-beta.9
 # Other
 spring: 1.0.0-beta.1
