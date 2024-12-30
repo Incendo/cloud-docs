@@ -43,7 +43,7 @@ Merge the following into your `fabric.mod.json`:
 ```json
 {
   "depends": {
-    "cloud": "*"
+    "cloud-fabric": "*"
   }
 }
 ```
