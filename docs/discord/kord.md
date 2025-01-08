@@ -126,7 +126,7 @@ CommandScopeBuilderModifier.install(annotationParser)
 You may then use the annotation:
 
 ```kotlin
-@CommandScope(guilds = { 1337 })
+@CommandScope(guilds = [1337])
 @Command("command")
 public suspend fun yourCommand() { /* ... */ }
 ```
