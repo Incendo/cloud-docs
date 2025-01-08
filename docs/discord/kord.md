@@ -128,7 +128,7 @@ You may then use the annotation:
 ```kotlin
 @CommandScope(guilds = { 1337 })
 @Command("command")
-public suspend void yourCommand() { /* ... */ }
+public suspend fun yourCommand() { /* ... */ }
 ```
 
 ### Permissions
