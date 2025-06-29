@@ -5,18 +5,15 @@ pluginManagement {
 }
 
 plugins {
-  id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
+  id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 dependencyResolutionManagement {
   repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
   repositories {
     mavenCentral()
-    maven("https://oss.sonatype.org/content/repositories/snapshots/") {
-      name = "sonatypeOssSnapshots"
-      mavenContent {
-        snapshotsOnly()
-      }
+    maven("https://central.sonatype.com/repository/maven-snapshots/") {
+      mavenContent { snapshotsOnly() }
     }
     maven("https://m2.dv8tion.net/releases") {
       name = "dv8tion"
