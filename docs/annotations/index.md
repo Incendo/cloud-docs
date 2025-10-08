@@ -172,7 +172,7 @@ Otherwise, it will become a value flag with the parameter type as the value type
 
 Flags should _not_ be annotated with
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Argument.html", "@Argument") }}
-and should not present in the
+and should not be present in the
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-annotations/latest/org/incendo/cloud/annotations/Command.html", "@Command") }}
 syntax.
 
