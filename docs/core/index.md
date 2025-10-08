@@ -604,7 +604,7 @@ type using a mapper.
 
 You may either implement the
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html", "AggregateParser") }}
-interface, or using construct the parser by using a builder
+interface, or construct the parser by using a builder
 that you create by calling
 {{ javadoc("https://javadoc.io/doc/org.incendo/cloud-core/latest/org/incendo/cloud/parser/aggregate/AggregateParser.html#builder()", "AggregateParser.builder()") }}.
 
