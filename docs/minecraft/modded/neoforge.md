@@ -14,9 +14,9 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     jarJar.enable()
 
     dependencies {
-      val cloudFabric = "org.incendo:cloud-neoforge:VERSION"
-      implementation(cloudFabric)
-      jarJar(cloudFabric)
+      val cloudNeoforge = "org.incendo:cloud-neoforge:VERSION"
+      implementation(cloudNeoforge)
+      jarJar(cloudNeoforge)
     }
     ```
 
@@ -30,9 +30,9 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     jarJar.enable()
 
     dependencies {
-      def cloudFabric = 'org.incendo:cloud-neoforge:VERSION'
-      implementation(cloudFabric)
-      jarJar(cloudFabric)
+      def cloudNeoforge = 'org.incendo:cloud-neoforge:VERSION'
+      implementation(cloudNeoforge)
+      jarJar(cloudNeoforge)
     }
     ```
 
@@ -44,9 +44,9 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     }
 
     dependencies {
-      val cloudFabric = "org.incendo:cloud-neoforge:VERSION"
-      modImplementation(cloudFabric)
-      include(cloudFabric)
+      val cloudNeoforge = "org.incendo:cloud-neoforge:VERSION"
+      modImplementation(cloudNeoforge)
+      include(cloudNeoforge)
     }
     ```
 
@@ -58,9 +58,9 @@ Cloud for NeoForge is available through [Maven Central](https://central.sonatype
     }
 
     dependencies {
-      def cloudFabric = 'org.incendo:cloud-neoforge:VERSION'
-      modImplementation(cloudFabric)
-      include(cloudFabric)
+      def cloudNeoforge = 'org.incendo:cloud-neoforge:VERSION'
+      modImplementation(cloudNeoforge)
+      include(cloudNeoforge)
     }
     ```
 
